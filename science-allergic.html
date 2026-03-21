@@ -6,6 +6,188 @@
     <title>Allergic & Inflammatory Diseases - CellveraPharma</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .allergy-hero {
+            background: linear-gradient(rgba(13, 79, 79, 0.85), rgba(13, 79, 79, 0.75)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=500&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 50px;
+            color: #fff;
+            text-align: center;
+        }
+        .allergy-hero h1 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .allergy-hero .subtitle {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+        .allergy-hero p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        
+        .research-section {
+            padding: 80px 50px;
+            background: #fff;
+        }
+        .research-section h2 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.2rem;
+            color: #0d4f4f;
+            margin-bottom: 25px;
+        }
+        .research-section p {
+            color: #4a6b6b;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            max-width: 900px;
+        }
+        
+        .featured-card {
+            padding: 80px 50px;
+            background: #f0f7f7;
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .featured-img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(13, 79, 79, 0.15);
+            height: 450px;
+            object-fit: cover;
+        }
+        .featured-content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(13, 79, 79, 0.08);
+        }
+        .featured-content h3 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 1.6rem;
+            color: #0d4f4f;
+            margin-bottom: 15px;
+        }
+        .featured-content .author {
+            font-size: 0.9rem;
+            color: #6a8a8a;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .featured-content .highlight {
+            background: #f0f7f7;
+            padding: 15px;
+            border-left: 4px solid #0d4f4f;
+            margin: 20px 0;
+            font-size: 0.95rem;
+            color: #4a6b6b;
+        }
+        
+        .pipeline-card {
+            padding: 80px 50px;
+            background: #fff;
+        }
+        .pipeline-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .pipeline-grid.reverse {
+            direction: rtl;
+        }
+        .pipeline-grid.reverse > * {
+            direction: ltr;
+        }
+        .pipeline-img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(13, 79, 79, 0.15);
+            height: 400px;
+            object-fit: cover;
+        }
+        .pipeline-content {
+            background: linear-gradient(135deg, #0d4f4f, #1a8a8a);
+            padding: 40px;
+            border-radius: 16px;
+            color: #fff;
+        }
+        .pipeline-content h3 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+        .pipeline-content p {
+            opacity: 0.95;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .pipeline-content .btn-primary {
+            background: #fff;
+            color: #0d4f4f;
+        }
+        
+        .pathways-section {
+            padding: 80px 50px;
+            background: #f0f7f7;
+        }
+        .pathways-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+        .pathway-card {
+            background: #fff;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(13, 79, 79, 0.08);
+        }
+        .pathway-card h4 {
+            color: #0d4f4f;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .pathway-card p {
+            color: #4a6b6b;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 900px) {
+            .allergy-hero { padding: 80px 25px; }
+            .allergy-hero h1 { font-size: 2rem; }
+            .featured-grid, .pipeline-grid { grid-template-columns: 1fr; }
+            .pipeline-grid.reverse { direction: ltr; }
+            .pathways-grid { grid-template-columns: 1fr; }
+            .featured-img, .pipeline-img { height: 300px; }
+        }
+        @media (max-width: 600px) {
+            .research-section, .featured-card, .pipeline-card, .pathways-section { padding: 60px 20px; }
+            .allergy-hero h1 { font-size: 1.6rem; }
+            .research-section h2 { font-size: 1.6rem; }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -44,16 +226,71 @@
         </nav>
     </header>
 
-    <!-- Page Hero -->
-    <section class="page-hero">
-        <h1>Allergic & Inflammatory Diseases</h1>
-        <p>Developing treatments for immune-mediated conditions</p>
+    <!-- Hero -->
+    <section class="allergy-hero">
+        <h1>ALLERGIC & INFLAMMATORY CONDITIONS</h1>
+        <p class="subtitle">Pioneering new therapeutic frontiers for type 2 inflammation and related disorders</p>
+        <p>A balanced immune system is foundational to human well-being. However, complications arise when this system loses its equilibrium—either by launching an excessive, uncontrolled attack or by failing to mount an adequate defense. Our scientific investigations center on decoding the specific molecular and cellular triggers that cause immune dysregulation in allergic and inflammatory conditions. This dedication to immunological innovation has yielded a robust and expanding clinical pipeline, evaluating novel therapeutic avenues for allergies, autoimmune disorders, and even tumor immunology.</p>
     </section>
 
-    <!-- Content Placeholder -->
-    <section class="content-placeholder">
-        <div class="placeholder-text">
-            <p>Content coming soon...</p>
+    <!-- Core Research Focus -->
+    <section class="research-section">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h2>Dedicated to advancing the science of type 2 inflammation</h2>
+            <p>We possess a deep-rooted legacy as pioneers in the study of type 2 inflammation. Extensive late-stage clinical trials have established that the IL-4 and IL-13 biological pathways are primary catalysts for this specific inflammatory response. Type 2 inflammation is a key underlying factor in a variety of interconnected, often overlapping conditions, such as severe asthma, atopic dermatitis, chronic obstructive pulmonary disease (COPD), chronic rhinosinusitis with nasal polyps, and prurigo nodularis.</p>
+            <p>To further revolutionize patient care, our ongoing research targets additional conditions driven by type 2 inflammation, including bullous pemphigoid, lichen simplex chronicus, and chronic pruritus of unknown origin.</p>
+            <p>Beyond type 2 pathways, we have extensively investigated the impact of the interleukin-6 (IL-6) pathway on persistent inflammatory diseases like polymyalgia rheumatica and rheumatoid arthritis. Abnormally high IL-6 levels can throw multiple physiological systems out of balance, driving the widespread systemic and joint-related damage seen in rheumatoid arthritis. Additionally, we are actively evaluating the potential of targeting the IL-33 pathway to treat COPD in former smokers, independent of their eosinophil profiles.</p>
+        </div>
+    </section>
+
+    <!-- Pathways Cards -->
+    <section class="pathways-section">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2 style="color: #0d4f4f; margin-bottom: 15px;">Key Inflammatory Pathways</h2>
+            <p style="color: #4a6b6b;">Our research targets multiple biological pathways to address diverse inflammatory conditions.</p>
+        </div>
+        <div class="pathways-grid">
+            <div class="pathway-card">
+                <h4>IL-4 & IL-13 Pathway</h4>
+                <p>Primary catalysts for type 2 inflammation. Targeted in severe asthma, atopic dermatitis, COPD, and chronic rhinosinusitis with nasal polyps.</p>
+            </div>
+            <div class="pathway-card">
+                <h4>IL-6 Pathway</h4>
+                <p>Investigated for persistent inflammatory diseases including polymyalgia rheumatica and rheumatoid arthritis. High levels drive systemic inflammation.</p>
+            </div>
+            <div class="pathway-card">
+                <h4>IL-33 Pathway</h4>
+                <p>Evaluated for treating COPD in former smokers, independent of eosinophil profiles. Represents a novel therapeutic approach.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article Card -->
+    <section class="featured-card">
+        <div class="featured-grid">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&h=500&fit=crop" alt="Woman by window" class="featured-img">
+            <div class="featured-content">
+                <h3>Shifting the COPD Paradigm: Reimagining the Science and Breaking Down Barriers</h3>
+                <p class="author">Authored by: Bola Akinlade, MD, Senior Vice President, Medical Affairs</p>
+                <p>Chronic Obstructive Pulmonary Disease (COPD) affects millions worldwide, yet treatment options remain limited. Our team is pioneering a new approach that addresses both the inflammatory and structural components of the disease.</p>
+                <div class="highlight">
+                    <strong>Dedicated to advancing a science-led, patient-first methodology.</strong>
+                </div>
+                <a href="#" class="btn-primary">Discover our innovative approach to COPD</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pipeline Highlight Card -->
+    <section class="pipeline-card">
+        <div class="pipeline-grid reverse">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=500&fit=crop" alt="Researcher" class="pipeline-img">
+            <div class="pipeline-content">
+                <h3>Advancing scientific discovery in allergy treatments</h3>
+                <p>Our clinical pipeline features highly anticipated experimental therapies designed for areas with significant unmet medical needs, such as intense environmental and pet allergies.</p>
+                <p>Furthermore, we are investigating an innovative treatment paradigm for severe food allergies that leverages a unique pairing of bispecific and monoclonal antibodies.</p>
+                <a href="#" class="btn-primary">View our allergy pipeline</a>
+            </div>
         </div>
     </section>
 
@@ -81,8 +318,8 @@
                 <ul>
                     <li><a href="science.html">Science</a></li>
                     <li><a href="science-rd.html">Research & Development</a></li>
+                    <li><a href="science-allergic.html">Allergic & Inflammatory Diseases</a></li>
                     <li><a href="medicines.html">Medicines</a></li>
-                    <li><a href="#">Publications</a></li>
                 </ul>
             </div>
             <div class="footer-col">
