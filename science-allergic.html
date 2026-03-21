@@ -61,23 +61,29 @@
         .featured-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            max-width: 1200px;
+            gap: 0;
+            max-width: 1100px;
             margin: 0 auto;
-            align-items: center;
+            align-items: stretch;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(13, 79, 79, 0.12);
         }
         .featured-img {
             width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(13, 79, 79, 0.15);
-            height: 450px;
+            height: 550px;
             object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .featured-grid:hover .featured-img {
+            transform: scale(1.05);
         }
         .featured-content {
             background: #fff;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(13, 79, 79, 0.08);
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .featured-content h3 {
             font-family: 'Libre Baskerville', Georgia, serif;
@@ -107,10 +113,13 @@
         .pipeline-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            max-width: 1200px;
+            gap: 0;
+            max-width: 1100px;
             margin: 0 auto;
-            align-items: center;
+            align-items: stretch;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(13, 79, 79, 0.12);
         }
         .pipeline-grid.reverse {
             direction: rtl;
@@ -120,15 +129,19 @@
         }
         .pipeline-img {
             width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(13, 79, 79, 0.15);
-            height: 400px;
+            height: 500px;
             object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .pipeline-grid:hover .pipeline-img {
+            transform: scale(1.05);
         }
         .pipeline-content {
             background: linear-gradient(135deg, #0d4f4f, #1a8a8a);
-            padding: 40px;
-            border-radius: 16px;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             color: #fff;
         }
         .pipeline-content h3 {
