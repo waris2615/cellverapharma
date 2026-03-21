@@ -6,6 +6,49 @@
     <title>CellveraPharma - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Classic Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .slide-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scale-up {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scale-up.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .stagger-delay:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-delay:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-delay:nth-child(3) { transition-delay: 0.3s; }
+        .stagger-delay:nth-child(4) { transition-delay: 0.4s; }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -46,7 +89,7 @@
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-content">
+        <div class="hero-content fade-in">
             <span class="hero-badge">20 Years of Innovation</span>
             <h1>Science-Driven Solutions for a Healthier Tomorrow</h1>
             <p>We develop transformative medicines that improve lives worldwide. Our commitment to research drives everything we do.</p>
@@ -55,49 +98,49 @@
                 <a href="about.html" class="btn-outline">Learn More</a>
             </div>
         </div>
-        <div class="hero-visual">
+        <div class="hero-visual slide-right">
             <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=450&fit=crop" alt="Scientists in lab" class="hero-img">
         </div>
     </section>
 
     <!-- Quick Links -->
     <div class="quick-links">
-        <a href="about.html" class="quick-link">📋 About Us</a>
-        <a href="medicines.html" class="quick-link">💊 Our Medicines</a>
-        <a href="#" class="quick-link">🔬 Research Pipeline</a>
-        <a href="#" class="quick-link">🏥 Clinical Trials</a>
-        <a href="careers.html" class="quick-link">💼 Careers</a>
+        <a href="about.html" class="quick-link stagger-delay">📋 About Us</a>
+        <a href="medicines.html" class="quick-link stagger-delay">💊 Our Medicines</a>
+        <a href="#" class="quick-link stagger-delay">🔬 Research Pipeline</a>
+        <a href="#" class="quick-link stagger-delay">🏥 Clinical Trials</a>
+        <a href="careers.html" class="quick-link stagger-delay">💼 Careers</a>
     </div>
 
     <!-- Focus Areas -->
     <section class="features" id="focus">
-        <div class="section-header">
+        <div class="section-header fade-in">
             <h2>Our Focus Areas</h2>
             <p>Advancing medicine across therapeutic areas with the greatest patient needs.</p>
         </div>
         <div class="features-grid">
-            <div class="feature">
+            <div class="feature scale-up stagger-delay">
                 <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=220&fit=crop" alt="Precision Medicine" class="feature-img">
                 <div class="feature-content">
                     <h3>Precision Medicine</h3>
                     <p>Targeted therapies for individual patient profiles.</p>
                 </div>
             </div>
-            <div class="feature">
+            <div class="feature scale-up stagger-delay">
                 <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=400&h=220&fit=crop" alt="Cardiovascular" class="feature-img">
                 <div class="feature-content">
                     <h3>Cardiovascular</h3>
                     <p>Innovative treatments for heart conditions.</p>
                 </div>
             </div>
-            <div class="feature">
+            <div class="feature scale-up stagger-delay">
                 <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=220&fit=crop" alt="Neuroscience" class="feature-img">
                 <div class="feature-content">
                     <h3>Neuroscience</h3>
                     <p>Brain and nervous system treatments.</p>
                 </div>
             </div>
-            <div class="feature">
+            <div class="feature scale-up stagger-delay">
                 <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=400&h=220&fit=crop" alt="Infectious Disease" class="feature-img">
                 <div class="feature-content">
                     <h3>Infectious Disease</h3>
@@ -108,21 +151,21 @@
     </section>
 
     <!-- Stats -->
-    <div class="stats">
+    <div class="stats slide-left">
         <div class="stats-grid">
-            <div class="stat-item">
+            <div class="stat-item scale-up stagger-delay">
                 <h3>20+</h3>
                 <p>Years of Innovation</p>
             </div>
-            <div class="stat-item">
+            <div class="stat-item scale-up stagger-delay">
                 <h3>85+</h3>
                 <p>Approved Medicines</p>
             </div>
-            <div class="stat-item">
+            <div class="stat-item scale-up stagger-delay">
                 <h3>100+</h3>
                 <p>Countries Served</p>
             </div>
-            <div class="stat-item">
+            <div class="stat-item scale-up stagger-delay">
                 <h3>1B+</h3>
                 <p>Patients Helped</p>
             </div>
@@ -130,7 +173,7 @@
     </div>
 
     <!-- CTA -->
-    <section class="cta">
+    <section class="cta fade-in">
         <h2>Join Our Mission</h2>
         <p>Be part of a team making a real difference in global health. Explore career opportunities at CellveraPharma.</p>
         <a href="careers.html" class="btn-primary">View Open Positions</a>
@@ -183,5 +226,26 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Classic Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-up').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
