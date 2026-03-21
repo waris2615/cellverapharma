@@ -71,8 +71,41 @@ nav a {
     padding: 8px 0;
     position: relative;
     transition: color 0.3s;
+    cursor: pointer;
 }
 nav a:hover, nav a.active { color: #0d4f4f; }
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    min-width: 220px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 10px 0;
+    z-index: 1001;
+}
+.dropdown-content a {
+    display: block;
+    padding: 12px 20px;
+    color: #1a2e35;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f0f7f7;
+}
+.dropdown-content a:last-child { border-bottom: none; }
+.dropdown-content a:hover {
+    background: #f0f7f7;
+    color: #0d4f4f;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 .btn-primary {
     background: #0d4f4f;
@@ -368,6 +401,22 @@ footer {
 .page-hero p {
     color: #6a8a8a;
     font-size: 1.1rem;
+}
+
+/* Content Placeholder */
+.content-placeholder {
+    padding: 100px 50px;
+    text-align: center;
+    background: #fff;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.placeholder-text p {
+    color: #6a8a8a;
+    font-size: 1.1rem;
+    font-style: italic;
 }
 
 /* About Section */
