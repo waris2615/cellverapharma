@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         .rd-hero {
-            background: linear-gradient(rgba(13, 79, 79, 0.85), rgba(13, 79, 79, 0.75)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=500&fit=crop');
+            background: linear-gradient(rgba(13, 79, 79, 0.85), rgba(13, 79, 79, 0.75)), url('https://images.unsplash.com/photo-1579606033859-9e0d439d5f8f?w=1200&h=500&fit=crop');
             background-size: cover;
             background-position: center;
             padding: 120px 50px;
@@ -113,19 +113,33 @@
         }
         .focus-card {
             background: #f0f7f7;
-            padding: 35px;
+            padding: 0;
             border-radius: 16px;
             transition: all 0.3s;
             cursor: pointer;
+            overflow: hidden;
         }
         .focus-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(13, 79, 79, 0.12);
         }
+        .focus-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .focus-card-content {
+            padding: 25px;
+        }
         .focus-card h3 {
             color: #0d4f4f;
             font-size: 1.1rem;
             margin-bottom: 10px;
+        }
+        .focus-card p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            color: #4a6b6b;
         }
         .focus-card .disclaimer {
             font-size: 0.75rem;
@@ -195,8 +209,17 @@
         }
         .tech-card {
             background: #f0f7f7;
-            padding: 40px;
+            padding: 0;
             border-radius: 16px;
+            overflow: hidden;
+        }
+        .tech-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        .tech-card-content {
+            padding: 35px;
         }
         .tech-card h3 {
             font-family: 'Libre Baskerville', Georgia, serif;
@@ -306,14 +329,14 @@
                 <p>The road from initial laboratory discovery to delivering a transformative medicine to a patient is complex and demanding. It requires continuous questioning, agility, and adaptation as our understanding of specific conditions and patient requirements evolves. We utilize a highly collaborative, data-centric approach to overcome these challenges. Here is a high-level look at how we translate innovative science into practical medical solutions.</p>
                 <a href="#" class="btn-primary">Explore our recent research</a>
             </div>
-            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&h=450&fit=crop" alt="Laboratory research" class="rd-img">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=450&fit=crop" alt="Laboratory research" class="rd-img">
         </div>
     </section>
 
     <!-- Human Biology and Genetics -->
     <section class="rd-section alt">
         <div class="rd-section-inner reverse">
-            <img src="https://images.unsplash.com/photo-1576089587252-e61e94377c71?w=600&h=450&fit=crop" alt="DNA research" class="rd-img">
+            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&h=450&fit=crop" alt="DNA research" class="rd-img">
             <div>
                 <h2>Unlocking the secrets of human biology and the genetic code</h2>
                 <p>Our foundational approach relies on translating deep biological and genetic insights into actionable targets for novel therapies. We heavily depend on genetic data to confirm the viability of our research programs and to streamline our clinical testing phases. By pinpointing the root genetic causes of a disease, we can engineer highly specific, targeted treatments.</p>
@@ -342,34 +365,46 @@
         </div>
         <div class="focus-grid">
             <div class="focus-card">
-                <img src="https://images.unsplash.com/photo-1579165466741-7f35a4755657?w=300&h=180&fit=crop" alt="Allergic Diseases" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                <h3>Allergic & Inflammatory Diseases</h3>
-                <p style="margin-bottom: 0; font-size: 0.9rem;">Developing targeted therapies for immune-mediated conditions.</p>
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=250&fit=crop" alt="Allergic Diseases">
+                <div class="focus-card-content">
+                    <h3>Allergic & Inflammatory Diseases</h3>
+                    <p>Developing targeted therapies for immune-mediated conditions.</p>
+                </div>
             </div>
             <div class="focus-card">
-                <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=300&h=180&fit=crop" alt="Cardiovascular" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                <h3>Cardiovascular & Metabolic Diseases</h3>
-                <p style="margin-bottom: 0; font-size: 0.9rem;">Innovative treatments for heart and metabolic disorders.</p>
+                <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=400&h=250&fit=crop" alt="Cardiovascular">
+                <div class="focus-card-content">
+                    <h3>Cardiovascular & Metabolic Diseases</h3>
+                    <p>Innovative treatments for heart and metabolic disorders.</p>
+                </div>
             </div>
             <div class="focus-card">
-                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=300&h=180&fit=crop" alt="Neuroscience" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                <h3>Neuroscience</h3>
-                <p style="margin-bottom: 0; font-size: 0.9rem;">Advancing therapies for brain and nervous system conditions.</p>
+                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop" alt="Neuroscience">
+                <div class="focus-card-content">
+                    <h3>Neuroscience</h3>
+                    <p>Advancing therapies for brain and nervous system conditions.</p>
+                </div>
             </div>
             <div class="focus-card">
-                <img src="https://images.unsplash.com/photo-1579154204503-94e55a3c728d?w=300&h=180&fit=crop" alt="Oncology" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                <h3>Oncology & Hematology</h3>
-                <p style="margin-bottom: 0; font-size: 0.9rem;">Next-generation cancer and blood disorder treatments.</p>
+                <img src="https://images.unsplash.com/photo-1579606033859-9e0d439d5f8f?w=400&h=250&fit=crop" alt="Oncology">
+                <div class="focus-card-content">
+                    <h3>Oncology & Hematology</h3>
+                    <p>Next-generation cancer and blood disorder treatments.</p>
+                </div>
             </div>
             <div class="focus-card">
-                <img src="https://images.unsplash.com/photo-1589139268875-0a5e0217e485?w=300&h=180&fit=crop" alt="Ophthalmology" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                <h3>Ophthalmology</h3>
-                <p style="margin-bottom: 0; font-size: 0.9rem;">Vision-preserving therapies for retinal diseases.</p>
+                <img src="https://images.unsplash.com/photo-1589139268875-0a5e0217e485?w=400&h=250&fit=crop" alt="Ophthalmology">
+                <div class="focus-card-content">
+                    <h3>Ophthalmology</h3>
+                    <p>Vision-preserving therapies for retinal diseases.</p>
+                </div>
             </div>
             <div class="focus-card">
-                <img src="https://images.unsplash.com/photo-1576089587252-e61e94377c71?w=300&h=180&fit=crop" alt="Rare Diseases" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                <h3>Rare and Other Diseases</h3>
-                <p style="margin-bottom: 0; font-size: 0.9rem;">Addressing underserved patient populations.</p>
+                <img src="https://images.unsplash.com/photo-1576089587252-e61e94377c71?w=400&h=250&fit=crop" alt="Rare Diseases">
+                <div class="focus-card-content">
+                    <h3>Rare and Other Diseases</h3>
+                    <p>Addressing underserved patient populations.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -418,18 +453,22 @@
     <section class="tech-section">
         <div class="tech-grid">
             <div class="tech-card">
-                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=500&h=350&fit=crop" alt="Technology platform" style="width: 100%; border-radius: 12px; margin-bottom: 25px;">
-                <h3>Integrating cutting-edge technology into every stage of development</h3>
-                <p>We have engineered exclusive technological platforms designed to pinpoint the optimal treatment strategy for any given disease. Drawing on decades of technological refinement, our goal is to bring unprecedented speed, scale, and precision to the drug development lifecycle.</p>
-                <h4 style="margin: 25px 0 15px; color: #0d4f4f;">Transforming pharmaceutical manufacturing</h4>
-                <p>Our array of proprietary platforms significantly expedites the traditional timelines of drug discovery. We are continuously raising the industry standard for biotech productivity and rapid iteration.</p>
-                <a href="#" class="btn-outline">View our technology platforms</a>
+                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=500&h=350&fit=crop" alt="Technology platform">
+                <div class="tech-card-content">
+                    <h3>Integrating cutting-edge technology into every stage of development</h3>
+                    <p>We have engineered exclusive technological platforms designed to pinpoint the optimal treatment strategy for any given disease. Drawing on decades of technological refinement, our goal is to bring unprecedented speed, scale, and precision to the drug development lifecycle.</p>
+                    <h4 style="margin: 25px 0 15px; color: #0d4f4f;">Transforming pharmaceutical manufacturing</h4>
+                    <p>Our array of proprietary platforms significantly expedites the traditional timelines of drug discovery. We are continuously raising the industry standard for biotech productivity and rapid iteration.</p>
+                    <a href="#" class="btn-outline">View our technology platforms</a>
+                </div>
             </div>
             <div class="tech-card">
-                <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=500&h=350&fit=crop" alt="Manufacturing facility" style="width: 100%; border-radius: 12px; margin-bottom: 25px;">
-                <h3>Producing high-quality medicines with a commitment to global scale</h3>
-                <p>Our production facilities are deeply rooted in scientific innovation and are seamlessly connected to our R&D teams from day one. We engineer and scale rigorous manufacturing protocols to ensure our clinical and commercial medicines are produced flawlessly.</p>
-                <a href="#" class="btn-outline">Read about our manufacturing standards</a>
+                <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=500&h=350&fit=crop" alt="Manufacturing facility">
+                <div class="tech-card-content">
+                    <h3>Producing high-quality medicines with a commitment to global scale</h3>
+                    <p>Our production facilities are deeply rooted in scientific innovation and are seamlessly connected to our R&D teams from day one. We engineer and scale rigorous manufacturing protocols to ensure our clinical and commercial medicines are produced flawlessly.</p>
+                    <a href="#" class="btn-outline">Read about our manufacturing standards</a>
+                </div>
             </div>
         </div>
     </section>
