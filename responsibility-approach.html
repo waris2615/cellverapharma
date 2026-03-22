@@ -6,6 +6,384 @@
     <title>Our Approach - CellveraPharma</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Modern Pop Animations */
+        .pop-in {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .bounce-in {
+            opacity: 0;
+            animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: translateY(-30px); }
+            60% { opacity: 1; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.7);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .slide-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.7s ease-out;
+        }
+        .slide-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .glow-pulse {
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 5px 20px rgba(13, 79, 79, 0.1); }
+            50% { box-shadow: 0 10px 40px rgba(13, 79, 79, 0.2); }
+        }
+        .stagger-delay:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-delay:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-delay:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-delay:nth-child(4) { animation-delay: 0.4s; }
+        
+        .approach-hero {
+            background: linear-gradient(rgba(13, 79, 79, 0.85), rgba(13, 79, 79, 0.75)), url('https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1200&h=500&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 50px;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .approach-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .approach-hero h1 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+        .approach-hero p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s forwards;
+            opacity: 0;
+        }
+        
+        .objectives-section {
+            padding: 80px 50px;
+            background: #fff;
+        }
+        .objectives-section h2 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.2rem;
+            color: #0d4f4f;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .objectives-section p {
+            color: #4a6b6b;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        
+        .accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .accordion-item {
+            border: 1px solid #d0e0e0;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .accordion-header {
+            padding: 25px 30px;
+            background: #f0f7f7;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #0d4f4f;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+        .accordion-header:hover {
+            background: #e8f4f4;
+        }
+        .accordion-content {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            background: #fff;
+        }
+        .accordion-content.active {
+            padding: 25px 30px;
+            max-height: 500px;
+        }
+        .accordion-content p {
+            color: #4a6b6b;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .accordion-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+        .reports-section {
+            padding: 80px 50px;
+            background: #f0f7f7;
+        }
+        .reports-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .reports-img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(13, 79, 79, 0.15);
+            height: 450px;
+            object-fit: cover;
+        }
+        .reports-content h3 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 1.8rem;
+            color: #0d4f4f;
+            margin-bottom: 20px;
+        }
+        .reports-content p {
+            color: #4a6b6b;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        .reports-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .governance-section {
+            padding: 80px 50px;
+            background: #0d2020;
+            color: #fff;
+        }
+        .governance-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .governance-card {
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .governance-card h4 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .governance-card p {
+            opacity: 0.9;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .governance-card a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 3px;
+        }
+        .governance-card a:hover {
+            border-bottom-color: #fff;
+        }
+        
+        .perspectives-section {
+            padding: 80px 50px;
+            background: #fff;
+        }
+        .perspectives-section h2 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.2rem;
+            color: #0d4f4f;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .perspectives-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .perspective-card {
+            background: #f0f7f7;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .perspective-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(13, 79, 79, 0.12);
+        }
+        .perspective-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .perspective-content {
+            padding: 30px;
+        }
+        .perspective-content h3 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 1.3rem;
+            color: #0d4f4f;
+            margin-bottom: 10px;
+        }
+        .perspective-content .author {
+            font-size: 0.85rem;
+            color: #6a8a8a;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        .perspective-content .highlight {
+            background: #fff;
+            padding: 12px;
+            border-left: 3px solid #0d4f4f;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: #4a6b6b;
+        }
+        
+        .awards-section {
+            padding: 80px 50px;
+            background: #f0f7f7;
+            text-align: center;
+        }
+        .awards-section h2 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.2rem;
+            color: #0d4f4f;
+            margin-bottom: 40px;
+        }
+        .awards-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .award-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(13, 79, 79, 0.08);
+            display: none;
+        }
+        .award-card.active {
+            display: block;
+            animation: popIn 0.5s ease-out;
+        }
+        .award-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .award-card h4 {
+            color: #0d4f4f;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        .award-card p {
+            color: #6a8a8a;
+            font-size: 0.9rem;
+        }
+        .slider-controls {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .slider-btn {
+            background: #0d4f4f;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        .slider-dots {
+            display: flex;
+            gap: 8px;
+        }
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d0e0e0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .slider-dot.active {
+            background: #0d4f4f;
+        }
+        
+        @media (max-width: 900px) {
+            .approach-hero { padding: 80px 25px; }
+            .approach-hero h1 { font-size: 2rem; }
+            .reports-grid, .governance-grid, .perspectives-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .objectives-section, .reports-section, .governance-section, .perspectives-section, .awards-section { padding: 60px 20px; }
+            .approach-hero h1 { font-size: 1.6rem; }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -44,16 +422,155 @@
         </nav>
     </header>
 
-    <!-- Page Hero -->
-    <section class="page-hero">
-        <h1>Our Approach</h1>
-        <p>Our commitment to responsible business practices</p>
+    <!-- Hero -->
+    <section class="approach-hero">
+        <h1>Our Approach to Corporate Responsibility</h1>
+        <p>Our corporate responsibility framework leverages our distinct scientific capabilities to tackle the most pressing challenges facing our communities and our operations. Driven by our core ethos of "Doing Well by Doing Good," our strategic vision is anchored in three primary pillars: transforming patient outcomes, cultivating an environment of unyielding integrity, and establishing highly resilient, sustainable communities.</p>
     </section>
 
-    <!-- Content Placeholder -->
-    <section class="content-placeholder">
-        <div class="placeholder-text">
-            <p>Content coming soon...</p>
+    <!-- Objectives -->
+    <section class="objectives-section">
+        <h2 class="pop-in" style="animation-delay: 0.1s;">Our strategic responsibility milestones</h2>
+        <p class="pop-in" style="animation-delay: 0.2s;">Our 2025 responsibility objectives are deeply aligned with our core mandate: delivering groundbreaking therapeutics to patients confronting severe health crises. Through extensive collaboration with key stakeholders and alignment with premier global standards—most notably the United Nations Sustainable Development Goals (SDGs)—we have formalized 12 comprehensive responsibility targets alongside robust environmental commitments.</p>
+        
+        <div class="accordion" style="margin-top: 40px;">
+            <div class="accordion-item zoom-in">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    1. Enhance outcomes for patients facing critical illnesses
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>We are committed to developing and delivering transformative medicines that address serious health challenges. Our patient-centric approach ensures that every research decision prioritizes improving quality of life and health outcomes for those we serve.</p>
+                    <p>Through innovative clinical trial designs, patient advocacy partnerships, and expanded access programs, we work to ensure that life-saving therapies reach those who need them most.</p>
+                </div>
+            </div>
+            <div class="accordion-item zoom-in">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    2. Cultivate a culture defined by excellence and ethical integrity
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Our commitment to operational excellence and ethical conduct forms the foundation of everything we do. We maintain the highest standards of compliance, transparency, and accountability across all our operations.</p>
+                    <p>Through comprehensive training programs, robust governance structures, and a speak-up culture, we ensure that integrity remains at the heart of our scientific innovation.</p>
+                </div>
+            </div>
+            <div class="accordion-item zoom-in">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    3. Engineer a sustainable future for our communities
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>We are dedicated to building resilient, sustainable communities through environmental stewardship, social investment, and economic contribution. Our sustainability initiatives span carbon reduction, waste minimization, and community engagement.</p>
+                    <p>By aligning our business strategy with the UN Sustainable Development Goals, we create lasting positive impact for patients, employees, and society at large.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reports Section -->
+    <section class="reports-section">
+        <div class="reports-grid">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=500&fit=crop" alt="Researcher with microscope" class="reports-img zoom-in">
+            <div class="reports-content slide-up">
+                <h3>Corporate Responsibility Reporting</h3>
+                <p>Our comprehensive annual reports provide transparency into our environmental, social, and governance (ESG) performance. These documents showcase our progress against strategic objectives and demonstrate our commitment to stakeholder accountability.</p>
+                <div class="reports-btns">
+                    <a href="#" class="btn-primary">Retrieve our ESG Data Compendium</a>
+                    <a href="#" class="btn-outline">View our core Materiality Analysis</a>
+                    <a href="#" class="btn-outline">Access our comprehensive Annual Responsibility Overview</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Governance Section -->
+    <section class="governance-section">
+        <div class="governance-grid">
+            <div class="governance-card zoom-in">
+                <h4>Commitment to transparency</h4>
+                <p>Discover how we continuously elevate our standards for operational transparency and corporate accountability across our global footprint. Our commitment to openness extends to all aspects of our business—from clinical trial data disclosure to environmental impact reporting.</p>
+                <a href="#">Review our governance policies →</a>
+            </div>
+            <div class="governance-card zoom-in">
+                <h4>Operational and board-level oversight</h4>
+                <p>The Corporate Governance and Compliance Committee of our Board of Directors provides rigorous oversight of our ESG initiatives, conducting comprehensive strategic reviews at least annually. Operationally, our cross-disciplinary Responsibility Committee—comprised of senior leadership—drives the day-to-day execution of our strategy, ensuring strict adherence to our established metrics and milestones.</p>
+                <a href="#">Get in touch →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perspectives Section -->
+    <section class="perspectives-section">
+        <h2 class="bounce-in">Featured Perspectives</h2>
+        <div class="perspectives-grid">
+            <div class="perspective-card scale-up stagger-delay">
+                <div class="perspective-content">
+                    <h3>Embedding Ethics into the Heart of Scientific Discovery</h3>
+                    <p class="author">By: Melissa Lumsie, Senior Vice President, Chief Compliance Officer</p>
+                    <div class="highlight">
+                        <strong>When the fundamental drive is to push the boundaries of science for the betterment of humanity, operational integrity becomes an inherent part of the process.</strong>
+                    </div>
+                    <a href="#" class="btn-primary">Explore our ethical framework</a>
+                </div>
+            </div>
+            <div class="perspective-card scale-up stagger-delay">
+                <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400&h=250&fit=crop" alt="Women with award" class="perspective-img">
+                <div class="perspective-content">
+                    <h3>Engineering a Positive Global Impact</h3>
+                    <p class="author">By: Linnea Tozer, Executive Director, Corporate Responsibility</p>
+                    <div class="highlight">
+                        <strong>Utilizing an innovator's perspective to foster global resilience and drive meaningful societal progress.</strong>
+                    </div>
+                    <a href="#" class="btn-primary">Dive into our core impact initiatives</a>
+                </div>
+            </div>
+            <div class="perspective-card scale-up stagger-delay">
+                <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=400&h=250&fit=crop" alt="Presenters on stage" class="perspective-img">
+                <div class="perspective-content">
+                    <h3>Igniting the Next Generation of Scientific Pioneers</h3>
+                    <p class="author">By: Christina Chan, Senior Vice President, Corporate Affairs</p>
+                    <div class="highlight">
+                        <strong>Discover our commitment to transforming youthful curiosity into enduring scientific passion through strategic investments in STEM programs and youth education.</strong>
+                    </div>
+                    <a href="#" class="btn-primary">Explore our STEM advocacy</a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="#" class="btn-outline">Read additional perspectives</a>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="awards-section">
+        <h2 class="bounce-in">Acknowledging our ongoing commitments</h2>
+        <div class="awards-slider">
+            <div class="award-card active">
+                <div class="award-icon">🛡️</div>
+                <h4>The Civic 50</h4>
+                <p>Recognized among the most community-engaged corporations in the United States, 2024.</p>
+                <p style="margin-top: 15px; font-size: 0.8rem; color: #9a9a9a;">*As of November 2023</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon">🌱</div>
+                <h4>Carbon Neutral Certification</h4>
+                <p>Achieved carbon neutrality across all global operations, 2023.</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon">💼</div>
+                <h4>Best Places to Work</h4>
+                <p>Ranked among top 100 biotech workplaces globally, 2024.</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon">🏆</div>
+                <h4>Corporate Excellence Award</h4>
+                <p>Industry Leadership Award for ESG Innovation, 2023.</p>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <button class="slider-btn" onclick="prevAward()">❮</button>
+            <div class="slider-dots" id="sliderDots"></div>
+            <button class="slider-btn" onclick="nextAward()">❯</button>
         </div>
     </section>
 
@@ -104,5 +621,80 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Modern Pop Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.zoom-in, .slide-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            // Close all accordions
+            document.querySelectorAll('.accordion-content').forEach(c => {
+                c.classList.remove('active');
+                c.previousElementSibling.classList.remove('active');
+            });
+            
+            // Open clicked accordion if it wasn't active
+            if (!isActive) {
+                content.classList.add('active');
+                header.classList.add('active');
+            }
+        }
+
+        // Awards Slider
+        let currentAward = 0;
+        const totalAwards = 4;
+        
+        function showAward(index) {
+            document.querySelectorAll('.award-card').forEach((card, i) => {
+                card.classList.remove('active');
+                if (i === index) card.classList.add('active');
+            });
+            document.querySelectorAll('.slider-dot').forEach((dot, i) => {
+                dot.classList.remove('active');
+                if (i === index) dot.classList.add('active');
+            });
+        }
+        
+        function nextAward() {
+            currentAward = (currentAward + 1) % totalAwards;
+            showAward(currentAward);
+        }
+        
+        function prevAward() {
+            currentAward = (currentAward - 1 + totalAwards) % totalAwards;
+            showAward(currentAward);
+        }
+        
+        // Initialize dots
+        const dotsContainer = document.getElementById('sliderDots');
+        for (let i = 0; i < totalAwards; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+            dot.onclick = () => {
+                currentAward = i;
+                showAward(i);
+            };
+            dotsContainer.appendChild(dot);
+        }
+    </script>
 </body>
 </html>
