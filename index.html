@@ -64,13 +64,23 @@
             height: 100%;
             opacity: 0;
             transition: opacity 0.8s ease-in-out;
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             align-items: center;
-            justify-content: center;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
         }
         .slide.active {
             opacity: 1;
             z-index: 1;
+        }
+        .slide.reverse {
+            direction: rtl;
+        }
+        .slide.reverse > * {
+            direction: ltr;
         }
         .slide-bg {
             position: absolute;
@@ -80,22 +90,38 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            filter: brightness(0.7);
+            filter: brightness(0.75);
         }
         .slide-content {
             position: relative;
             z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            padding: 0 50px;
+            text-align: left;
+            max-width: 600px;
             color: #fff;
+        }
+        .slide-image {
+            position: relative;
+            z-index: 2;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        .slide-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .slide.active .slide-image img {
+            transform: scale(1.05);
         }
         .gradient-text {
             font-family: 'Libre Baskerville', Georgia, serif;
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 25px;
-            background: linear-gradient(90deg, #00d4ff, #7b2ff7, #f107a3);
+            background: linear-gradient(90deg, #0d4f4f, #1a8a8a, #4a9a9a);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -205,13 +231,19 @@
                 <p>Discover our unwavering commitment to transforming cancer care and improving patient outcomes through innovative clinical research.</p>
                 <a href="science-rd.html" class="btn-primary">Explore our oncology initiatives</a>
             </div>
+            <div class="slide-image">
+                <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=600&h=500&fit=crop" alt="Oncology Research">
+            </div>
         </div>
-        <div class="slide">
+        <div class="slide reverse">
             <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=600&fit=crop');"></div>
             <div class="slide-content">
                 <h1 class="gradient-text">THE GENETIC LINK TO NICOTINE DEPENDENCE</h1>
                 <p>Our dedicated researchers have identified specific variants within the CHRNB3 gene that correlate with a natural reduction in smoking behaviors.</p>
                 <a href="science-rd.html" class="btn-primary">Read the genetic study</a>
+            </div>
+            <div class="slide-image">
+                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&h=500&fit=crop" alt="DNA Research">
             </div>
         </div>
         <div class="slide">
@@ -221,13 +253,19 @@
                 <p>Join trailblazing women in the field of ophthalmology as they discuss industry breakthroughs, career milestones, and the future of eye care.</p>
                 <a href="about.html" class="btn-primary">Watch the discussion</a>
             </div>
+            <div class="slide-image">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=500&fit=crop" alt="Leadership Discussion">
+            </div>
         </div>
-        <div class="slide">
+        <div class="slide reverse">
             <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=600&fit=crop');"></div>
             <div class="slide-content">
                 <h1 class="gradient-text">EMPOWERING TOMORROW'S INNOVATORS</h1>
                 <p>Celebrating a renewed, decade-long commitment to inspiring youth and fostering the next generation of scientific leaders through our national talent search.</p>
                 <a href="careers.html" class="btn-primary">Discover our STEM programs</a>
+            </div>
+            <div class="slide-image">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=500&fit=crop" alt="STEM Students">
             </div>
         </div>
         <div class="slider-controls">
