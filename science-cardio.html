@@ -6,6 +6,178 @@
     <title>Cardiovascular & Metabolic Diseases - CellveraPharma</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .cardio-hero {
+            background: linear-gradient(rgba(13, 79, 79, 0.85), rgba(13, 79, 79, 0.75)), url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1200&h=500&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 50px;
+            color: #fff;
+            text-align: center;
+        }
+        .cardio-hero h1 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cardio-hero .subtitle {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+        .cardio-hero p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        
+        .fitness-section {
+            padding: 80px 50px;
+            background: #fff;
+        }
+        .fitness-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .fitness-img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(13, 79, 79, 0.15);
+            height: 450px;
+            object-fit: cover;
+        }
+        .fitness-content h2 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.2rem;
+            color: #0d4f4f;
+            margin-bottom: 25px;
+        }
+        .fitness-content p {
+            color: #4a6b6b;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .research-section {
+            padding: 80px 50px;
+            background: #f0f7f7;
+        }
+        .research-section h2 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.2rem;
+            color: #0d4f4f;
+            margin-bottom: 25px;
+        }
+        .research-section p {
+            color: #4a6b6b;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            max-width: 900px;
+        }
+        
+        .featured-card {
+            padding: 80px 50px;
+            background: #fff;
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: stretch;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(13, 79, 79, 0.12);
+        }
+        .featured-img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .featured-grid:hover .featured-img {
+            transform: scale(1.05);
+        }
+        .featured-content {
+            background: #fff;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .featured-content h3 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 1.6rem;
+            color: #0d4f4f;
+            margin-bottom: 15px;
+        }
+        .featured-content .author {
+            font-size: 0.9rem;
+            color: #6a8a8a;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .featured-content .highlight {
+            background: #f0f7f7;
+            padding: 15px;
+            border-left: 4px solid #0d4f4f;
+            margin: 20px 0;
+            font-size: 0.95rem;
+            color: #4a6b6b;
+        }
+        
+        .pathways-section {
+            padding: 80px 50px;
+            background: #f0f7f7;
+        }
+        .pathways-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+        .pathway-card {
+            background: #fff;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(13, 79, 79, 0.08);
+        }
+        .pathway-card h4 {
+            color: #0d4f4f;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .pathway-card p {
+            color: #4a6b6b;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 900px) {
+            .cardio-hero { padding: 80px 25px; }
+            .cardio-hero h1 { font-size: 2rem; }
+            .fitness-grid, .featured-grid { grid-template-columns: 1fr; }
+            .pathways-grid { grid-template-columns: 1fr; }
+            .fitness-img { height: 300px; }
+        }
+        @media (max-width: 600px) {
+            .fitness-section, .research-section, .featured-card, .pathways-section { padding: 60px 20px; }
+            .cardio-hero h1 { font-size: 1.6rem; }
+            .fitness-content h2, .research-section h2 { font-size: 1.6rem; }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -44,16 +216,71 @@
         </nav>
     </header>
 
-    <!-- Page Hero -->
-    <section class="page-hero">
-        <h1>Cardiovascular & Metabolic Diseases</h1>
-        <p>Advancing treatments for heart and metabolic conditions</p>
+    <!-- Hero -->
+    <section class="cardio-hero">
+        <h1>CARDIOVASCULAR & METABOLIC HEALTH</h1>
+        <p class="subtitle">Driving innovative, next-generation therapies for complex cardiometabolic disorders</p>
+        <p>Conditions affecting the cardiovascular and metabolic systems rank among the most intricate and widespread chronic health challenges globally. This broad category encompasses ailments such as obesity, stroke, heart disease, fatty liver, and diabetes. Notably, cardiovascular complications remain the leading cause of mortality among non-communicable illnesses, frequently amplifying the risk for other compounding health conditions. Timely diagnosis and proactive intervention are essential for empowering patients to effectively manage their health over the long term.</p>
     </section>
 
-    <!-- Content Placeholder -->
-    <section class="content-placeholder">
-        <div class="placeholder-text">
-            <p>Content coming soon...</p>
+    <!-- Fitness & Prevention -->
+    <section class="fitness-section">
+        <div class="fitness-grid">
+            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=500&fit=crop" alt="Man lifting dumbbells in fitness center" class="fitness-img">
+            <div class="fitness-content">
+                <h2>Prevention Through Lifestyle</h2>
+                <p>Regular physical activity and healthy lifestyle choices play a crucial role in maintaining cardiovascular and metabolic health. Our research supports comprehensive approaches that combine pharmacological interventions with lifestyle modifications.</p>
+                <p>Exercise helps improve insulin sensitivity, reduce inflammation, and strengthen the cardiovascular system. Combined with our therapeutic innovations, patients can achieve better long-term health outcomes.</p>
+                <a href="#" class="btn-primary">Learn about prevention strategies</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Research Focus -->
+    <section class="research-section">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h2>Dedicated to pioneering cardiometabolic discoveries</h2>
+            <p>We possess a deep-rooted legacy in cardiometabolic science, having initiated extensive clinical trials addressing severe cholesterol imbalances as early as 2009. We maintain a steadfast dedication to uncovering novel treatments for both variants of inherited hypercholesterolemia. Our diverse scientific strategies include deploying specialized antibodies engineered to regulate the proteins responsible for lipid and lipoprotein metabolism.</p>
+            <p>Our early-stage pipeline tackles cardiovascular and metabolic interventions from several innovative angles. Within the realm of obesity, we are investigating combination antibody therapies aimed at preserving lean muscle mass—a crucial factor for sustained overall health—to enhance and complement the weight reduction effects associated with GIP and GLP-1 inhibitors. Concurrently, our teams are analyzing specific genetic variations that offer natural defense mechanisms against obesity and related disorders, such as metabolic dysfunction-associated steatohepatitis (MASH).</p>
+            <p>In a distinct but highly complementary effort, we are advancing a novel therapeutic strategy for anticoagulation. The ultimate objective is to provide robust blood clot prevention while significantly minimizing the risk of adverse bleeding events.</p>
+        </div>
+    </section>
+
+    <!-- Research Areas Cards -->
+    <section class="pathways-section">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2 style="color: #0d4f4f; margin-bottom: 15px;">Key Research Areas</h2>
+            <p style="color: #4a6b6b;">Our multidisciplinary approach targets multiple aspects of cardiometabolic health.</p>
+        </div>
+        <div class="pathways-grid">
+            <div class="pathway-card">
+                <h4>Hypercholesterolemia</h4>
+                <p>Specialized antibodies regulating proteins responsible for lipid and lipoprotein metabolism. Treating inherited cholesterol disorders.</p>
+            </div>
+            <div class="pathway-card">
+                <h4>Obesity & Metabolism</h4>
+                <p>Combination antibody therapies preserving lean muscle mass while enhancing weight reduction through GIP and GLP-1 inhibitors.</p>
+            </div>
+            <div class="pathway-card">
+                <h4>Anticoagulation</h4>
+                <p>Novel therapeutic strategies providing robust blood clot prevention while minimizing adverse bleeding events.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article Card -->
+    <section class="featured-card">
+        <div class="featured-grid">
+            <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&h=550&fit=crop" alt="Artery illustration with plaque buildup" class="featured-img">
+            <div class="featured-content">
+                <h3>A Collaborative Scientific Effort</h3>
+                <p class="author">Authored by: Viktoria (Vika) Gusarova, PhD, Senior Director, Obesity, Metabolism & Muscle Diseases<br>Sergio Fazio, MD, PhD, Scientific Council Chair, Cardiometabolic Diseases</p>
+                <p>Our cardiometabolic research program brings together world-class scientists and clinicians to tackle the most pressing challenges in cardiovascular and metabolic disease. Through collaborative innovation, we're developing transformative therapies.</p>
+                <div class="highlight">
+                    <strong>Groundbreaking research driving pivotal advancements in managing critically elevated cholesterol levels.</strong>
+                </div>
+                <a href="#" class="btn-primary">Discover our contributions to this therapeutic area</a>
+            </div>
         </div>
     </section>
 
@@ -81,8 +308,8 @@
                 <ul>
                     <li><a href="science.html">Science</a></li>
                     <li><a href="science-rd.html">Research & Development</a></li>
+                    <li><a href="science-cardio.html">Cardiovascular & Metabolic</a></li>
                     <li><a href="medicines.html">Medicines</a></li>
-                    <li><a href="#">Publications</a></li>
                 </ul>
             </div>
             <div class="footer-col">
