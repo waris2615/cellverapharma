@@ -7,6 +7,47 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Classic Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .slide-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scale-up {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scale-up.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .stagger-delay:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-delay:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-delay:nth-child(3) { transition-delay: 0.3s; }
+        
         .cardio-hero {
             background: linear-gradient(rgba(13, 79, 79, 0.85), rgba(13, 79, 79, 0.75)), url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1200&h=500&fit=crop');
             background-size: cover;
@@ -218,16 +259,18 @@
 
     <!-- Hero -->
     <section class="cardio-hero">
-        <h1>CARDIOVASCULAR & METABOLIC HEALTH</h1>
-        <p class="subtitle">Driving innovative, next-generation therapies for complex cardiometabolic disorders</p>
-        <p>Conditions affecting the cardiovascular and metabolic systems rank among the most intricate and widespread chronic health challenges globally. This broad category encompasses ailments such as obesity, stroke, heart disease, fatty liver, and diabetes. Notably, cardiovascular complications remain the leading cause of mortality among non-communicable illnesses, frequently amplifying the risk for other compounding health conditions. Timely diagnosis and proactive intervention are essential for empowering patients to effectively manage their health over the long term.</p>
+        <div class="fade-in">
+            <h1>CARDIOVASCULAR & METABOLIC HEALTH</h1>
+            <p class="subtitle">Driving innovative, next-generation therapies for complex cardiometabolic disorders</p>
+            <p>Conditions affecting the cardiovascular and metabolic systems rank among the most intricate and widespread chronic health challenges globally. This broad category encompasses ailments such as obesity, stroke, heart disease, fatty liver, and diabetes. Notably, cardiovascular complications remain the leading cause of mortality among non-communicable illnesses, frequently amplifying the risk for other compounding health conditions. Timely diagnosis and proactive intervention are essential for empowering patients to effectively manage their health over the long term.</p>
+        </div>
     </section>
 
     <!-- Fitness & Prevention -->
     <section class="fitness-section">
         <div class="fitness-grid">
-            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=500&fit=crop" alt="Man lifting dumbbells in fitness center" class="fitness-img">
-            <div class="fitness-content">
+            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=500&fit=crop" alt="Man lifting dumbbells in fitness center" class="fitness-img slide-left">
+            <div class="fitness-content fade-in">
                 <h2>Prevention Through Lifestyle</h2>
                 <p>Regular physical activity and healthy lifestyle choices play a crucial role in maintaining cardiovascular and metabolic health. Our research supports comprehensive approaches that combine pharmacological interventions with lifestyle modifications.</p>
                 <p>Exercise helps improve insulin sensitivity, reduce inflammation, and strengthen the cardiovascular system. Combined with our therapeutic innovations, patients can achieve better long-term health outcomes.</p>
@@ -238,7 +281,7 @@
 
     <!-- Core Research Focus -->
     <section class="research-section">
-        <div style="max-width: 900px; margin: 0 auto;">
+        <div class="fade-in" style="max-width: 900px; margin: 0 auto;">
             <h2>Dedicated to pioneering cardiometabolic discoveries</h2>
             <p>We possess a deep-rooted legacy in cardiometabolic science, having initiated extensive clinical trials addressing severe cholesterol imbalances as early as 2009. We maintain a steadfast dedication to uncovering novel treatments for both variants of inherited hypercholesterolemia. Our diverse scientific strategies include deploying specialized antibodies engineered to regulate the proteins responsible for lipid and lipoprotein metabolism.</p>
             <p>Our early-stage pipeline tackles cardiovascular and metabolic interventions from several innovative angles. Within the realm of obesity, we are investigating combination antibody therapies aimed at preserving lean muscle mass—a crucial factor for sustained overall health—to enhance and complement the weight reduction effects associated with GIP and GLP-1 inhibitors. Concurrently, our teams are analyzing specific genetic variations that offer natural defense mechanisms against obesity and related disorders, such as metabolic dysfunction-associated steatohepatitis (MASH).</p>
@@ -248,20 +291,20 @@
 
     <!-- Research Areas Cards -->
     <section class="pathways-section">
-        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <div class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto;">
             <h2 style="color: #0d4f4f; margin-bottom: 15px;">Key Research Areas</h2>
             <p style="color: #4a6b6b;">Our multidisciplinary approach targets multiple aspects of cardiometabolic health.</p>
         </div>
         <div class="pathways-grid">
-            <div class="pathway-card">
+            <div class="pathway-card scale-up stagger-delay">
                 <h4>Hypercholesterolemia</h4>
                 <p>Specialized antibodies regulating proteins responsible for lipid and lipoprotein metabolism. Treating inherited cholesterol disorders.</p>
             </div>
-            <div class="pathway-card">
+            <div class="pathway-card scale-up stagger-delay">
                 <h4>Obesity & Metabolism</h4>
                 <p>Combination antibody therapies preserving lean muscle mass while enhancing weight reduction through GIP and GLP-1 inhibitors.</p>
             </div>
-            <div class="pathway-card">
+            <div class="pathway-card scale-up stagger-delay">
                 <h4>Anticoagulation</h4>
                 <p>Novel therapeutic strategies providing robust blood clot prevention while minimizing adverse bleeding events.</p>
             </div>
@@ -271,8 +314,8 @@
     <!-- Featured Article Card -->
     <section class="featured-card">
         <div class="featured-grid">
-            <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&h=550&fit=crop" alt="Artery illustration with plaque buildup" class="featured-img">
-            <div class="featured-content">
+            <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&h=550&fit=crop" alt="Artery illustration with plaque buildup" class="featured-img slide-right">
+            <div class="featured-content fade-in">
                 <h3>A Collaborative Scientific Effort</h3>
                 <p class="author">Authored by: Viktoria (Vika) Gusarova, PhD, Senior Director, Obesity, Metabolism & Muscle Diseases<br>Sergio Fazio, MD, PhD, Scientific Council Chair, Cardiometabolic Diseases</p>
                 <p>Our cardiometabolic research program brings together world-class scientists and clinicians to tackle the most pressing challenges in cardiovascular and metabolic disease. Through collaborative innovation, we're developing transformative therapies.</p>
@@ -331,5 +374,26 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Classic Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-up').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
