@@ -49,33 +49,31 @@
         .stagger-delay:nth-child(3) { transition-delay: 0.3s; }
         .stagger-delay:nth-child(4) { transition-delay: 0.4s; }
         
-        /* Premium Hero Slider */
+        /* Classic Split Hero Slider */
         .hero-slider {
             position: relative;
-            min-height: 75vh;
-            padding: 80px 60px 40px;
-            background: radial-gradient(at 20% 30%, rgba(13, 79, 79, 0.15) 0%, transparent 50%),
-                        radial-gradient(at 80% 70%, rgba(26, 138, 138, 0.1) 0%, transparent 50%),
-                        radial-gradient(at 50% 50%, rgba(240, 247, 247, 0.8) 0%, #f0f7f7 100%);
-            background-size: 200% 200%;
-            animation: meshFloat 15s ease-in-out infinite;
+            min-height: 85vh;
+            padding: 100px 60px 60px;
+            background: linear-gradient(135deg, rgba(13, 79, 79, 0.08) 0%, rgba(26, 138, 138, 0.05) 50%, rgba(240, 247, 247, 0.9) 100%);
             overflow: hidden;
         }
-        @keyframes meshFloat {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
         .slide-container {
-            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
             max-width: 1400px;
             margin: 0 auto;
+            align-items: center;
         }
         .slide {
             display: none;
             animation: slideFade 0.6s ease;
         }
         .slide.active {
-            display: block;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
         }
         @keyframes slideFade {
             from { opacity: 0; transform: translateX(20px); }
@@ -83,108 +81,20 @@
         }
         .slide-headline {
             font-family: 'Libre Baskerville', Georgia, serif;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 700;
-            text-transform: uppercase;
-            line-height: 1.1;
-            margin-bottom: 40px;
+            line-height: 1.15;
+            margin-bottom: 25px;
             background: linear-gradient(135deg, #0d4f4f 0%, #1a8a8a 50%, #4a9a9a 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .slide-media {
-            position: relative;
-            margin-bottom: 30px;
-        }
-        .slide-media-wrapper {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            border-radius: 80px 8px 8px 8px;
-            overflow: hidden;
-            box-shadow: 0 40px 100px rgba(13, 79, 79, 0.2);
-        }
-        .slide-media-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-        .slide.active .slide-media-wrapper img {
-            transform: scale(1.03);
-        }
-        .slide-peek {
-            position: absolute;
-            top: 0;
-            right: -60px;
-            width: 80px;
-            height: 400px;
-            border-radius: 8px 0 0 8px;
-            overflow: hidden;
-            opacity: 0.6;
-            pointer-events: none;
-        }
-        .slide-peek img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .carousel-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 35px;
-        }
-        .control-buttons {
-            display: flex;
-            gap: 0;
-            background: #0d4f4f;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .control-btn {
-            width: 50px;
-            height: 50px;
-            background: transparent;
-            border: none;
-            color: #fff;
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .control-btn:hover {
-            background: rgba(255,255,255,0.1);
-        }
-        .control-btn.border-right {
-            border-right: 1px solid rgba(255,255,255,0.2);
-        }
-        .pagination-dots {
-            display: flex;
-            gap: 10px;
-        }
-        .pagination-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: transparent;
-            border: 2px solid #0d4f4f;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .pagination-dot.active {
-            background: #0d4f4f;
-            border-color: #0d4f4f;
-        }
-        .slide-caption {
+        .slide-description {
             font-family: 'DM Sans', sans-serif;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             line-height: 1.8;
             color: #4a6b6b;
-            max-width: 700px;
             margin-bottom: 30px;
         }
         .slide-cta {
@@ -193,7 +103,7 @@
             gap: 12px;
             padding: 16px 32px;
             background: transparent;
-            border: 3px solid #0d4f4f;
+            border: 2px solid #0d4f4f;
             border-radius: 50px;
             color: #0d4f4f;
             font-family: 'DM Sans', sans-serif;
@@ -216,10 +126,123 @@
         .slide-cta:hover svg {
             transform: translateX(5px);
         }
+        .slide-media-wrapper {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 100px 8px 8px 8px;
+            overflow: hidden;
+            box-shadow: 0 50px 120px rgba(13, 79, 79, 0.25);
+        }
+        .slide-media-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .slide.active .slide-media-wrapper img {
+            transform: scale(1.02);
+        }
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90px;
+            height: 90px;
+            background: rgba(13, 79, 79, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        .play-overlay:hover {
+            background: rgba(13, 79, 79, 0.9);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .play-overlay svg {
+            width: 40px;
+            height: 40px;
+            fill: #fff;
+            margin-left: 5px;
+        }
+        .brand-logo {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        .brand-logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        .carousel-controls {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-top: 25px;
+        }
+        .control-buttons {
+            display: flex;
+            gap: 0;
+            background: #0d4f4f;
+            border-radius: 50px;
+            overflow: hidden;
+            padding: 5px;
+        }
+        .control-btn {
+            width: 45px;
+            height: 45px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .control-btn:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        .control-btn.border-right {
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+        .pagination-dots {
+            display: flex;
+            gap: 10px;
+        }
+        .pagination-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid #0d4f4f;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .pagination-dot.active {
+            background: #0d4f4f;
+            border-color: #0d4f4f;
+        }
         .utility-icon {
             position: fixed;
-            bottom: 40px;
-            left: 40px;
+            bottom: 30px;
+            left: 30px;
             width: 50px;
             height: 50px;
             background: #0d4f4f;
@@ -237,34 +260,42 @@
         .utility-icon:hover {
             transform: scale(1.1);
         }
-        .os-indicator {
+        .back-to-top {
             position: fixed;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 140px;
-            height: 5px;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
             background: #0d4f4f;
-            border-radius: 3px;
-            opacity: 0.5;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(13, 79, 79, 0.3);
+            transition: all 0.3s;
+            z-index: 100;
+            border: none;
+        }
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: #1a8a8a;
         }
         
-        @media (max-width: 900px) {
-            .hero-slider { padding: 80px 30px 40px; }
-            .slide-headline { font-size: 2.2rem; }
-            .slide-media-wrapper { height: 400px; border-radius: 50px 8px 8px 8px; }
-            .slide-peek { display: none; }
-            .control-btn { width: 45px; height: 45px; }
+        @media (max-width: 1000px) {
+            .slide-container, .slide.active { grid-template-columns: 1fr; gap: 50px; }
+            .slide-headline { font-size: 2.5rem; }
+            .slide-media-wrapper { height: 400px; }
         }
         @media (max-width: 600px) {
-            .hero-slider { padding: 70px 20px 30px; }
-            .slide-headline { font-size: 1.8rem; }
-            .slide-media-wrapper { height: 300px; border-radius: 30px 8px 8px 8px; }
-            .control-buttons { gap: 0; }
-            .control-btn { width: 40px; height: 40px; font-size: 1.1rem; }
-            .slide-caption { font-size: 1rem; }
-            .slide-cta { padding: 14px 24px; font-size: 0.95rem; }
-            .utility-icon { bottom: 30px; left: 20px; width: 45px; height: 45px; }
+            .hero-slider { padding: 80px 20px 40px; }
+            .slide-headline { font-size: 2rem; }
+            .slide-media-wrapper { height: 300px; border-radius: 60px 8px 8px 8px; }
+            .control-btn { width: 40px; height: 40px; }
+            .slide-cta { padding: 14px 24px; }
+            .utility-icon, .back-to-top { bottom: 20px; width: 45px; height: 45px; }
         }
     </style>
 </head>
@@ -304,117 +335,137 @@
         </nav>
     </header>
 
-    <!-- Premium Hero Slider -->
+    <!-- Classic Split Hero Slider -->
     <section class="hero-slider">
         <div class="slide-container">
             <!-- Slide 1: Oncology -->
             <div class="slide active" data-index="0">
-                <h2 class="slide-headline">Pioneering Progress in Oncology</h2>
-                <div class="slide-media">
+                <div class="slide-left">
+                    <h2 class="slide-headline">Pioneering Progress in Oncology</h2>
+                    <p class="slide-description">Discover our unwavering commitment to transforming cancer care and improving patient outcomes through innovative clinical research and targeted therapies.</p>
+                    <a href="science-rd.html" class="slide-cta">
+                        Explore Oncology
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </a>
+                    <div class="carousel-controls">
+                        <div class="control-buttons">
+                            <button class="control-btn" onclick="prevSlide()">❮</button>
+                            <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
+                            <button class="control-btn" onclick="nextSlide()">❯</button>
+                        </div>
+                        <div class="pagination-dots" id="paginationDots"></div>
+                    </div>
+                </div>
+                <div class="slide-right">
                     <div class="slide-media-wrapper">
                         <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=1200&h=600&fit=crop" alt="Oncology Research">
                     </div>
-                    <div class="slide-peek">
-                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=600&fit=crop" alt="Next slide">
+                    <div class="play-overlay" title="Play Video">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div class="brand-logo">
+                        <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
                     </div>
                 </div>
-                <div class="carousel-controls">
-                    <div class="control-buttons">
-                        <button class="control-btn" onclick="prevSlide()">❮</button>
-                        <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
-                        <button class="control-btn" onclick="nextSlide()">❯</button>
-                    </div>
-                    <div class="pagination-dots" id="paginationDots"></div>
-                </div>
-                <p class="slide-caption">Discover our unwavering commitment to transforming cancer care and improving patient outcomes through innovative clinical research and targeted therapies.</p>
-                <a href="science-rd.html" class="slide-cta">
-                    Explore Oncology
-                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                </a>
             </div>
             
             <!-- Slide 2: Genetics -->
             <div class="slide" data-index="1">
-                <h2 class="slide-headline">The Genetic Link to Nicotine Dependence</h2>
-                <div class="slide-media">
+                <div class="slide-left">
+                    <h2 class="slide-headline">The Genetic Link to Nicotine Dependence</h2>
+                    <p class="slide-description">Our dedicated researchers have identified specific variants within the CHRNB3 gene that correlate with a natural reduction in smoking behaviors.</p>
+                    <a href="science-rd.html" class="slide-cta">
+                        Read the Study
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </a>
+                    <div class="carousel-controls">
+                        <div class="control-buttons">
+                            <button class="control-btn" onclick="prevSlide()">❮</button>
+                            <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
+                            <button class="control-btn" onclick="nextSlide()">❯</button>
+                        </div>
+                        <div class="pagination-dots" id="paginationDots"></div>
+                    </div>
+                </div>
+                <div class="slide-right">
                     <div class="slide-media-wrapper">
                         <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=600&fit=crop" alt="DNA Research">
                     </div>
-                    <div class="slide-peek">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop" alt="Next slide">
+                    <div class="play-overlay" title="Play Video">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div class="brand-logo">
+                        <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
                     </div>
                 </div>
-                <div class="carousel-controls">
-                    <div class="control-buttons">
-                        <button class="control-btn" onclick="prevSlide()">❮</button>
-                        <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
-                        <button class="control-btn" onclick="nextSlide()">❯</button>
-                    </div>
-                    <div class="pagination-dots" id="paginationDots"></div>
-                </div>
-                <p class="slide-caption">Our dedicated researchers have identified specific variants within the CHRNB3 gene that correlate with a natural reduction in smoking behaviors.</p>
-                <a href="science-rd.html" class="slide-cta">
-                    Read the Study
-                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                </a>
             </div>
             
             <!-- Slide 3: Leadership -->
             <div class="slide" data-index="2">
-                <h2 class="slide-headline">Visionary Leadership: Expert Roundtable</h2>
-                <div class="slide-media">
+                <div class="slide-left">
+                    <h2 class="slide-headline">Visionary Leadership: Expert Roundtable</h2>
+                    <p class="slide-description">Join trailblazing women in the field of ophthalmology as they discuss industry breakthroughs, career milestones, and the future of eye care.</p>
+                    <a href="about.html" class="slide-cta">
+                        Watch Discussion
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </a>
+                    <div class="carousel-controls">
+                        <div class="control-buttons">
+                            <button class="control-btn" onclick="prevSlide()">❮</button>
+                            <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
+                            <button class="control-btn" onclick="nextSlide()">❯</button>
+                        </div>
+                        <div class="pagination-dots" id="paginationDots"></div>
+                    </div>
+                </div>
+                <div class="slide-right">
                     <div class="slide-media-wrapper">
                         <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop" alt="Leadership Discussion">
                     </div>
-                    <div class="slide-peek">
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=600&fit=crop" alt="Next slide">
+                    <div class="play-overlay" title="Play Video">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div class="brand-logo">
+                        <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
                     </div>
                 </div>
-                <div class="carousel-controls">
-                    <div class="control-buttons">
-                        <button class="control-btn" onclick="prevSlide()">❮</button>
-                        <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
-                        <button class="control-btn" onclick="nextSlide()">❯</button>
-                    </div>
-                    <div class="pagination-dots" id="paginationDots"></div>
-                </div>
-                <p class="slide-caption">Join trailblazing women in the field of ophthalmology as they discuss industry breakthroughs, career milestones, and the future of eye care.</p>
-                <a href="about.html" class="slide-cta">
-                    Watch Discussion
-                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                </a>
             </div>
             
             <!-- Slide 4: STEM -->
             <div class="slide" data-index="3">
-                <h2 class="slide-headline">Empowering Tomorrow's Innovators</h2>
-                <div class="slide-media">
+                <div class="slide-left">
+                    <h2 class="slide-headline">Empowering Tomorrow's Innovators</h2>
+                    <p class="slide-description">Celebrating a renewed, decade-long commitment to inspiring youth and fostering the next generation of scientific leaders through our national talent search.</p>
+                    <a href="careers.html" class="slide-cta">
+                        Discover STEM Programs
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </a>
+                    <div class="carousel-controls">
+                        <div class="control-buttons">
+                            <button class="control-btn" onclick="prevSlide()">❮</button>
+                            <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
+                            <button class="control-btn" onclick="nextSlide()">❯</button>
+                        </div>
+                        <div class="pagination-dots" id="paginationDots"></div>
+                    </div>
+                </div>
+                <div class="slide-right">
                     <div class="slide-media-wrapper">
                         <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=600&fit=crop" alt="STEM Students">
                     </div>
-                    <div class="slide-peek">
-                        <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=1200&h=600&fit=crop" alt="Next slide">
+                    <div class="play-overlay" title="Play Video">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div class="brand-logo">
+                        <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
                     </div>
                 </div>
-                <div class="carousel-controls">
-                    <div class="control-buttons">
-                        <button class="control-btn" onclick="prevSlide()">❮</button>
-                        <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
-                        <button class="control-btn" onclick="nextSlide()">❯</button>
-                    </div>
-                    <div class="pagination-dots" id="paginationDots"></div>
-                </div>
-                <p class="slide-caption">Celebrating a renewed, decade-long commitment to inspiring youth and fostering the next generation of scientific leaders through our national talent search.</p>
-                <a href="careers.html" class="slide-cta">
-                    Discover STEM Programs
-                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                </a>
             </div>
         </div>
         
         <!-- Floating Elements -->
         <div class="utility-icon" title="Privacy Settings">🔒</div>
-        <div class="os-indicator"></div>
+        <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to Top">↑</button>
     </section>
 
     <!-- Quick Links -->
@@ -498,7 +549,7 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="index.html" class="logo">
-                    <div class="logo-icon">C</div>
+                    <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera Logo" style="height: 40px; width: auto;">
                     CellveraPharma
                 </a>
                 <p>The One JLT Tower, 1401, Dubai, UAE<br>mail@cellverapharma.com</p>
@@ -580,7 +631,7 @@
             }
         });
 
-        // Premium Hero Slider
+        // Classic Split Hero Slider
         let currentSlide = 0;
         const totalSlides = 4;
         let isPlaying = true;
