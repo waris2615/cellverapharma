@@ -49,140 +49,222 @@
         .stagger-delay:nth-child(3) { transition-delay: 0.3s; }
         .stagger-delay:nth-child(4) { transition-delay: 0.4s; }
         
-        /* Hero Slider */
+        /* Premium Hero Slider */
         .hero-slider {
             position: relative;
-            height: 650px;
+            min-height: 90vh;
+            padding: 100px 60px 60px;
+            background: radial-gradient(at 20% 30%, rgba(13, 79, 79, 0.15) 0%, transparent 50%),
+                        radial-gradient(at 80% 70%, rgba(26, 138, 138, 0.1) 0%, transparent 50%),
+                        radial-gradient(at 50% 50%, rgba(240, 247, 247, 0.8) 0%, #f0f7f7 100%);
+            background-size: 200% 200%;
+            animation: meshFloat 15s ease-in-out infinite;
             overflow: hidden;
-            background: linear-gradient(135deg, #f0f7f7 0%, #e8f4f4 100%);
         }
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 60px;
+        @keyframes meshFloat {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .slide-container {
+            position: relative;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 60px;
+        }
+        .slide {
+            display: none;
+            animation: slideFade 0.6s ease;
         }
         .slide.active {
-            opacity: 1;
-            z-index: 1;
+            display: block;
         }
-        .slide.reverse {
-            direction: rtl;
+        @keyframes slideFade {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
-        .slide.reverse > * {
-            direction: ltr;
-        }
-        .slide-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.75);
-        }
-        .slide-content {
-            position: relative;
-            z-index: 2;
-            text-align: left;
-            max-width: 600px;
-            color: #fff;
-        }
-        .slide-image {
-            position: relative;
-            z-index: 2;
-            height: 500px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-        }
-        .slide-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-        .slide.active .slide-image img {
-            transform: scale(1.05);
-        }
-        .gradient-text {
+        .slide-headline {
             font-family: 'Libre Baskerville', Georgia, serif;
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 25px;
-            background: linear-gradient(90deg, #0d4f4f, #1a8a8a, #4a9a9a);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #0d4f4f 0%, #1a8a8a 50%, #4a9a9a 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        .slide-content p {
-            font-size: 1.2rem;
-            line-height: 1.8;
+        .slide-media {
+            position: relative;
             margin-bottom: 30px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
-        .slider-controls {
+        .slide-media-wrapper {
+            position: relative;
+            width: 100%;
+            height: 550px;
+            border-radius: 80px 8px 8px 8px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(13, 79, 79, 0.2);
+        }
+        .slide-media-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .slide.active .slide-media-wrapper img {
+            transform: scale(1.03);
+        }
+        .slide-peek {
             position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
+            top: 0;
+            right: -60px;
+            width: 80px;
+            height: 550px;
+            border-radius: 8px 0 0 8px;
+            overflow: hidden;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .slide-peek img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+        .control-buttons {
+            display: flex;
+            gap: 0;
+            background: #0d4f4f;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .control-btn {
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: background 0.3s;
             display: flex;
             align-items: center;
-            gap: 20px;
+            justify-content: center;
         }
-        .slider-btn {
-            background: rgba(255,255,255,0.2);
-            color: #fff;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            backdrop-filter: blur(10px);
-            transition: background 0.3s;
+        .control-btn:hover {
+            background: rgba(255,255,255,0.1);
         }
-        .slider-btn:hover {
-            background: rgba(255,255,255,0.3);
+        .control-btn.border-right {
+            border-right: 1px solid rgba(255,255,255,0.2);
         }
-        .slider-dots {
+        .pagination-dots {
             display: flex;
             gap: 10px;
         }
-        .slider-dot {
-            width: 12px;
-            height: 12px;
+        .pagination-dot {
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.4);
+            background: transparent;
+            border: 2px solid #0d4f4f;
             cursor: pointer;
             transition: all 0.3s;
         }
-        .slider-dot.active {
-            background: #fff;
-            transform: scale(1.2);
+        .pagination-dot.active {
+            background: #0d4f4f;
+            border-color: #0d4f4f;
+        }
+        .slide-caption {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #4a6b6b;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+        .slide-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: transparent;
+            border: 3px solid #0d4f4f;
+            border-radius: 50px;
+            color: #0d4f4f;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .slide-cta:hover {
+            background: #0d4f4f;
+            color: #fff;
+        }
+        .slide-cta svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: transform 0.3s;
+        }
+        .slide-cta:hover svg {
+            transform: translateX(5px);
+        }
+        .utility-icon {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            width: 50px;
+            height: 50px;
+            background: #0d4f4f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(13, 79, 79, 0.3);
+            transition: transform 0.3s;
+            z-index: 100;
+        }
+        .utility-icon:hover {
+            transform: scale(1.1);
+        }
+        .os-indicator {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 5px;
+            background: #0d4f4f;
+            border-radius: 3px;
+            opacity: 0.5;
         }
         
         @media (max-width: 900px) {
-            .hero-slider { height: 500px; }
-            .gradient-text { font-size: 2rem; }
-            .slide-content { padding: 0 25px; }
+            .hero-slider { padding: 80px 30px 40px; }
+            .slide-headline { font-size: 2.2rem; }
+            .slide-media-wrapper { height: 400px; border-radius: 50px 8px 8px 8px; }
+            .slide-peek { display: none; }
+            .control-btn { width: 45px; height: 45px; }
         }
         @media (max-width: 600px) {
-            .hero-slider { height: 400px; }
-            .gradient-text { font-size: 1.5rem; }
-            .slide-content p { font-size: 1rem; }
+            .hero-slider { padding: 70px 20px 30px; }
+            .slide-headline { font-size: 1.8rem; }
+            .slide-media-wrapper { height: 300px; border-radius: 30px 8px 8px 8px; }
+            .control-buttons { gap: 0; }
+            .control-btn { width: 40px; height: 40px; font-size: 1.1rem; }
+            .slide-caption { font-size: 1rem; }
+            .slide-cta { padding: 14px 24px; font-size: 0.95rem; }
+            .utility-icon { bottom: 30px; left: 20px; width: 45px; height: 45px; }
         }
     </style>
 </head>
@@ -222,55 +304,117 @@
         </nav>
     </header>
 
-    <!-- Hero Slider -->
+    <!-- Premium Hero Slider -->
     <section class="hero-slider">
-        <div class="slide active">
-            <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1576091160550-217358c7e618?w=1200&h=600&fit=crop');"></div>
-            <div class="slide-content">
-                <h1 class="gradient-text">PIONEERING PROGRESS IN ONCOLOGY</h1>
-                <p>Discover our unwavering commitment to transforming cancer care and improving patient outcomes through innovative clinical research.</p>
-                <a href="science-rd.html" class="btn-primary">Explore our oncology initiatives</a>
+        <div class="slide-container">
+            <!-- Slide 1: Oncology -->
+            <div class="slide active" data-index="0">
+                <h2 class="slide-headline">Pioneering Progress in Oncology</h2>
+                <div class="slide-media">
+                    <div class="slide-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=1200&h=600&fit=crop" alt="Oncology Research">
+                    </div>
+                    <div class="slide-peek">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=600&fit=crop" alt="Next slide">
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <div class="control-buttons">
+                        <button class="control-btn" onclick="prevSlide()">❮</button>
+                        <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
+                        <button class="control-btn" onclick="nextSlide()">❯</button>
+                    </div>
+                    <div class="pagination-dots" id="paginationDots"></div>
+                </div>
+                <p class="slide-caption">Discover our unwavering commitment to transforming cancer care and improving patient outcomes through innovative clinical research and targeted therapies.</p>
+                <a href="science-rd.html" class="slide-cta">
+                    Explore Oncology
+                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                </a>
             </div>
-            <div class="slide-image">
-                <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=600&h=500&fit=crop" alt="Oncology Research">
+            
+            <!-- Slide 2: Genetics -->
+            <div class="slide" data-index="1">
+                <h2 class="slide-headline">The Genetic Link to Nicotine Dependence</h2>
+                <div class="slide-media">
+                    <div class="slide-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=600&fit=crop" alt="DNA Research">
+                    </div>
+                    <div class="slide-peek">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop" alt="Next slide">
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <div class="control-buttons">
+                        <button class="control-btn" onclick="prevSlide()">❮</button>
+                        <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
+                        <button class="control-btn" onclick="nextSlide()">❯</button>
+                    </div>
+                    <div class="pagination-dots" id="paginationDots"></div>
+                </div>
+                <p class="slide-caption">Our dedicated researchers have identified specific variants within the CHRNB3 gene that correlate with a natural reduction in smoking behaviors.</p>
+                <a href="science-rd.html" class="slide-cta">
+                    Read the Study
+                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                </a>
+            </div>
+            
+            <!-- Slide 3: Leadership -->
+            <div class="slide" data-index="2">
+                <h2 class="slide-headline">Visionary Leadership: Expert Roundtable</h2>
+                <div class="slide-media">
+                    <div class="slide-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop" alt="Leadership Discussion">
+                    </div>
+                    <div class="slide-peek">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=600&fit=crop" alt="Next slide">
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <div class="control-buttons">
+                        <button class="control-btn" onclick="prevSlide()">❮</button>
+                        <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
+                        <button class="control-btn" onclick="nextSlide()">❯</button>
+                    </div>
+                    <div class="pagination-dots" id="paginationDots"></div>
+                </div>
+                <p class="slide-caption">Join trailblazing women in the field of ophthalmology as they discuss industry breakthroughs, career milestones, and the future of eye care.</p>
+                <a href="about.html" class="slide-cta">
+                    Watch Discussion
+                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                </a>
+            </div>
+            
+            <!-- Slide 4: STEM -->
+            <div class="slide" data-index="3">
+                <h2 class="slide-headline">Empowering Tomorrow's Innovators</h2>
+                <div class="slide-media">
+                    <div class="slide-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=600&fit=crop" alt="STEM Students">
+                    </div>
+                    <div class="slide-peek">
+                        <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=1200&h=600&fit=crop" alt="Next slide">
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <div class="control-buttons">
+                        <button class="control-btn" onclick="prevSlide()">❮</button>
+                        <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
+                        <button class="control-btn" onclick="nextSlide()">❯</button>
+                    </div>
+                    <div class="pagination-dots" id="paginationDots"></div>
+                </div>
+                <p class="slide-caption">Celebrating a renewed, decade-long commitment to inspiring youth and fostering the next generation of scientific leaders through our national talent search.</p>
+                <a href="careers.html" class="slide-cta">
+                    Discover STEM Programs
+                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                </a>
             </div>
         </div>
-        <div class="slide reverse">
-            <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=600&fit=crop');"></div>
-            <div class="slide-content">
-                <h1 class="gradient-text">THE GENETIC LINK TO NICOTINE DEPENDENCE</h1>
-                <p>Our dedicated researchers have identified specific variants within the CHRNB3 gene that correlate with a natural reduction in smoking behaviors.</p>
-                <a href="science-rd.html" class="btn-primary">Read the genetic study</a>
-            </div>
-            <div class="slide-image">
-                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&h=500&fit=crop" alt="DNA Research">
-            </div>
-        </div>
-        <div class="slide">
-            <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop');"></div>
-            <div class="slide-content">
-                <h1 class="gradient-text">VISIONARY LEADERSHIP: EXPERT ROUNDTABLE</h1>
-                <p>Join trailblazing women in the field of ophthalmology as they discuss industry breakthroughs, career milestones, and the future of eye care.</p>
-                <a href="about.html" class="btn-primary">Watch the discussion</a>
-            </div>
-            <div class="slide-image">
-                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=500&fit=crop" alt="Leadership Discussion">
-            </div>
-        </div>
-        <div class="slide reverse">
-            <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=600&fit=crop');"></div>
-            <div class="slide-content">
-                <h1 class="gradient-text">EMPOWERING TOMORROW'S INNOVATORS</h1>
-                <p>Celebrating a renewed, decade-long commitment to inspiring youth and fostering the next generation of scientific leaders through our national talent search.</p>
-                <a href="careers.html" class="btn-primary">Discover our STEM programs</a>
-            </div>
-            <div class="slide-image">
-                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=500&fit=crop" alt="STEM Students">
-            </div>
-        </div>
-        <div class="slider-controls">
-            <div class="slider-dots" id="heroDots"></div>
-        </div>
+        
+        <!-- Floating Elements -->
+        <div class="utility-icon" title="Privacy Settings">🔒</div>
+        <div class="os-indicator"></div>
     </section>
 
     <!-- Quick Links -->
@@ -436,19 +580,42 @@
             }
         });
 
-        // Hero Slider
+        // Premium Hero Slider
         let currentSlide = 0;
         const totalSlides = 4;
+        let isPlaying = true;
+        let slideInterval;
+        
+        function initSlider() {
+            const dotsContainer = document.getElementById('paginationDots');
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'pagination-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+            startAutoPlay();
+        }
         
         function showSlide(index) {
             document.querySelectorAll('.slide').forEach((slide, i) => {
                 slide.classList.remove('active');
                 if (i === index) slide.classList.add('active');
             });
-            document.querySelectorAll('.slider-dot').forEach((dot, i) => {
+            document.querySelectorAll('.pagination-dot').forEach((dot, i) => {
                 dot.classList.remove('active');
                 if (i === index) dot.classList.add('active');
             });
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+            if (isPlaying) {
+                clearInterval(slideInterval);
+                startAutoPlay();
+            }
         }
         
         function nextSlide() {
@@ -461,20 +628,28 @@
             showSlide(currentSlide);
         }
         
-        // Auto-advance slides every 6 seconds
-        setInterval(nextSlide, 6000);
-        
-        // Initialize dots
-        const dotsContainer = document.getElementById('heroDots');
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('div');
-            dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-            dot.onclick = () => {
-                currentSlide = i;
-                showSlide(i);
-            };
-            dotsContainer.appendChild(dot);
+        function startAutoPlay() {
+            slideInterval = setInterval(nextSlide, 5000);
         }
+        
+        function stopAutoPlay() {
+            clearInterval(slideInterval);
+        }
+        
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            const btn = document.querySelector('.control-btn.border-right');
+            if (isPlaying) {
+                btn.innerHTML = '⏸';
+                startAutoPlay();
+            } else {
+                btn.innerHTML = '▶';
+                stopAutoPlay();
+            }
+        }
+        
+        // Initialize slider on load
+        initSlider();
     </script>
 </body>
 </html>
