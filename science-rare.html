@@ -7,46 +7,55 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Classic Scroll Animations */
-        .fade-in {
+        /* Modern Pop Animations */
+        .pop-in {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: scale(0.8);
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
         }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
         }
-        .slide-left {
+        .bounce-in {
             opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
         }
-        .slide-left.visible {
-            opacity: 1;
-            transform: translateX(0);
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: translateY(-30px); }
+            60% { opacity: 1; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
-        .slide-right {
+        .zoom-in {
             opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: scale(0.7);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
-        .slide-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .scale-up {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .scale-up.visible {
+        .zoom-in.visible {
             opacity: 1;
             transform: scale(1);
         }
-        .stagger-delay:nth-child(1) { transition-delay: 0.1s; }
-        .stagger-delay:nth-child(2) { transition-delay: 0.2s; }
-        .stagger-delay:nth-child(3) { transition-delay: 0.3s; }
+        .slide-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.7s ease-out;
+        }
+        .slide-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .glow-pulse {
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 5px 20px rgba(13, 79, 79, 0.1); }
+            50% { box-shadow: 0 10px 40px rgba(13, 79, 79, 0.2); }
+        }
+        .stagger-delay:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-delay:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-delay:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-delay:nth-child(4) { animation-delay: 0.4s; }
         
         .rare-hero {
             background: linear-gradient(rgba(13, 79, 79, 0.85), rgba(13, 79, 79, 0.75)), url('https://images.unsplash.com/photo-1576089587252-e61e94377c71?w=1200&h=500&fit=crop');
@@ -55,6 +64,22 @@
             padding: 120px 50px;
             color: #fff;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .rare-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         .rare-hero h1 {
             font-family: 'Libre Baskerville', Georgia, serif;
@@ -286,30 +311,30 @@
 
     <!-- Hero -->
     <section class="rare-hero">
-        <div class="fade-in">
-            <h1>RARE CONDITIONS AND DISORDERS</h1>
-            <p class="subtitle">Harnessing deep genetic analysis to transform the lives of those facing uncommon illnesses</p>
-            <p>More than 7,000 distinct disorders are currently categorized as "rare" under the Orphan Drug Act, yet a staggering 95% of these remain without an FDA-approved therapeutic option. We are deeply committed to bridging this medical divide by engaging in fundamental scientific research to decode the complex genetic and biological drivers behind these conditions. Our rare disease initiatives intersect with nearly all of our core research divisions. The unifying factor across these diverse programs is the underlying genetic foundation of the illnesses, alongside the critically underserved, small patient populations they affect.</p>
-            <p>By integrating our proprietary discovery platforms with the massive datasets generated by our Genetics Center, we are steadily uncovering the core mechanisms of these diseases. This synergy has enabled us to pioneer a range of authorized and experimental treatments targeting rare and ultra-rare conditions through both advanced genetic and antibody-driven modalities.</p>
+        <div class="pop-in">
+            <h1 style="animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;">RARE CONDITIONS AND DISORDERS</h1>
+            <p class="subtitle" style="animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s forwards; opacity: 0;">Harnessing deep genetic analysis to transform the lives of those facing uncommon illnesses</p>
+            <p style="animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s forwards; opacity: 0;">More than 7,000 distinct disorders are currently categorized as "rare" under the Orphan Drug Act, yet a staggering 95% of these remain without an FDA-approved therapeutic option. We are deeply committed to bridging this medical divide by engaging in fundamental scientific research to decode the complex genetic and biological drivers behind these conditions. Our rare disease initiatives intersect with nearly all of our core research divisions. The unifying factor across these diverse programs is the underlying genetic foundation of the illnesses, alongside the critically underserved, small patient populations they affect.</p>
+            <p style="animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s forwards; opacity: 0;">By integrating our proprietary discovery platforms with the massive datasets generated by our Genetics Center, we are steadily uncovering the core mechanisms of these diseases. This synergy has enabled us to pioneer a range of authorized and experimental treatments targeting rare and ultra-rare conditions through both advanced genetic and antibody-driven modalities.</p>
         </div>
     </section>
 
     <!-- Stats Section -->
     <section class="stats-section">
         <div class="stats-grid">
-            <div class="stat-card scale-up stagger-delay">
+            <div class="stat-card zoom-in stagger-delay glow-pulse">
                 <h3>7,000+</h3>
                 <p>Rare Disorders Identified</p>
             </div>
-            <div class="stat-card scale-up stagger-delay">
+            <div class="stat-card zoom-in stagger-delay glow-pulse">
                 <h3>95%</h3>
                 <p>Without FDA-Approved Treatment</p>
             </div>
-            <div class="stat-card scale-up stagger-delay">
+            <div class="stat-card zoom-in stagger-delay glow-pulse">
                 <h3>800</h3>
                 <p>FOP Patients Worldwide</p>
             </div>
-            <div class="stat-card scale-up stagger-delay">
+            <div class="stat-card zoom-in stagger-delay glow-pulse">
                 <h3>20+</h3>
                 <p>Years of Rare Disease Research</p>
             </div>
@@ -318,34 +343,34 @@
 
     <!-- Core Research Focus -->
     <section class="research-section">
-        <div class="fade-in" style="max-width: 900px; margin: 0 auto;">
-            <h2>Driven by data to uncover groundbreaking therapies for specialized conditions</h2>
-            <p>Our foundational research philosophy applies equally to widespread global health crises and highly specialized patient populations. Our initial foray into experimental rare disease treatments focused on addressing specific elements of cryopyrin-associated periodic syndromes (CAPS)—a cluster of lifelong, recurrent disorders marked by chronic fatigue, joint pain, fevers, and rashes.</p>
-            <p>More recently, our pipeline has successfully yielded specialized therapies for homozygous familial hypercholesterolemia (HoFH), an ultra-rare genetic form of severe high cholesterol, as well as CHAPLE disease, a hereditary condition carrying life-threatening cardiovascular and gastrointestinal risks.</p>
+        <div class="bounce-in" style="max-width: 900px; margin: 0 auto;">
+            <h2 style="animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s forwards; opacity: 0;">Driven by data to uncover groundbreaking therapies for specialized conditions</h2>
+            <p style="animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s forwards; opacity: 0;">Our foundational research philosophy applies equally to widespread global health crises and highly specialized patient populations. Our initial foray into experimental rare disease treatments focused on addressing specific elements of cryopyrin-associated periodic syndromes (CAPS)—a cluster of lifelong, recurrent disorders marked by chronic fatigue, joint pain, fevers, and rashes.</p>
+            <p style="animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s forwards; opacity: 0;">More recently, our pipeline has successfully yielded specialized therapies for homozygous familial hypercholesterolemia (HoFH), an ultra-rare genetic form of severe high cholesterol, as well as CHAPLE disease, a hereditary condition carrying life-threatening cardiovascular and gastrointestinal risks.</p>
         </div>
     </section>
 
     <!-- Featured Article Card -->
     <section class="featured-card">
         <div class="featured-grid">
-            <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&h=550&fit=crop" alt="Three women smiling outdoors" class="featured-img slide-left">
-            <div class="featured-content fade-in">
-                <h3>Engaging and Evolving with the Rare Disease Patient Network</h3>
-                <p class="author">Authored by: Amanda Seeffi-Charry, Executive Director, Patient Advocacy</p>
-                <p>Rare disease patients often face unique challenges—from delayed diagnoses to limited treatment options. Our patient advocacy team works directly with communities to understand their needs, amplify their voices, and ensure our research addresses what matters most to those living with these conditions.</p>
-                <div class="highlight">
+            <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&h=550&fit=crop" alt="Three women smiling outdoors" class="featured-img zoom-in">
+            <div class="featured-content slide-up">
+                <h3 style="animation: slideUp 0.7s ease-out 0.2s forwards; opacity: 0;">Engaging and Evolving with the Rare Disease Patient Network</h3>
+                <p class="author" style="animation: slideUp 0.7s ease-out 0.3s forwards; opacity: 0;">Authored by: Amanda Seeffi-Charry, Executive Director, Patient Advocacy</p>
+                <p style="animation: slideUp 0.7s ease-out 0.4s forwards; opacity: 0;">Rare disease patients often face unique challenges—from delayed diagnoses to limited treatment options. Our patient advocacy team works directly with communities to understand their needs, amplify their voices, and ensure our research addresses what matters most to those living with these conditions.</p>
+                <div class="highlight" style="animation: slideUp 0.7s ease-out 0.5s forwards; opacity: 0;">
                     <strong>Advocating for communities facing profound unmet medical challenges.</strong>
                 </div>
-                <a href="#" class="btn-primary">Discover our collaborative patient advocacy initiatives</a>
+                <a href="#" class="btn-primary" style="animation: slideUp 0.7s ease-out 0.6s forwards; opacity: 0;">Discover our collaborative patient advocacy initiatives</a>
             </div>
         </div>
     </section>
 
     <!-- Ongoing Research Accordion -->
     <section class="accordion-section">
-        <h2 class="fade-in">Current focal points in our rare disease pipeline include:</h2>
+        <h2 class="pop-in" style="animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s forwards; opacity: 0;">Current focal points in our rare disease pipeline include:</h2>
         <div class="accordion">
-            <div class="accordion-item scale-up">
+            <div class="accordion-item zoom-in stagger-delay">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
                     Fibrodysplasia ossificans progressiva (FOP)
                     <span class="accordion-icon">▼</span>
@@ -356,7 +381,7 @@
                     <a href="#" class="btn-primary" style="background: #fff; color: #0d4f4f; margin-top: 15px;">Learn about our FOP research</a>
                 </div>
             </div>
-            <div class="accordion-item scale-up">
+            <div class="accordion-item zoom-in stagger-delay">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
                     Lipodystrophy
                     <span class="accordion-icon">▼</span>
@@ -367,7 +392,7 @@
                     <a href="#" class="btn-primary" style="background: #fff; color: #0d4f4f; margin-top: 15px;">Explore our lipodystrophy program</a>
                 </div>
             </div>
-            <div class="accordion-item scale-up">
+            <div class="accordion-item zoom-in stagger-delay">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
                     CHAPLE Disease
                     <span class="accordion-icon">▼</span>
@@ -378,7 +403,7 @@
                     <a href="#" class="btn-primary" style="background: #fff; color: #0d4f4f; margin-top: 15px;">View CHAPLE clinical data</a>
                 </div>
             </div>
-            <div class="accordion-item scale-up">
+            <div class="accordion-item zoom-in stagger-delay">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
                     Homozygous Familial Hypercholesterolemia (HoFH)
                     <span class="accordion-icon">▼</span>
@@ -441,7 +466,7 @@
     </footer>
 
     <script>
-        // Classic Scroll Animation Observer
+        // Modern Pop Animation Observer
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -456,7 +481,7 @@
         }, observerOptions);
 
         // Observe all animated elements
-        document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-up').forEach(el => {
+        document.querySelectorAll('.zoom-in, .slide-up').forEach(el => {
             observer.observe(el);
         });
 
