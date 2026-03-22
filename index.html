@@ -246,6 +246,25 @@
         document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-up').forEach(el => {
             observer.observe(el);
         });
+
+        // Dropdown Menu Click Handler
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                // Close all other dropdowns
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    if (d !== this) d.classList.remove('active');
+                });
+                // Toggle this dropdown
+                this.classList.toggle('active');
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            }
+        });
     </script>
 </body>
 </html>

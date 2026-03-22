@@ -78,6 +78,7 @@ nav a:hover, nav a.active { color: #0d4f4f; }
 /* Dropdown Menu */
 .dropdown {
     position: relative;
+    cursor: pointer;
 }
 .dropdown-content {
     display: none;
@@ -104,6 +105,9 @@ nav a:hover, nav a.active { color: #0d4f4f; }
     color: #0d4f4f;
 }
 .dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown.active .dropdown-content {
     display: block;
 }
 
