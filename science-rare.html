@@ -6,6 +6,246 @@
     <title>Rare Diseases - CellveraPharma</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Classic Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .slide-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scale-up {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scale-up.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .stagger-delay:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-delay:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-delay:nth-child(3) { transition-delay: 0.3s; }
+        
+        .rare-hero {
+            background: linear-gradient(rgba(13, 79, 79, 0.85), rgba(13, 79, 79, 0.75)), url('https://images.unsplash.com/photo-1576089587252-e61e94377c71?w=1200&h=500&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 50px;
+            color: #fff;
+            text-align: center;
+        }
+        .rare-hero h1 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .rare-hero .subtitle {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+        .rare-hero p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 20px;
+            opacity: 0.95;
+        }
+        
+        .research-section {
+            padding: 80px 50px;
+            background: #fff;
+        }
+        .research-section h2 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.2rem;
+            color: #0d4f4f;
+            margin-bottom: 25px;
+        }
+        .research-section p {
+            color: #4a6b6b;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            max-width: 900px;
+        }
+        
+        .featured-card {
+            padding: 80px 50px;
+            background: #f0f7f7;
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: stretch;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(13, 79, 79, 0.12);
+        }
+        .featured-img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .featured-grid:hover .featured-img {
+            transform: scale(1.05);
+        }
+        .featured-content {
+            background: #fff;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .featured-content h3 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 1.6rem;
+            color: #0d4f4f;
+            margin-bottom: 15px;
+        }
+        .featured-content .author {
+            font-size: 0.9rem;
+            color: #6a8a8a;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .featured-content .highlight {
+            background: #f0f7f7;
+            padding: 15px;
+            border-left: 4px solid #0d4f4f;
+            margin: 20px 0;
+            font-size: 0.95rem;
+            color: #4a6b6b;
+        }
+        
+        .accordion-section {
+            padding: 80px 50px;
+            background: #0d4f4f;
+            color: #fff;
+        }
+        .accordion-section h2 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .accordion-item {
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.05);
+        }
+        .accordion-header {
+            padding: 25px 30px;
+            background: rgba(255,255,255,0.1);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+        .accordion-header:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        .accordion-content {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .accordion-content.active {
+            padding: 25px 30px;
+            max-height: 600px;
+        }
+        .accordion-content p {
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .accordion-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+        .stats-section {
+            padding: 60px 50px;
+            background: #fff;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: #f0f7f7;
+            border-radius: 16px;
+        }
+        .stat-card h3 {
+            font-size: 2.5rem;
+            color: #0d4f4f;
+            margin-bottom: 10px;
+        }
+        .stat-card p {
+            color: #6a8a8a;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 900px) {
+            .rare-hero { padding: 80px 25px; }
+            .rare-hero h1 { font-size: 2rem; }
+            .featured-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .research-section, .featured-card, .accordion-section, .stats-section { padding: 60px 20px; }
+            .rare-hero h1 { font-size: 1.6rem; }
+            .research-section h2, .accordion-section h2 { font-size: 1.6rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -44,16 +284,111 @@
         </nav>
     </header>
 
-    <!-- Page Hero -->
-    <section class="page-hero">
-        <h1>Rare Diseases</h1>
-        <p>Developing therapies for underserved patient populations</p>
+    <!-- Hero -->
+    <section class="rare-hero">
+        <div class="fade-in">
+            <h1>RARE CONDITIONS AND DISORDERS</h1>
+            <p class="subtitle">Harnessing deep genetic analysis to transform the lives of those facing uncommon illnesses</p>
+            <p>More than 7,000 distinct disorders are currently categorized as "rare" under the Orphan Drug Act, yet a staggering 95% of these remain without an FDA-approved therapeutic option. We are deeply committed to bridging this medical divide by engaging in fundamental scientific research to decode the complex genetic and biological drivers behind these conditions. Our rare disease initiatives intersect with nearly all of our core research divisions. The unifying factor across these diverse programs is the underlying genetic foundation of the illnesses, alongside the critically underserved, small patient populations they affect.</p>
+            <p>By integrating our proprietary discovery platforms with the massive datasets generated by our Genetics Center, we are steadily uncovering the core mechanisms of these diseases. This synergy has enabled us to pioneer a range of authorized and experimental treatments targeting rare and ultra-rare conditions through both advanced genetic and antibody-driven modalities.</p>
+        </div>
     </section>
 
-    <!-- Content Placeholder -->
-    <section class="content-placeholder">
-        <div class="placeholder-text">
-            <p>Content coming soon...</p>
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card scale-up stagger-delay">
+                <h3>7,000+</h3>
+                <p>Rare Disorders Identified</p>
+            </div>
+            <div class="stat-card scale-up stagger-delay">
+                <h3>95%</h3>
+                <p>Without FDA-Approved Treatment</p>
+            </div>
+            <div class="stat-card scale-up stagger-delay">
+                <h3>800</h3>
+                <p>FOP Patients Worldwide</p>
+            </div>
+            <div class="stat-card scale-up stagger-delay">
+                <h3>20+</h3>
+                <p>Years of Rare Disease Research</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Research Focus -->
+    <section class="research-section">
+        <div class="fade-in" style="max-width: 900px; margin: 0 auto;">
+            <h2>Driven by data to uncover groundbreaking therapies for specialized conditions</h2>
+            <p>Our foundational research philosophy applies equally to widespread global health crises and highly specialized patient populations. Our initial foray into experimental rare disease treatments focused on addressing specific elements of cryopyrin-associated periodic syndromes (CAPS)—a cluster of lifelong, recurrent disorders marked by chronic fatigue, joint pain, fevers, and rashes.</p>
+            <p>More recently, our pipeline has successfully yielded specialized therapies for homozygous familial hypercholesterolemia (HoFH), an ultra-rare genetic form of severe high cholesterol, as well as CHAPLE disease, a hereditary condition carrying life-threatening cardiovascular and gastrointestinal risks.</p>
+        </div>
+    </section>
+
+    <!-- Featured Article Card -->
+    <section class="featured-card">
+        <div class="featured-grid">
+            <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&h=550&fit=crop" alt="Three women smiling outdoors" class="featured-img slide-left">
+            <div class="featured-content fade-in">
+                <h3>Engaging and Evolving with the Rare Disease Patient Network</h3>
+                <p class="author">Authored by: Amanda Seeffi-Charry, Executive Director, Patient Advocacy</p>
+                <p>Rare disease patients often face unique challenges—from delayed diagnoses to limited treatment options. Our patient advocacy team works directly with communities to understand their needs, amplify their voices, and ensure our research addresses what matters most to those living with these conditions.</p>
+                <div class="highlight">
+                    <strong>Advocating for communities facing profound unmet medical challenges.</strong>
+                </div>
+                <a href="#" class="btn-primary">Discover our collaborative patient advocacy initiatives</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ongoing Research Accordion -->
+    <section class="accordion-section">
+        <h2 class="fade-in">Current focal points in our rare disease pipeline include:</h2>
+        <div class="accordion">
+            <div class="accordion-item scale-up">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    Fibrodysplasia ossificans progressiva (FOP)
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>FOP is a profoundly debilitating and life-changing condition characterized by the progressive ossification (turning to bone) of muscles, tendons, ligaments, and connective tissues. Our research teams have dedicated over two decades to unraveling the complexities of FOP and its related pathways.</p>
+                    <p>Driven by our proprietary breakthroughs regarding the mechanisms of this ultra-rare condition—which affects roughly 800 individuals globally—we are now advancing an innovative, internally discovered treatment candidate through late-stage clinical evaluation.</p>
+                    <a href="#" class="btn-primary" style="background: #fff; color: #0d4f4f; margin-top: 15px;">Learn about our FOP research</a>
+                </div>
+            </div>
+            <div class="accordion-item scale-up">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    Lipodystrophy
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Lipodystrophy encompasses a group of rare metabolic disorders characterized by the abnormal loss or distribution of adipose (fat) tissue. This can lead to severe metabolic complications including insulin resistance, diabetes, hypertriglyceridemia, and hepatic steatosis.</p>
+                    <p>Our research focuses on understanding the genetic basis of various lipodystrophy subtypes and developing targeted therapies to restore normal metabolic function and improve quality of life for affected patients.</p>
+                    <a href="#" class="btn-primary" style="background: #fff; color: #0d4f4f; margin-top: 15px;">Explore our lipodystrophy program</a>
+                </div>
+            </div>
+            <div class="accordion-item scale-up">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    CHAPLE Disease
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>CHAPLE (CD55 autoimmune hyperactivation) disease is an ultra-rare genetic disorder causing life-threatening protein-losing enteropathy, thrombosis, and immune dysregulation. Patients face severe gastrointestinal and cardiovascular complications.</p>
+                    <p>We've developed a targeted therapy that addresses the underlying complement system overactivation, offering hope for this previously untreatable condition.</p>
+                    <a href="#" class="btn-primary" style="background: #fff; color: #0d4f4f; margin-top: 15px;">View CHAPLE clinical data</a>
+                </div>
+            </div>
+            <div class="accordion-item scale-up">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    Homozygous Familial Hypercholesterolemia (HoFH)
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>HoFH is an ultra-rare genetic form of severe high cholesterol affecting approximately 1 in 160,000 to 1 in 300,000 individuals worldwide. Patients experience extremely elevated LDL-C levels from birth, leading to premature cardiovascular disease.</p>
+                    <p>Our specialized therapies target the genetic mechanisms underlying this condition, offering new treatment options for patients who don't respond adequately to standard cholesterol-lowering medications.</p>
+                    <a href="#" class="btn-primary" style="background: #fff; color: #0d4f4f; margin-top: 15px;">Discover our HoFH treatments</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -81,8 +416,8 @@
                 <ul>
                     <li><a href="science.html">Science</a></li>
                     <li><a href="science-rd.html">Research & Development</a></li>
+                    <li><a href="science-rare.html">Rare Diseases</a></li>
                     <li><a href="medicines.html">Medicines</a></li>
-                    <li><a href="#">Publications</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -104,5 +439,43 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Classic Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            // Close all accordions
+            document.querySelectorAll('.accordion-content').forEach(c => {
+                c.classList.remove('active');
+                c.previousElementSibling.classList.remove('active');
+            });
+            
+            // Open clicked accordion if it wasn't active
+            if (!isActive) {
+                content.classList.add('active');
+                header.classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
