@@ -119,7 +119,7 @@
         }
         .carousel-slide img {
             width: 100%;
-            height: 320px;
+            height: 280px;
             object-fit: cover;
             border-radius: 30px 0 0 0;
             display: block;
@@ -218,11 +218,9 @@
         }
         
         @media (max-width: 600px) {
-            .sticky-header { padding: 12px 20px; }
-            .header-brand { font-size: 1.2rem; }
             .hero-slider { padding: 95px 20px 35px; }
             .hero-headline { font-size: 1.8rem; }
-            .carousel-slide img { height: 280px; border-radius: 25px 0 0 0; }
+            .carousel-slide img { height: 260px; border-radius: 25px 0 0 0; }
             .carousel-slide { min-width: 80%; }
             .ctrl-btn { width: 40px; height: 40px; font-size: 1.1rem; }
             .hero-caption p { font-size: 0.95rem; }
@@ -231,14 +229,39 @@
     </style>
 </head>
 <body>
-    <!-- Sticky Header -->
-    <header class="sticky-header">
-        <div class="header-brand">CELLVERA</div>
-        <div class="header-actions">
-            <span class="header-icon">🌐</span>
-            <span class="header-icon">▼</span>
-            <span class="header-menu">☰</span>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera Logo" style="height: 45px; width: auto;">
+        </a>
+        <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <div class="dropdown">
+                <a href="science.html">Science ▾</a>
+                <div class="dropdown-content">
+                    <a href="science-rd.html">Research & Development</a>
+                    <a href="science-allergic.html">Allergic & Inflammatory Diseases</a>
+                    <a href="science-cardio.html">Cardiovascular & Metabolic Diseases</a>
+                    <a href="science-rare.html">Rare Diseases</a>
+                </div>
+            </div>
+            <a href="medicines.html">Medicines</a>
+            <div class="dropdown">
+                <a href="responsibility.html">Responsibility ▾</a>
+                <div class="dropdown-content">
+                    <a href="responsibility-approach.html">Our Approach</a>
+                    <a href="responsibility-equity.html">Health Equity & Access</a>
+                    <a href="responsibility-environment.html">Environmental Sustainability</a>
+                </div>
+            </div>
+            <a href="careers.html">Careers</a>
+            <a href="contact.html">Contact</a>
+        </nav>
     </header>
 
     <!-- Hero Slider -->
