@@ -79,6 +79,14 @@
             from { opacity: 0; transform: translateX(20px); }
             to { opacity: 1; transform: translateX(0); }
         }
+        .slide-left {
+            position: relative;
+        }
+        .slide-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
         .slide-headline {
             font-family: 'Libre Baskerville', Georgia, serif;
             font-size: 3.2rem;
@@ -129,7 +137,7 @@
         .slide-media-wrapper {
             position: relative;
             width: 100%;
-            height: 500px;
+            height: 550px;
             border-radius: 100px 8px 8px 8px;
             overflow: hidden;
             box-shadow: 0 50px 120px rgba(13, 79, 79, 0.25);
@@ -143,50 +151,24 @@
         .slide.active .slide-media-wrapper img {
             transform: scale(1.02);
         }
-        .play-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90px;
-            height: 90px;
-            background: rgba(13, 79, 79, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 50%;
+        .brand-logo-container {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 10;
-        }
-        .play-overlay:hover {
-            background: rgba(13, 79, 79, 0.9);
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        .play-overlay svg {
-            width: 40px;
-            height: 40px;
-            fill: #fff;
-            margin-left: 5px;
+            justify-content: flex-end;
+            margin-top: 20px;
         }
         .brand-logo {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: rgba(255,255,255,0.95);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 10;
         }
         .brand-logo img {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             object-fit: contain;
         }
         .carousel-controls {
@@ -287,12 +269,12 @@
         @media (max-width: 1000px) {
             .slide-container, .slide.active { grid-template-columns: 1fr; gap: 50px; }
             .slide-headline { font-size: 2.5rem; }
-            .slide-media-wrapper { height: 400px; }
+            .slide-media-wrapper { height: 450px; }
         }
         @media (max-width: 600px) {
             .hero-slider { padding: 80px 20px 40px; }
             .slide-headline { font-size: 2rem; }
-            .slide-media-wrapper { height: 300px; border-radius: 60px 8px 8px 8px; }
+            .slide-media-wrapper { height: 350px; border-radius: 60px 8px 8px 8px; }
             .control-btn { width: 40px; height: 40px; }
             .slide-cta { padding: 14px 24px; }
             .utility-icon, .back-to-top { bottom: 20px; width: 45px; height: 45px; }
@@ -341,6 +323,16 @@
             <!-- Slide 1: Oncology -->
             <div class="slide active" data-index="0">
                 <div class="slide-left">
+                    <div class="slide-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=1200&h=600&fit=crop" alt="Oncology Research">
+                    </div>
+                    <div class="brand-logo-container">
+                        <div class="brand-logo">
+                            <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-right">
                     <h2 class="slide-headline">Pioneering Progress in Oncology</h2>
                     <p class="slide-description">Discover our unwavering commitment to transforming cancer care and improving patient outcomes through innovative clinical research and targeted therapies.</p>
                     <a href="science-rd.html" class="slide-cta">
@@ -356,19 +348,21 @@
                         <div class="pagination-dots" id="paginationDots"></div>
                     </div>
                 </div>
-                <div class="slide-right">
-                    <div class="slide-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=1200&h=600&fit=crop" alt="Oncology Research">
-                    </div>
-                    <div class="brand-logo">
-                        <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
-                    </div>
-                </div>
             </div>
             
             <!-- Slide 2: Genetics -->
             <div class="slide" data-index="1">
                 <div class="slide-left">
+                    <div class="slide-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=600&fit=crop" alt="DNA Research">
+                    </div>
+                    <div class="brand-logo-container">
+                        <div class="brand-logo">
+                            <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-right">
                     <h2 class="slide-headline">The Genetic Link to Nicotine Dependence</h2>
                     <p class="slide-description">Our dedicated researchers have identified specific variants within the CHRNB3 gene that correlate with a natural reduction in smoking behaviors.</p>
                     <a href="science-rd.html" class="slide-cta">
@@ -384,19 +378,21 @@
                         <div class="pagination-dots" id="paginationDots"></div>
                     </div>
                 </div>
-                <div class="slide-right">
-                    <div class="slide-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=600&fit=crop" alt="DNA Research">
-                    </div>
-                    <div class="brand-logo">
-                        <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
-                    </div>
-                </div>
             </div>
             
             <!-- Slide 3: Leadership -->
             <div class="slide" data-index="2">
                 <div class="slide-left">
+                    <div class="slide-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop" alt="Leadership Discussion">
+                    </div>
+                    <div class="brand-logo-container">
+                        <div class="brand-logo">
+                            <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-right">
                     <h2 class="slide-headline">Visionary Leadership: Expert Roundtable</h2>
                     <p class="slide-description">Join trailblazing women in the field of ophthalmology as they discuss industry breakthroughs, career milestones, and the future of eye care.</p>
                     <a href="about.html" class="slide-cta">
@@ -412,19 +408,21 @@
                         <div class="pagination-dots" id="paginationDots"></div>
                     </div>
                 </div>
-                <div class="slide-right">
-                    <div class="slide-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop" alt="Leadership Discussion">
-                    </div>
-                    <div class="brand-logo">
-                        <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
-                    </div>
-                </div>
             </div>
             
             <!-- Slide 4: STEM -->
             <div class="slide" data-index="3">
                 <div class="slide-left">
+                    <div class="slide-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=600&fit=crop" alt="STEM Students">
+                    </div>
+                    <div class="brand-logo-container">
+                        <div class="brand-logo">
+                            <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-right">
                     <h2 class="slide-headline">Empowering Tomorrow's Innovators</h2>
                     <p class="slide-description">Celebrating a renewed, decade-long commitment to inspiring youth and fostering the next generation of scientific leaders through our national talent search.</p>
                     <a href="careers.html" class="slide-cta">
@@ -438,14 +436,6 @@
                             <button class="control-btn" onclick="nextSlide()">❯</button>
                         </div>
                         <div class="pagination-dots" id="paginationDots"></div>
-                    </div>
-                </div>
-                <div class="slide-right">
-                    <div class="slide-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=600&fit=crop" alt="STEM Students">
-                    </div>
-                    <div class="brand-logo">
-                        <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
                     </div>
                 </div>
             </div>
