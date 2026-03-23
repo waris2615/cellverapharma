@@ -91,7 +91,7 @@
         .slide-media {
             position: relative;
             width: 100%;
-            height: 100%;
+            height: 450px;
             overflow: hidden;
             border-radius: 150px 0 0 0;
         }
@@ -105,11 +105,11 @@
         .slide-peek {
             position: absolute;
             top: 0;
-            right: -80px;
-            width: 100px;
+            right: -60px;
+            width: 60px;
             height: 100%;
             overflow: hidden;
-            opacity: 0.5;
+            opacity: 0.4;
             pointer-events: none;
         }
         .slide-peek img {
@@ -126,6 +126,64 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
+        }
+        .slide-caption {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #4a6b6b;
+            margin: 25px 0;
+            max-width: 600px;
+        }
+        .slide-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 16px 35px;
+            min-width: 220px;
+            background: #fff;
+            border: 3px solid #0d4f4f;
+            border-radius: 50px;
+            color: #0d4f4f;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .slide-cta:hover {
+            background: #0d4f4f;
+            color: #fff;
+        }
+        .slide-cta img {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+        }
+        .slide-cta:hover img {
+            transform: translateX(5px);
+        }
+        .utility-icon {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: #0d4f4f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(13, 79, 79, 0.3);
+            transition: transform 0.3s;
+            z-index: 100;
+        }
+        .utility-icon:hover {
+            transform: scale(1.1);
         }
         .slide-headline {
             font-family: 'Libre Baskerville', Georgia, serif;
@@ -405,29 +463,34 @@
         @media (max-width: 1000px) {
             .slide-container { grid-template-columns: 1fr; }
             .slide { grid-template-columns: 1fr; }
-            .slide-media { height: 450px; border-radius: 100px 8px 8px 8px; }
+            .slide-media { height: 400px; border-radius: 100px 8px 8px 8px; }
             .slide-content { padding: 40px 30px; }
             .slide-headline { font-size: 2.5rem; }
-            .pipeline-stages { grid-template-columns: repeat(3, 1fr); }
             .news-grid { grid-template-columns: 1fr; }
             .patients-grid { grid-template-columns: 1fr; }
             .partners-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 600px) {
-            .hero-slider { height: auto; min-height: 100vh; }
-            .slide-container { grid-template-columns: 1fr; }
-            .slide { grid-template-columns: 1fr; position: relative; height: auto; }
-            .slide-media { height: 350px; border-radius: 60px 8px 8px 8px; position: relative; }
-            .slide-content { padding: 30px 20px; order: 1; }
-            .slide-media { order: 2; }
-            .slide-headline { font-size: 2rem; }
-            .slide-description { font-size: 1rem; }
-            .slide-cta { padding: 14px 24px; min-width: 200px; }
-            .control-btn { width: 45px; height: 45px; }
-            .carousel-controls { bottom: 30px; left: 30px; position: absolute; }
-            .brand-logo { bottom: 100px; right: 30px; }
-            .pipeline, .news, .patients, .partners { padding: 80px 20px; }
-            .pipeline-stages { grid-template-columns: repeat(2, 1fr); }
+            .hero-slider { height: auto; min-height: 100vh; padding: 80px 20px 20px; }
+            .slide-container { display: block; }
+            .slide { position: relative; height: auto; display: block; }
+            .slide-content { padding: 0 0 20px; }
+            .slide-headline { font-size: 2rem; text-transform: uppercase; }
+            .slide-media { height: 320px; border-radius: 80px 0 0 0; margin-bottom: 15px; }
+            .slide-peek { right: -40px; width: 40px; }
+            .carousel-controls { position: relative; bottom: auto; left: auto; margin-top: 15px; margin-bottom: 20px; }
+            .control-buttons { background: #ff6b9d; border: none; }
+            .control-btn { color: #fff; }
+            .control-btn:first-child { background: #ff6b9d; }
+            .control-btn.border-right { background: #fff; color: #000; }
+            .control-btn:last-child { background: #000; color: #fff; }
+            .pagination-dots { gap: 8px; }
+            .pagination-dot { border-color: #000; }
+            .pagination-dot.active { background: #000; }
+            .slide-caption { margin: 20px 0; }
+            .slide-cta { padding: 14px 28px; min-width: 200px; }
+            .brand-logo { bottom: 140px; right: 20px; width: 50px; height: 50px; }
+            .news, .patients, .partners { padding: 80px 20px; }
             .partners-grid { grid-template-columns: 1fr; }
         }
     </style>
