@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CellveraPharma - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Classic Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .slide-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scale-up {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scale-up.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .stagger-delay:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-delay:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-delay:nth-child(3) { transition-delay: 0.3s; }
+        .stagger-delay:nth-child(4) { transition-delay: 0.4s; }
+        
+        /* Full Image Hero Slider */
+        .hero-slider {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+        .hero-slider {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(13, 79, 79, 0.08) 0%, rgba(26, 138, 138, 0.05) 50%, rgba(240, 247, 247, 0.95) 100%);
+        }
+        .slide-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 0.4fr 0.6fr;
+            gap: 0;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: grid;
+            grid-template-columns: 0.4fr 0.6fr;
+        }
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        .slide-media {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 150px 0 0 0;
+        }
+        .slide-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        .slide-peek {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            overflow: hidden;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .slide-peek img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+        .slide-content {
+            position: relative;
+            z-index: 10;
+            max-width: 650px;
+            padding: 0 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .slide-caption {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #4a6b6b;
+            margin: 25px 0;
+            max-width: 600px;
+        }
+        .slide-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 16px 35px;
+            min-width: 220px;
+            background: #fff;
+            border: 3px solid #0d4f4f;
+            border-radius: 50px;
+            color: #0d4f4f;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .slide-cta:hover {
+            background: #0d4f4f;
+            color: #fff;
+        }
+        .slide-cta img {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+        }
+        .slide-cta:hover img {
+            transform: translateX(5px);
+        }
+        .utility-icon {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: #0d4f4f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(13, 79, 79, 0.3);
+            transition: transform 0.3s;
+            z-index: 100;
+        }
+        .utility-icon:hover {
+            transform: scale(1.1);
+        }
+        .slide-headline {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #0d4f4f 0%, #1a8a8a 50%, #4a9a9a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .slide-description {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #4a6b6b;
+            margin-bottom: 30px;
+        }
+        .slide-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 16px 35px;
+            min-width: 220px;
+            background: transparent;
+            border: 2px solid #0d4f4f;
+            border-radius: 50px;
+            color: #0d4f4f;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .slide-cta:hover {
+            background: #0d4f4f;
+            color: #fff;
+        }
+        .slide-cta img {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+        }
+        .slide-cta:hover img {
+            transform: translateX(5px);
+        }
+        .brand-logo {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        .brand-logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        .carousel-controls {
+            position: absolute;
+            bottom: 40px;
+            left: 60px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            z-index: 10;
+        }
+        .control-buttons {
+            display: flex;
+            gap: 0;
+            background: #0d4f4f;
+            border-radius: 50px;
+            overflow: hidden;
+            padding: 5px;
+        }
+        .control-btn {
+            width: 48px;
+            height: 48px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .control-btn:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        .control-btn.border-right {
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+        .pagination-dots {
+            display: flex;
+            gap: 12px;
+        }
+        .pagination-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid #0d4f4f;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .pagination-dot.active {
+            background: #0d4f4f;
+            border-color: #0d4f4f;
+        }
+        
+        /* News Section */
+        .news {
+            padding: 100px 60px;
+            background: linear-gradient(135deg, rgba(13, 79, 79, 0.08) 0%, rgba(26, 138, 138, 0.05) 100%);
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1300px;
+            margin: 50px auto 0;
+        }
+        .news-item {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        .news-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(13, 79, 79, 0.2);
+        }
+        .news-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .news-content {
+            padding: 25px;
+        }
+        .news-date {
+            display: inline-block;
+            background: #f0f7f7;
+            color: #0d4f4f;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .news-content h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.3rem;
+            color: #0d4f4f;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        .news-content p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .news-link {
+            color: #0d4f4f;
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.3s;
+        }
+        .news-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Patient Stories */
+        .patients {
+            padding: 100px 60px;
+            background: #fff;
+        }
+        .patients-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1300px;
+            margin: 50px auto 0;
+        }
+        .patient-card {
+            background: linear-gradient(135deg, #f0f7f7 0%, #e8f4f4 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .patient-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(13, 79, 79, 0.15);
+        }
+        .patient-img {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        .patient-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+        .patient-card:hover .patient-img img {
+            transform: scale(1.05);
+        }
+        .patient-content {
+            padding: 30px;
+        }
+        .patient-quote {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #4a6b6b;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .patient-name {
+            color: #0d4f4f;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        /* Partnerships */
+        .partners {
+            padding: 100px 60px;
+            background: linear-gradient(135deg, rgba(13, 79, 79, 0.08) 0%, rgba(26, 138, 138, 0.05) 100%);
+        }
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1300px;
+            margin: 50px auto 0;
+        }
+        .partner-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .partner-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(13, 79, 79, 0.2);
+        }
+        .partner-logo {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        .partner-card h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.2rem;
+            color: #0d4f4f;
+            margin-bottom: 10px;
+        }
+        .partner-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 1000px) {
+            .slide-container { grid-template-columns: 1fr; }
+            .slide { grid-template-columns: 1fr; }
+            .slide-media { height: 400px; border-radius: 100px 8px 8px 8px; }
+            .slide-content { padding: 40px 30px; }
+            .slide-headline { font-size: 2.5rem; }
+            .news-grid { grid-template-columns: 1fr; }
+            .patients-grid { grid-template-columns: 1fr; }
+            .partners-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 1000px) {
+            .slide-container { grid-template-columns: 1fr; }
+            .slide { grid-template-columns: 1fr; }
+            .slide-media { height: 400px; border-radius: 100px 8px 8px 8px; }
+            .slide-content { padding: 40px 30px; }
+            .slide-headline { font-size: 2.5rem; }
+            .news-grid { grid-template-columns: 1fr; }
+            .patients-grid { grid-template-columns: 1fr; }
+            .partners-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .hero-slider { height: auto; min-height: 100vh; }
+            .slide-container { grid-template-columns: 1fr; }
+            .slide { grid-template-columns: 1fr; position: relative; height: auto; }
+            .slide-content { padding: 30px 20px; order: 1; }
+            .slide-media { height: 350px; border-radius: 60px 8px 8px 8px; order: 2; }
+            .carousel-controls { bottom: 30px; left: 30px; }
+            .brand-logo { bottom: 100px; right: 30px; }
+            .slide-headline { font-size: 2rem; }
+            .slide-description { font-size: 1rem; }
+            .slide-cta { padding: 14px 24px; min-width: 200px; }
+            .control-btn { width: 45px; height: 45px; }
+            .news, .patients, .partners { padding: 80px 20px; }
+            .partners-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera Logo" style="height: 45px; width: auto;">
+        </a>
+        <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <div class="dropdown">
+                <a href="science.html">Science ▾</a>
+                <div class="dropdown-content">
+                    <a href="science-rd.html">Research & Development</a>
+                    <a href="science-allergic.html">Allergic & Inflammatory Diseases</a>
+                    <a href="science-cardio.html">Cardiovascular & Metabolic Diseases</a>
+                    <a href="science-rare.html">Rare Diseases</a>
+                </div>
+            </div>
+            <a href="medicines.html">Medicines</a>
+            <div class="dropdown">
+                <a href="responsibility.html">Responsibility ▾</a>
+                <div class="dropdown-content">
+                    <a href="responsibility-approach.html">Our Approach</a>
+                    <a href="responsibility-equity.html">Health Equity & Access</a>
+                    <a href="responsibility-environment.html">Environmental Sustainability</a>
+                </div>
+            </div>
+            <a href="careers.html">Careers</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="header-brand">CELLVERA</div>
+        <div class="header-actions">
+            <span class="header-icon">🌐</span>
+            <span class="header-icon">▼</span>
+            <span class="header-menu">☰</span>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider">
+        <div class="hero-bg" id="heroBg"></div>
+        
+        <!-- Static Text Area -->
+        <div class="hero-text">
+            <h1 class="hero-headline gradient-text" id="heroHeadline">Pioneering Progress in Oncology</h1>
+        </div>
+        
+        <!-- Sliding Image Track -->
+        <div class="carousel-track-container">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=1200&h=800&fit=crop" alt="Oncology Research">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=800&fit=crop" alt="Genetic Research">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=800&fit=crop" alt="Leadership">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=800&fit=crop" alt="STEM Education">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Controls -->
+        <div class="carousel-controls">
+            <div class="control-group">
+                <button class="ctrl-btn ctrl-left" onclick="prevSlide()">❮</button>
+                <button class="ctrl-btn ctrl-play" onclick="togglePlay()">⏸</button>
+                <button class="ctrl-btn ctrl-right" onclick="nextSlide()">❯</button>
+            </div>
+            <div class="pagination-dots" id="paginationDots"></div>
+        </div>
+        
+        <!-- Caption & CTA -->
+        <div class="hero-caption">
+            <p id="heroCaption">Discover our unwavering commitment to transforming cancer care and improving patient outcomes through innovative clinical research.</p>
+            <a href="science-rd.html" class="hero-cta" id="heroCta">
+                Explore Oncology
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d4f4f' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E" alt="Arrow">
+            </a>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <div class="quick-links">
+        <a href="about.html" class="quick-link stagger-delay">📋 About Us</a>
+        <a href="medicines.html" class="quick-link stagger-delay">💊 Our Medicines</a>
+        <a href="#" class="quick-link stagger-delay">🔬 Research Pipeline</a>
+        <a href="#" class="quick-link stagger-delay">🏥 Clinical Trials</a>
+        <a href="careers.html" class="quick-link stagger-delay">💼 Careers</a>
+    </div>
+
+    <!-- Focus Areas -->
+    <section class="features" id="focus">
+        <div class="section-header fade-in">
+            <h2>Our Focus Areas</h2>
+            <p>Advancing medicine across therapeutic areas with the greatest patient needs.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature scale-up stagger-delay">
+                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=220&fit=crop" alt="Precision Medicine" class="feature-img">
+                <div class="feature-content">
+                    <h3>Precision Medicine</h3>
+                    <p>Targeted therapies for individual patient profiles.</p>
+                </div>
+            </div>
+            <div class="feature scale-up stagger-delay">
+                <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=400&h=220&fit=crop" alt="Cardiovascular" class="feature-img">
+                <div class="feature-content">
+                    <h3>Cardiovascular</h3>
+                    <p>Innovative treatments for heart conditions.</p>
+                </div>
+            </div>
+            <div class="feature scale-up stagger-delay">
+                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=220&fit=crop" alt="Neuroscience" class="feature-img">
+                <div class="feature-content">
+                    <h3>Neuroscience</h3>
+                    <p>Brain and nervous system treatments.</p>
+                </div>
+            </div>
+            <div class="feature scale-up stagger-delay">
+                <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=400&h=220&fit=crop" alt="Infectious Disease" class="feature-img">
+                <div class="feature-content">
+                    <h3>Infectious Disease</h3>
+                    <p>Fighting resistant infections.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News -->
+    <section class="news fade-in">
+        <div class="section-header">
+            <h2>Latest News & Milestones</h2>
+            <p>Recent breakthroughs, approvals, and clinical trial updates.</p>
+        </div>
+        <div class="news-grid">
+            <div class="news-item scale-up stagger-delay">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=250&fit=crop" alt="FDA Approval">
+                <div class="news-content">
+                    <span class="news-date">March 2026</span>
+                    <h3>FDA Grants Breakthrough Therapy Designation</h3>
+                    <p>Our oncology candidate receives accelerated pathway for rare cancer treatment.</p>
+                    <a href="#" class="news-link">Read More →</a>
+                </div>
+            </div>
+            <div class="news-item scale-up stagger-delay">
+                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=250&fit=crop" alt="Clinical Trial">
+                <div class="news-content">
+                    <span class="news-date">February 2026</span>
+                    <h3>Phase III Trial Shows Promising Results</h3>
+                    <p>Cardiovascular drug demonstrates 40% reduction in primary endpoints.</p>
+                    <a href="#" class="news-link">Read More →</a>
+                </div>
+            </div>
+            <div class="news-item scale-up stagger-delay">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=250&fit=crop" alt="Partnership">
+                <div class="news-content">
+                    <span class="news-date">January 2026</span>
+                    <h3>Strategic Research Collaboration Announced</h3>
+                    <p>Partnership with leading university expands gene therapy capabilities.</p>
+                    <a href="#" class="news-link">Read More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Stories -->
+    <section class="patients fade-in">
+        <div class="section-header">
+            <h2>Patient Stories</h2>
+            <p>Real lives changed by our medicines - stories of hope and healing.</p>
+        </div>
+        <div class="patients-grid">
+            <div class="patient-card scale-up stagger-delay">
+                <div class="patient-img">
+                    <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=300&h=300&fit=crop" alt="Patient Story">
+                </div>
+                <div class="patient-content">
+                    <p class="patient-quote">"Cellvera's treatment gave me back my life. After years of struggle, I can finally play with my grandchildren again."</p>
+                    <p class="patient-name">— Sarah M., Cardiovascular Patient</p>
+                </div>
+            </div>
+            <div class="patient-card scale-up stagger-delay">
+                <div class="patient-img">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=300&h=300&fit=crop" alt="Patient Story">
+                </div>
+                <div class="patient-content">
+                    <p class="patient-quote">"The clinical trial gave me hope when all other options failed. Three years later, I'm still thriving."</p>
+                    <p class="patient-name">— James K., Oncology Survivor</p>
+                </div>
+            </div>
+            <div class="patient-card scale-up stagger-delay">
+                <div class="patient-img">
+                    <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=300&h=300&fit=crop" alt="Patient Story">
+                </div>
+                <div class="patient-content">
+                    <p class="patient-quote">"As a parent of a child with rare disease, Cellvera's research is our light at the end of the tunnel."</p>
+                    <p class="patient-name">— Maria L., Parent Advocate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnerships -->
+    <section class="partners fade-in">
+        <div class="section-header">
+            <h2>Research Partnerships</h2>
+            <p>Collaborating with world-class institutions to advance medicine.</p>
+        </div>
+        <div class="partners-grid">
+            <div class="partner-card scale-up stagger-delay">
+                <div class="partner-logo">🏛️</div>
+                <h3>Harvard Medical School</h3>
+                <p>Gene therapy research collaboration</p>
+            </div>
+            <div class="partner-card scale-up stagger-delay">
+                <div class="partner-logo">🔬</div>
+                <h3>Max Planck Institute</h3>
+                <p>Neuroscience drug discovery</p>
+            </div>
+            <div class="partner-card scale-up stagger-delay">
+                <div class="partner-logo">🏥</div>
+                <h3>Mayo Clinic</h3>
+                <p>Clinical trial network partnership</p>
+            </div>
+            <div class="partner-card scale-up stagger-delay">
+                <div class="partner-logo">🧬</div>
+                <h3>Broad Institute</h3>
+                <p>Genomic medicine research</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats slide-left">
+        <div class="stats-grid">
+            <div class="stat-item scale-up stagger-delay">
+                <h3>20+</h3>
+                <p>Years of Innovation</p>
+            </div>
+            <div class="stat-item scale-up stagger-delay">
+                <h3>85+</h3>
+                <p>Approved Medicines</p>
+            </div>
+            <div class="stat-item scale-up stagger-delay">
+                <h3>100+</h3>
+                <p>Countries Served</p>
+            </div>
+            <div class="stat-item scale-up stagger-delay">
+                <h3>1B+</h3>
+                <p>Patients Helped</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <section class="cta fade-in">
+        <h2>Join Our Mission</h2>
+        <p>Be part of a team making a real difference in global health. Explore career opportunities at CellveraPharma.</p>
+        <a href="careers.html" class="btn-primary">View Open Positions</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera Logo" style="height: 40px; width: auto;">
+                    CellveraPharma
+                </a>
+                <p>The One JLT Tower, 1401, Dubai, UAE<br>mail@cellverapharma.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Leadership</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Science</h4>
+                <ul>
+                    <li><a href="medicines.html">Medicines</a></li>
+                    <li><a href="#">Pipeline</a></li>
+                    <li><a href="#">Clinical Trials</a></li>
+                    <li><a href="#">Publications</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Investors</a></li>
+                    <li><a href="#">Media</a></li>
+                    <li><a href="#">Healthcare Pros</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 CellveraPharma. All rights reserved.</span>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Cookies</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Classic Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Dropdown Menu Click Handler
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                // Close all other dropdowns
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    if (d !== this) d.classList.remove('active');
+                });
+                // Toggle this dropdown
+                this.classList.toggle('active');
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            }
+        });
+
+        // Full Image Hero Slider
+        let currentSlide = 0;
+        const totalSlides = 4;
+        let isPlaying = true;
+        let slideInterval;
+        
+        function initSlider() {
+            const dotsContainer = document.getElementById('paginationDots');
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'pagination-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+            startAutoPlay();
+        }
+        
+        function showSlide(index) {
+            document.querySelectorAll('.slide').forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) slide.classList.add('active');
+            });
+            document.querySelectorAll('.pagination-dot').forEach((dot, i) => {
+                dot.classList.remove('active');
+                if (i === index) dot.classList.add('active');
+            });
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+            if (isPlaying) {
+                clearInterval(slideInterval);
+                startAutoPlay();
+            }
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+        
+        function startAutoPlay() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        function stopAutoPlay() {
+            clearInterval(slideInterval);
+        }
+        
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            const btn = document.querySelector('.control-btn.border-right');
+            if (isPlaying) {
+                btn.innerHTML = '▶';
+                startAutoPlay();
+            } else {
+                btn.innerHTML = '⏸';
+                stopAutoPlay();
+            }
+        }
+        
+        // Initialize slider on load
+        initSlider();
+        
+        // Mobile Slider Functions
+        let currentMobileSlide = 0;
+        const totalMobileSlides = 4;
+        let isMobilePlaying = true;
+        let mobileSlideInterval;
+        
+        function initMobileSlider() {
+            // Create dots for first slide
+            updateMobileDots(0);
+            startMobileAutoPlay();
+        }
+        
+        function showMobileSlide(index) {
+            for (let i = 0; i < totalMobileSlides; i++) {
+                document.getElementById('mobileSlide' + (i + 1)).style.display = 'none';
+            }
+            document.getElementById('mobileSlide' + (index + 1)).style.display = 'block';
+            updateMobileDots(index);
+        }
+        
+        function updateMobileDots(activeIndex) {
+            const dotsContainers = ['mobileDots', 'mobileDots2', 'mobileDots3', 'mobileDots4'];
+            dotsContainers.forEach((containerId, slideIndex) => {
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.innerHTML = '';
+                    for (let i = 0; i < totalMobileSlides; i++) {
+                        const dot = document.createElement('div');
+                        dot.className = 'mobile-dot' + (i === activeIndex ? ' active' : '');
+                        dot.onclick = () => goToMobileSlide(i);
+                        container.appendChild(dot);
+                    }
+                }
+            });
+        }
+        
+        function goToMobileSlide(index) {
+            currentMobileSlide = index;
+            showMobileSlide(currentMobileSlide);
+            if (isMobilePlaying) {
+                clearInterval(mobileSlideInterval);
+                startMobileAutoPlay();
+            }
+        }
+        
+        function nextMobileSlide() {
+            currentMobileSlide = (currentMobileSlide + 1) % totalMobileSlides;
+            showMobileSlide(currentMobileSlide);
+        }
+        
+        function prevMobileSlide() {
+            currentMobileSlide = (currentMobileSlide - 1 + totalMobileSlides) % totalMobileSlides;
+            showMobileSlide(currentMobileSlide);
+        }
+        
+        function startMobileAutoPlay() {
+            mobileSlideInterval = setInterval(nextMobileSlide, 5000);
+        }
+        
+        function stopMobileAutoPlay() {
+            clearInterval(mobileSlideInterval);
+        }
+        
+        function toggleMobilePlay() {
+            isMobilePlaying = !isMobilePlaying;
+            const playBtns = document.querySelectorAll('.mobile-btn.play');
+            if (isMobilePlaying) {
+                playBtns.forEach(btn => btn.innerHTML = '▶');
+                startMobileAutoPlay();
+            } else {
+                playBtns.forEach(btn => btn.innerHTML = '⏸');
+                stopMobileAutoPlay();
+            }
+        }
+        
+        // Initialize mobile slider
+        if (window.innerWidth <= 600) {
+            initMobileSlider();
+        }
+    </script>
+</body>
+</html>
