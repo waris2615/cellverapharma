@@ -470,26 +470,148 @@
             .patients-grid { grid-template-columns: 1fr; }
             .partners-grid { grid-template-columns: repeat(2, 1fr); }
         }
+        /* Mobile Only Slide - Completely Separate */
+        .mobile-slide {
+            display: none;
+        }
         @media (max-width: 600px) {
-            .hero-slider { height: auto; min-height: 100vh; padding: 80px 20px 20px; }
-            .slide-container { display: block; }
-            .slide { position: relative; height: auto; display: block; }
-            .slide-content { padding: 0 0 20px; }
-            .slide-headline { font-size: 2rem; text-transform: uppercase; }
-            .slide-media { height: 320px; border-radius: 80px 0 0 0; margin-bottom: 15px; }
-            .slide-peek { right: -40px; width: 40px; }
-            .carousel-controls { position: relative; bottom: auto; left: auto; margin-top: 15px; margin-bottom: 20px; }
-            .control-buttons { background: #ff6b9d; border: none; }
-            .control-btn { color: #fff; }
-            .control-btn:first-child { background: #ff6b9d; }
-            .control-btn.border-right { background: #fff; color: #000; }
-            .control-btn:last-child { background: #000; color: #fff; }
-            .pagination-dots { gap: 8px; }
-            .pagination-dot { border-color: #000; }
-            .pagination-dot.active { background: #000; }
-            .slide-caption { margin: 20px 0; }
-            .slide-cta { padding: 14px 28px; min-width: 200px; }
-            .brand-logo { bottom: 140px; right: 20px; width: 50px; height: 50px; }
+            .hero-slider { height: auto; min-height: 100vh; padding: 80px 20px 20px; background: linear-gradient(180deg, #f0f7f7 0%, #fff 100%); }
+            .slide-container { display: none; } /* Hide desktop slides */
+            
+            .mobile-slide {
+                display: block;
+                position: relative;
+            }
+            .mobile-slide-content {
+                padding: 0 0 25px;
+            }
+            .mobile-headline {
+                font-family: 'Libre Baskerville', serif;
+                font-size: 2rem;
+                font-weight: 700;
+                line-height: 1.2;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                background: linear-gradient(135deg, #0d4f4f 0%, #1a8a8a 50%, #4a9a9a 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            .mobile-media {
+                position: relative;
+                width: 100%;
+                height: 300px;
+                border-radius: 80px 0 0 0;
+                overflow: hidden;
+                margin-bottom: 20px;
+            }
+            .mobile-media img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .mobile-peek {
+                position: absolute;
+                top: 0;
+                right: -30px;
+                width: 30px;
+                height: 100%;
+                overflow: hidden;
+                opacity: 0.4;
+            }
+            .mobile-peek img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .mobile-controls {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 20px;
+            }
+            .mobile-btn-group {
+                display: flex;
+                background: #0d4f4f;
+                border-radius: 50px;
+                overflow: hidden;
+                padding: 4px;
+            }
+            .mobile-btn {
+                width: 48px;
+                height: 48px;
+                background: transparent;
+                border: none;
+                color: #fff;
+                font-size: 1.3rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .mobile-btn.play {
+                background: #fff;
+                color: #0d4f4f;
+            }
+            .mobile-dots {
+                display: flex;
+                gap: 10px;
+            }
+            .mobile-dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: transparent;
+                border: 2px solid #0d4f4f;
+                cursor: pointer;
+            }
+            .mobile-dot.active {
+                background: #0d4f4f;
+            }
+            .mobile-caption {
+                font-family: 'DM Sans', sans-serif;
+                font-size: 1rem;
+                line-height: 1.7;
+                color: #4a6b6b;
+                margin-bottom: 20px;
+            }
+            .mobile-cta {
+                display: inline-flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 15px;
+                padding: 16px 35px;
+                background: #fff;
+                border: 3px solid #0d4f4f;
+                border-radius: 50px;
+                color: #0d4f4f;
+                font-family: 'DM Sans', sans-serif;
+                font-size: 1rem;
+                font-weight: 700;
+                text-decoration: none;
+            }
+            .mobile-cta img {
+                width: 20px;
+                height: 20px;
+            }
+            .mobile-brand {
+                position: absolute;
+                bottom: 100px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                background: #fff;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+            .mobile-brand img {
+                width: 35px;
+                height: 35px;
+                object-fit: contain;
+            }
             .news, .patients, .partners { padding: 80px 20px; }
             .partners-grid { grid-template-columns: 1fr; }
         }
@@ -695,6 +817,119 @@
                     <h3>Infectious Disease</h3>
                     <p>Fighting resistant infections.</p>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Slides (Hidden on Desktop) -->
+        <div class="mobile-slide" id="mobileSlide1">
+            <div class="mobile-slide-content">
+                <h2 class="mobile-headline">Pioneering Progress in Oncology</h2>
+                <div class="mobile-media">
+                    <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=800&h=600&fit=crop" alt="Oncology">
+                    <div class="mobile-peek">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=600&fit=crop" alt="Next">
+                    </div>
+                </div>
+                <div class="mobile-controls">
+                    <div class="mobile-btn-group">
+                        <button class="mobile-btn" onclick="prevMobileSlide()">❮</button>
+                        <button class="mobile-btn play" onclick="toggleMobilePlay()">▶</button>
+                        <button class="mobile-btn" onclick="nextMobileSlide()">❯</button>
+                    </div>
+                    <div class="mobile-dots" id="mobileDots"></div>
+                </div>
+                <p class="mobile-caption">Discover our unwavering commitment to transforming cancer care and improving patient outcomes through innovative clinical research.</p>
+                <a href="science-rd.html" class="mobile-cta">
+                    Explore Oncology
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d4f4f' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E" alt="Arrow">
+                </a>
+            </div>
+            <div class="mobile-brand">
+                <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
+            </div>
+        </div>
+        
+        <div class="mobile-slide" id="mobileSlide2" style="display: none;">
+            <div class="mobile-slide-content">
+                <h2 class="mobile-headline">The Genetic Link to Nicotine Dependence</h2>
+                <div class="mobile-media">
+                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=600&fit=crop" alt="Genetics">
+                    <div class="mobile-peek">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=600&fit=crop" alt="Next">
+                    </div>
+                </div>
+                <div class="mobile-controls">
+                    <div class="mobile-btn-group">
+                        <button class="mobile-btn" onclick="prevMobileSlide()">❮</button>
+                        <button class="mobile-btn play" onclick="toggleMobilePlay()">▶</button>
+                        <button class="mobile-btn" onclick="nextMobileSlide()">❯</button>
+                    </div>
+                    <div class="mobile-dots" id="mobileDots2"></div>
+                </div>
+                <p class="mobile-caption">Our dedicated researchers have identified specific variants within the CHRNB3 gene that correlate with a natural reduction in smoking behaviors.</p>
+                <a href="science-rd.html" class="mobile-cta">
+                    Read the Study
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d4f4f' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E" alt="Arrow">
+                </a>
+            </div>
+            <div class="mobile-brand">
+                <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
+            </div>
+        </div>
+        
+        <div class="mobile-slide" id="mobileSlide3" style="display: none;">
+            <div class="mobile-slide-content">
+                <h2 class="mobile-headline">Visionary Leadership: Expert Roundtable</h2>
+                <div class="mobile-media">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=600&fit=crop" alt="Leadership">
+                    <div class="mobile-peek">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=600&fit=crop" alt="Next">
+                    </div>
+                </div>
+                <div class="mobile-controls">
+                    <div class="mobile-btn-group">
+                        <button class="mobile-btn" onclick="prevMobileSlide()">❮</button>
+                        <button class="mobile-btn play" onclick="toggleMobilePlay()">▶</button>
+                        <button class="mobile-btn" onclick="nextMobileSlide()">❯</button>
+                    </div>
+                    <div class="mobile-dots" id="mobileDots3"></div>
+                </div>
+                <p class="mobile-caption">Join trailblazing women in the field of ophthalmology as they discuss industry breakthroughs, career milestones, and the future of eye care.</p>
+                <a href="about.html" class="mobile-cta">
+                    Watch Discussion
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d4f4f' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E" alt="Arrow">
+                </a>
+            </div>
+            <div class="mobile-brand">
+                <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
+            </div>
+        </div>
+        
+        <div class="mobile-slide" id="mobileSlide4" style="display: none;">
+            <div class="mobile-slide-content">
+                <h2 class="mobile-headline">Empowering Tomorrow's Innovators</h2>
+                <div class="mobile-media">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=600&fit=crop" alt="STEM">
+                    <div class="mobile-peek">
+                        <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=800&h=600&fit=crop" alt="Next">
+                    </div>
+                </div>
+                <div class="mobile-controls">
+                    <div class="mobile-btn-group">
+                        <button class="mobile-btn" onclick="prevMobileSlide()">❮</button>
+                        <button class="mobile-btn play" onclick="toggleMobilePlay()">▶</button>
+                        <button class="mobile-btn" onclick="nextMobileSlide()">❯</button>
+                    </div>
+                    <div class="mobile-dots" id="mobileDots4"></div>
+                </div>
+                <p class="mobile-caption">Celebrating a renewed, decade-long commitment to inspiring youth and fostering the next generation of scientific leaders.</p>
+                <a href="careers.html" class="mobile-cta">
+                    Discover STEM Programs
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d4f4f' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E" alt="Arrow">
+                </a>
+            </div>
+            <div class="mobile-brand">
+                <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
             </div>
         </div>
     </section>
@@ -989,6 +1224,86 @@
         
         // Initialize slider on load
         initSlider();
+        
+        // Mobile Slider Functions
+        let currentMobileSlide = 0;
+        const totalMobileSlides = 4;
+        let isMobilePlaying = true;
+        let mobileSlideInterval;
+        
+        function initMobileSlider() {
+            // Create dots for first slide
+            updateMobileDots(0);
+            startMobileAutoPlay();
+        }
+        
+        function showMobileSlide(index) {
+            for (let i = 0; i < totalMobileSlides; i++) {
+                document.getElementById('mobileSlide' + (i + 1)).style.display = 'none';
+            }
+            document.getElementById('mobileSlide' + (index + 1)).style.display = 'block';
+            updateMobileDots(index);
+        }
+        
+        function updateMobileDots(activeIndex) {
+            const dotsContainers = ['mobileDots', 'mobileDots2', 'mobileDots3', 'mobileDots4'];
+            dotsContainers.forEach((containerId, slideIndex) => {
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.innerHTML = '';
+                    for (let i = 0; i < totalMobileSlides; i++) {
+                        const dot = document.createElement('div');
+                        dot.className = 'mobile-dot' + (i === activeIndex ? ' active' : '');
+                        dot.onclick = () => goToMobileSlide(i);
+                        container.appendChild(dot);
+                    }
+                }
+            });
+        }
+        
+        function goToMobileSlide(index) {
+            currentMobileSlide = index;
+            showMobileSlide(currentMobileSlide);
+            if (isMobilePlaying) {
+                clearInterval(mobileSlideInterval);
+                startMobileAutoPlay();
+            }
+        }
+        
+        function nextMobileSlide() {
+            currentMobileSlide = (currentMobileSlide + 1) % totalMobileSlides;
+            showMobileSlide(currentMobileSlide);
+        }
+        
+        function prevMobileSlide() {
+            currentMobileSlide = (currentMobileSlide - 1 + totalMobileSlides) % totalMobileSlides;
+            showMobileSlide(currentMobileSlide);
+        }
+        
+        function startMobileAutoPlay() {
+            mobileSlideInterval = setInterval(nextMobileSlide, 5000);
+        }
+        
+        function stopMobileAutoPlay() {
+            clearInterval(mobileSlideInterval);
+        }
+        
+        function toggleMobilePlay() {
+            isMobilePlaying = !isMobilePlaying;
+            const playBtns = document.querySelectorAll('.mobile-btn.play');
+            if (isMobilePlaying) {
+                playBtns.forEach(btn => btn.innerHTML = '▶');
+                startMobileAutoPlay();
+            } else {
+                playBtns.forEach(btn => btn.innerHTML = '⏸');
+                stopMobileAutoPlay();
+            }
+        }
+        
+        // Initialize mobile slider
+        if (window.innerWidth <= 600) {
+            initMobileSlider();
+        }
     </script>
 </body>
 </html>
