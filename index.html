@@ -53,14 +53,18 @@
         .hero-slider {
             position: relative;
             height: 100vh;
-            padding: 0;
+            width: 100%;
             overflow: hidden;
         }
         .slide-container {
             position: relative;
             height: 100%;
-            max-width: 100%;
-            margin: 0;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 0.4fr 0.6fr;
+            gap: 0;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         .slide {
             position: absolute;
@@ -70,54 +74,51 @@
             height: 100%;
             opacity: 0;
             transition: opacity 0.8s ease-in-out;
-            display: flex;
-            align-items: center;
         }
         .slide.active {
             opacity: 1;
             z-index: 1;
         }
-        .slide-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .slide-media {
+            position: relative;
             width: 100%;
             height: 100%;
-            background-size: cover;
-            background-position: center;
+            overflow: hidden;
+            border-radius: 150px 0 0 0;
         }
-        .slide-bg::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .slide-media img {
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, rgba(13, 79, 79, 0.7) 0%, rgba(13, 79, 79, 0.4) 50%, transparent 100%);
+            object-fit: cover;
+            object-position: center;
+            display: block;
         }
         .slide-content {
             position: relative;
             z-index: 10;
-            max-width: 700px;
+            max-width: 650px;
             padding: 0 60px;
-            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .slide-headline {
             font-family: 'Libre Baskerville', Georgia, serif;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 700;
             line-height: 1.15;
             margin-bottom: 25px;
-            color: #fff;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #0d4f4f 0%, #1a8a8a 50%, #4a9a9a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .slide-description {
             font-family: 'DM Sans', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             line-height: 1.8;
-            color: rgba(255,255,255,0.95);
+            color: #4a6b6b;
             margin-bottom: 30px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
         .slide-cta {
             display: inline-flex;
@@ -126,27 +127,24 @@
             gap: 15px;
             padding: 16px 35px;
             min-width: 220px;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.5);
+            background: transparent;
+            border: 2px solid #0d4f4f;
             border-radius: 50px;
-            color: #fff;
+            color: #0d4f4f;
             font-family: 'DM Sans', sans-serif;
             font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s;
-            cursor: pointer;
         }
         .slide-cta:hover {
-            background: rgba(255,255,255,0.25);
-            border-color: #fff;
+            background: #0d4f4f;
+            color: #fff;
         }
         .slide-cta img {
             width: 20px;
             height: 20px;
             transition: transform 0.3s;
-            filter: brightness(0) invert(1);
         }
         .slide-cta:hover img {
             transform: translateX(5px);
@@ -154,20 +152,20 @@
         .brand-logo {
             position: absolute;
             bottom: 30px;
-            right: 60px;
-            width: 70px;
-            height: 70px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
             background: rgba(255,255,255,0.95);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             z-index: 10;
         }
         .brand-logo img {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
         }
         .carousel-controls {
@@ -182,20 +180,18 @@
         .control-buttons {
             display: flex;
             gap: 0;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
+            background: #0d4f4f;
             border-radius: 50px;
             overflow: hidden;
             padding: 5px;
-            border: 1px solid rgba(255,255,255,0.3);
         }
         .control-btn {
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             background: transparent;
             border: none;
             color: #fff;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: background 0.3s;
             display: flex;
@@ -203,10 +199,10 @@
             justify-content: center;
         }
         .control-btn:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.15);
         }
         .control-btn.border-right {
-            border-right: 1px solid rgba(255,255,255,0.3);
+            border-right: 1px solid rgba(255,255,255,0.2);
         }
         .pagination-dots {
             display: flex;
@@ -217,71 +213,29 @@
             height: 12px;
             border-radius: 50%;
             background: transparent;
-            border: 2px solid rgba(255,255,255,0.5);
+            border: 2px solid #0d4f4f;
             cursor: pointer;
             transition: all 0.3s;
         }
         .pagination-dot.active {
-            background: #fff;
-            border-color: #fff;
-        }
-        .utility-icon {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 50px;
-            height: 50px;
             background: #0d4f4f;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(13, 79, 79, 0.3);
-            transition: transform 0.3s;
-            z-index: 100;
-        }
-        .utility-icon:hover {
-            transform: scale(1.1);
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: #0d4f4f;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.3rem;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(13, 79, 79, 0.3);
-            transition: all 0.3s;
-            z-index: 100;
-            border: none;
-        }
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            background: #1a8a8a;
+            border-color: #0d4f4f;
         }
         
         @media (max-width: 1000px) {
-            .slide-container, .slide.active { grid-template-columns: 1fr; gap: 50px; }
+            .slide-container { grid-template-columns: 1fr; }
+            .slide-media { height: 450px; border-radius: 100px 8px 8px 8px; }
+            .slide-content { padding: 40px 30px; }
             .slide-headline { font-size: 2.5rem; }
-            .slide-media-wrapper { height: 450px; }
         }
         @media (max-width: 600px) {
-            .hero-slider { padding: 80px 20px 40px; }
+            .hero-slider { height: auto; min-height: 100vh; }
+            .slide-media { height: 350px; border-radius: 60px 8px 8px 8px; }
             .slide-headline { font-size: 2rem; }
-            .slide-media-wrapper { height: 350px; border-radius: 60px 8px 8px 8px; }
-            .control-btn { width: 40px; height: 40px; }
-            .slide-cta { padding: 14px 24px; }
-            .utility-icon, .back-to-top { bottom: 20px; width: 45px; height: 45px; }
+            .slide-description { font-size: 1rem; }
+            .slide-cta { padding: 14px 24px; min-width: 200px; }
+            .control-btn { width: 45px; height: 45px; }
+            .carousel-controls { bottom: 30px; left: 30px; }
         }
     </style>
 </head>
@@ -321,12 +275,12 @@
         </nav>
     </header>
 
-    <!-- Classic Split Hero Slider -->
+    <!-- Full Image Hero Slider -->
     <section class="hero-slider">
         <div class="slide-container">
             <!-- Slide 1: Oncology -->
             <div class="slide active" data-index="0">
-                <div class="slide-left">
+                <div class="slide-content">
                     <h2 class="slide-headline">Pioneering Progress in Oncology</h2>
                     <p class="slide-description">Discover our unwavering commitment to transforming cancer care and improving patient outcomes through innovative clinical research and targeted therapies.</p>
                     <a href="science-rd.html" class="slide-cta">
@@ -334,30 +288,25 @@
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d4f4f' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E" alt="Arrow">
                     </a>
                 </div>
-                <div class="slide-right">
-                    <div class="slide-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=1200&h=600&fit=crop" alt="Oncology Research">
+                <div class="slide-media">
+                    <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=1200&h=800&fit=crop" alt="Oncology Research">
+                </div>
+                <div class="brand-logo">
+                    <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
+                </div>
+                <div class="carousel-controls">
+                    <div class="control-buttons">
+                        <button class="control-btn" onclick="prevSlide()">❮</button>
+                        <button class="control-btn border-right" onclick="togglePlay()">▶</button>
+                        <button class="control-btn" onclick="nextSlide()">❯</button>
                     </div>
-                    <div class="slide-peek">
-                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=600&fit=crop" alt="Next slide">
-                    </div>
-                    <div class="brand-logo">
-                        <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
-                    </div>
-                    <div class="carousel-controls">
-                        <div class="control-buttons">
-                            <button class="control-btn" onclick="prevSlide()">❮</button>
-                            <button class="control-btn border-right" onclick="togglePlay()">▶</button>
-                            <button class="control-btn" onclick="nextSlide()">❯</button>
-                        </div>
-                        <div class="pagination-dots" id="paginationDots"></div>
-                    </div>
+                    <div class="pagination-dots" id="paginationDots"></div>
                 </div>
             </div>
             
             <!-- Slide 2: Genetics -->
             <div class="slide" data-index="1">
-                <div class="slide-left">
+                <div class="slide-content">
                     <h2 class="slide-headline">The Genetic Link to Nicotine Dependence</h2>
                     <p class="slide-description">Our dedicated researchers have identified specific variants within the CHRNB3 gene that correlate with a natural reduction in smoking behaviors.</p>
                     <a href="science-rd.html" class="slide-cta">
@@ -365,18 +314,16 @@
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d4f4f' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E" alt="Arrow">
                     </a>
                 </div>
-                <div class="slide-right">
-                    <div class="slide-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=600&fit=crop" alt="DNA Research">
-                    </div>
-                    <div class="brand-logo">
-                        <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
-                    </div>
+                <div class="slide-media">
+                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=800&fit=crop" alt="DNA Research">
+                </div>
+                <div class="brand-logo">
+                    <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
                 </div>
                 <div class="carousel-controls">
                     <div class="control-buttons">
                         <button class="control-btn" onclick="prevSlide()">❮</button>
-                        <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
+                        <button class="control-btn border-right" onclick="togglePlay()">▶</button>
                         <button class="control-btn" onclick="nextSlide()">❯</button>
                     </div>
                     <div class="pagination-dots" id="paginationDots"></div>
@@ -385,7 +332,7 @@
             
             <!-- Slide 3: Leadership -->
             <div class="slide" data-index="2">
-                <div class="slide-left">
+                <div class="slide-content">
                     <h2 class="slide-headline">Visionary Leadership: Expert Roundtable</h2>
                     <p class="slide-description">Join trailblazing women in the field of ophthalmology as they discuss industry breakthroughs, career milestones, and the future of eye care.</p>
                     <a href="about.html" class="slide-cta">
@@ -393,18 +340,16 @@
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d4f4f' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E" alt="Arrow">
                     </a>
                 </div>
-                <div class="slide-right">
-                    <div class="slide-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop" alt="Leadership Discussion">
-                    </div>
-                    <div class="brand-logo">
-                        <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
-                    </div>
+                <div class="slide-media">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=800&fit=crop" alt="Leadership Discussion">
+                </div>
+                <div class="brand-logo">
+                    <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
                 </div>
                 <div class="carousel-controls">
                     <div class="control-buttons">
                         <button class="control-btn" onclick="prevSlide()">❮</button>
-                        <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
+                        <button class="control-btn border-right" onclick="togglePlay()">▶</button>
                         <button class="control-btn" onclick="nextSlide()">❯</button>
                     </div>
                     <div class="pagination-dots" id="paginationDots"></div>
@@ -413,7 +358,7 @@
             
             <!-- Slide 4: STEM -->
             <div class="slide" data-index="3">
-                <div class="slide-left">
+                <div class="slide-content">
                     <h2 class="slide-headline">Empowering Tomorrow's Innovators</h2>
                     <p class="slide-description">Celebrating a renewed, decade-long commitment to inspiring youth and fostering the next generation of scientific leaders through our national talent search.</p>
                     <a href="careers.html" class="slide-cta">
@@ -421,28 +366,22 @@
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d4f4f' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E" alt="Arrow">
                     </a>
                 </div>
-                <div class="slide-right">
-                    <div class="slide-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=600&fit=crop" alt="STEM Students">
-                    </div>
-                    <div class="brand-logo">
-                        <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
-                    </div>
+                <div class="slide-media">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=800&fit=crop" alt="STEM Students">
+                </div>
+                <div class="brand-logo">
+                    <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
                 </div>
                 <div class="carousel-controls">
                     <div class="control-buttons">
                         <button class="control-btn" onclick="prevSlide()">❮</button>
-                        <button class="control-btn border-right" onclick="togglePlay()">⏸</button>
+                        <button class="control-btn border-right" onclick="togglePlay()">▶</button>
                         <button class="control-btn" onclick="nextSlide()">❯</button>
                     </div>
                     <div class="pagination-dots" id="paginationDots"></div>
                 </div>
             </div>
         </div>
-        
-        <!-- Floating Elements -->
-        <div class="utility-icon" title="Privacy Settings">🔒</div>
-        <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to Top">↑</button>
     </section>
 
     <!-- Quick Links -->
@@ -608,7 +547,7 @@
             }
         });
 
-        // Classic Split Hero Slider
+        // Full Image Hero Slider
         let currentSlide = 0;
         const totalSlides = 4;
         let isPlaying = true;
@@ -668,10 +607,10 @@
             isPlaying = !isPlaying;
             const btn = document.querySelector('.control-btn.border-right');
             if (isPlaying) {
-                btn.innerHTML = '⏸';
+                btn.innerHTML = '▶';
                 startAutoPlay();
             } else {
-                btn.innerHTML = '▶';
+                btn.innerHTML = '⏸';
                 stopAutoPlay();
             }
         }
