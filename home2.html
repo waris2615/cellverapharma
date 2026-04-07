@@ -834,8 +834,8 @@
         });
 
         // Sticky Navigation
+        const nav = document.querySelector('nav');
         window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
             if (window.scrollY > 100) {
                 nav.classList.add('scrolled');
             } else {
@@ -844,8 +844,8 @@
         });
 
         // Scroll Reveal Animation
+        const reveals = document.querySelectorAll('.reveal');
         function reveal() {
-            const reveals = document.querySelectorAll('.reveal');
             reveals.forEach(element => {
                 const windowHeight = window.innerHeight;
                 const elementTop = element.getBoundingClientRect().top;
@@ -875,8 +875,8 @@
         });
 
         // Parallax Effect for Hero
+        const hero = document.querySelector('.hero');
         window.addEventListener('scroll', () => {
-            const hero = document.querySelector('.hero');
             const scrolled = window.scrollY;
             hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
         });
