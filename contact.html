@@ -77,7 +77,8 @@
             
             <div class="contact-form">
                 <h2>Send Us a Message</h2>
-                <form>
+                <form action="your-backend-endpoint" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" required>
