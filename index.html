@@ -1,919 +1,384 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CellveraPharma - Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Classic Scroll Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c3c6cf",
+                    "on-background": "#191c1e",
+                    "on-secondary-fixed": "#001b3e",
+                    "on-primary-container": "#708bb2",
+                    "on-error": "#ffffff",
+                    "secondary": "#005cba",
+                    "primary-fixed": "#d3e3ff",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#456084",
+                    "outline": "#74777f",
+                    "on-secondary-fixed-variant": "#00458e",
+                    "on-secondary-container": "#002d61",
+                    "background": "#f7f9fb",
+                    "surface-container": "#eceef0",
+                    "on-surface-variant": "#43474e",
+                    "tertiary-fixed-dim": "#b7c9d5",
+                    "on-tertiary-fixed": "#0c1e26",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f6",
+                    "on-tertiary-container": "#7b8c97",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#001c38",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface": "#f7f9fb",
+                    "on-tertiary-fixed-variant": "#384953",
+                    "tertiary": "#000e15",
+                    "secondary-fixed": "#d7e3ff",
+                    "secondary-fixed-dim": "#aac7ff",
+                    "surface-container-high": "#e6e8ea",
+                    "surface-container-highest": "#e0e3e5",
+                    "inverse-surface": "#2d3133",
+                    "inverse-primary": "#adc8f2",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#d8dadc",
+                    "primary-container": "#002344",
+                    "surface-variant": "#e0e3e5",
+                    "primary": "#000c1e",
+                    "primary-fixed-dim": "#adc8f2",
+                    "on-surface": "#191c1e",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#13242d",
+                    "surface-bright": "#f7f9fb",
+                    "on-primary-fixed-variant": "#2c486b",
+                    "secondary-container": "#5095fe",
+                    "tertiary-fixed": "#d3e5f1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-header {
+            backdrop-filter: blur(24px);
+            background: rgba(247, 249, 251, 0.8);
         }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .hero-gradient {
+            background: linear-gradient(135deg, #000c1e 0%, #002344 100%);
         }
-        .slide-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .slide-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .slide-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .slide-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .scale-up {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .scale-up.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .stagger-delay:nth-child(1) { transition-delay: 0.1s; }
-        .stagger-delay:nth-child(2) { transition-delay: 0.2s; }
-        .stagger-delay:nth-child(3) { transition-delay: 0.3s; }
-        .stagger-delay:nth-child(4) { transition-delay: 0.4s; }
-        
-        /* Full Image Hero Slider */
-        .hero-slider {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-            background: linear-gradient(135deg, rgba(13, 79, 79, 0.08) 0%, rgba(26, 138, 138, 0.05) 50%, rgba(240, 247, 247, 0.95) 100%);
-        }
-        .slide-container {
-            position: relative;
-            height: 100%;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 0.4fr 0.6fr;
-            gap: 0;
-            max-width: 1500px;
-            margin: 0 auto;
-        }
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-            display: grid;
-            grid-template-columns: 0.4fr 0.6fr;
-        }
-        .slide.active {
-            opacity: 1;
-            z-index: 1;
-        }
-        .slide-media {
-            position: relative;
-            width: 100%;
-            height: 75%;
-            overflow: hidden;
-            border-radius: 150px 0 0 0;
-        }
-        .slide-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-        }
-        .slide-peek {
-            position: absolute;
-            top: 0;
-            right: -80px;
-            width: 100px;
-            height: 100%;
-            overflow: hidden;
-            opacity: 0.5;
-            pointer-events: none;
-        }
-        .slide-peek img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .slide-content {
-            position: relative;
-            z-index: 10;
-            max-width: 650px;
-            padding: 0 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-        }
-        .slide-headline {
-            font-family: 'Libre Baskerville', Georgia, serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1.15;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #0d4f4f 0%, #1a8a8a 50%, #4a9a9a 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .slide-description {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #4a6b6b;
-            margin-bottom: 25px;
-        }
-        .slide-cta {
-            display: inline-flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            padding: 16px 35px;
-            min-width: 220px;
-            background: transparent;
-            border: 2px solid #0d4f4f;
-            border-radius: 50px;
-            color: #0d4f4f;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .slide-cta:hover {
-            background: #0d4f4f;
-            color: #fff;
-        }
-        .slide-cta img {
-            width: 20px;
-            height: 20px;
-            transition: transform 0.3s;
-        }
-        .slide-cta:hover img {
-            transform: translateX(5px);
-        }
-        .brand-logo {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 10;
-        }
-        .brand-logo img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-        }
-        .carousel-controls {
-            position: absolute;
-            bottom: 40px;
-            left: 60px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            z-index: 10;
-        }
-        .control-buttons {
-            display: flex;
-            gap: 0;
-            background: #0d4f4f;
-            border-radius: 50px;
-            overflow: hidden;
-            padding: 5px;
-        }
-        .control-btn {
-            width: 48px;
-            height: 48px;
-            background: transparent;
-            border: none;
-            color: #fff;
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .control-btn:hover {
-            background: rgba(255,255,255,0.15);
-        }
-        .control-btn.border-right {
-            border-right: 1px solid rgba(255,255,255,0.2);
-        }
-        .pagination-dots {
-            display: flex;
-            gap: 12px;
-        }
-        .pagination-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: transparent;
-            border: 2px solid #0d4f4f;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .pagination-dot.active {
-            background: #0d4f4f;
-            border-color: #0d4f4f;
-        }
-        
-        /* News Section */
-        .news {
-            padding: 100px 60px;
-            background: linear-gradient(135deg, rgba(13, 79, 79, 0.08) 0%, rgba(26, 138, 138, 0.05) 100%);
-        }
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 1300px;
-            margin: 50px auto 0;
-        }
-        .news-item {
-            background: #fff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-        }
-        .news-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(13, 79, 79, 0.2);
-        }
-        .news-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        .news-content {
-            padding: 25px;
-        }
-        .news-date {
-            display: inline-block;
-            background: #f0f7f7;
-            color: #0d4f4f;
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        .news-content h3 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.3rem;
-            color: #0d4f4f;
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-        .news-content p {
-            color: #666;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-        .news-link {
-            color: #0d4f4f;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        .news-link:hover {
-            text-decoration: underline;
-        }
-        
-        /* Patient Stories */
-        .patients {
-            padding: 100px 60px;
-            background: #fff;
-        }
-        .patients-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 1300px;
-            margin: 50px auto 0;
-        }
-        .patient-card {
-            background: linear-gradient(135deg, #f0f7f7 0%, #e8f4f4 100%);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-        .patient-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(13, 79, 79, 0.15);
-        }
-        .patient-img {
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-        }
-        .patient-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s;
-        }
-        .patient-card:hover .patient-img img {
-            transform: scale(1.05);
-        }
-        .patient-content {
-            padding: 30px;
-        }
-        .patient-quote {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.1rem;
-            font-style: italic;
-            color: #4a6b6b;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-        .patient-name {
-            color: #0d4f4f;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-        
-        /* Partnerships */
-        .partners {
-            padding: 100px 60px;
-            background: linear-gradient(135deg, rgba(13, 79, 79, 0.08) 0%, rgba(26, 138, 138, 0.05) 100%);
-        }
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            max-width: 1300px;
-            margin: 50px auto 0;
-        }
-        .partner-card {
-            background: #fff;
-            padding: 40px 30px;
-            border-radius: 12px;
-            text-align: center;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-        .partner-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(13, 79, 79, 0.2);
-        }
-        .partner-logo {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-        .partner-card h3 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.2rem;
-            color: #0d4f4f;
-            margin-bottom: 10px;
-        }
-        .partner-card p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-        
-        @media (max-width: 1000px) {
-            .slide-container { grid-template-columns: 1fr; }
-            .slide-media { height: 450px; border-radius: 100px 8px 8px 8px; }
-            .slide-content { padding: 40px 30px; }
-            .slide-headline { font-size: 2.5rem; }
-            .news-grid { grid-template-columns: 1fr; }
-            .patients-grid { grid-template-columns: 1fr; }
-            .partners-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .hero-slider { height: auto; min-height: 100vh; }
-            .slide-container { grid-template-columns: 1fr; }
-            .slide { grid-template-columns: 1fr; }
-            .slide-media { height: 350px; border-radius: 60px 8px 8px 8px; }
-            .slide-content { padding: 30px 20px; }
-            .slide-headline { font-size: 2rem; }
-            .slide-description { font-size: 1rem; }
-            .slide-cta { padding: 14px 24px; min-width: 200px; }
-            .control-btn { width: 45px; height: 45px; }
-            .carousel-controls { bottom: 30px; left: 30px; }
-            .news, .patients, .partners { padding: 80px 20px; }
-            .partners-grid { grid-template-columns: 1fr; }
+        .soft-shadow {
+            box-shadow: 0 12px 40px rgba(0, 12, 30, 0.06);
         }
     </style>
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <a href="index.html" class="logo">
-            <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera Logo" style="height: 45px; width: auto;">
-        </a>
-        <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <div class="dropdown">
-                <a href="science.html">Science ▾</a>
-                <div class="dropdown-content">
-                    <a href="science-rd.html">Research & Development</a>
-                    <a href="science-allergic.html">Allergic & Inflammatory Diseases</a>
-                    <a href="science-cardio.html">Cardiovascular & Metabolic Diseases</a>
-                    <a href="science-rare.html">Rare Diseases</a>
-                </div>
-            </div>
-            <a href="medicines.html">Medicines</a>
-            <div class="dropdown">
-                <a href="responsibility.html">Responsibility ▾</a>
-                <div class="dropdown-content">
-                    <a href="responsibility-approach.html">Our Approach</a>
-                    <a href="responsibility-equity.html">Health Equity & Access</a>
-                    <a href="responsibility-environment.html">Environmental Sustainability</a>
-                </div>
-            </div>
-            <a href="careers.html">Careers</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
-
-    <!-- Full Image Hero Slider -->
-    <section class="hero-slider">
-        <div class="slide-container">
-            <!-- Slide 1: Oncology -->
-            <div class="slide active" data-index="0">
-                <div class="slide-content">
-                    <h2 class="slide-headline">Pioneering Progress in Oncology</h2>
-                    <p class="slide-description">Discover our unwavering commitment to transforming cancer care and improving patient outcomes through innovative clinical research and targeted therapies.</p>
-                    <a href="science-rd.html" class="slide-cta">
-                        Explore Oncology
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d4f4f' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E" alt="Arrow">
-                    </a>
-                </div>
-                <div class="slide-media">
-                    <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=1200&h=800&fit=crop" alt="Oncology Research">
-                    <div class="slide-peek">
-                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=800&fit=crop" alt="Next slide">
-                    </div>
-                </div>
-                <div class="brand-logo">
-                    <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
-                </div>
-                <div class="carousel-controls">
-                    <div class="control-buttons">
-                        <button class="control-btn" onclick="prevSlide()">❮</button>
-                        <button class="control-btn border-right" onclick="togglePlay()">▶</button>
-                        <button class="control-btn" onclick="nextSlide()">❯</button>
-                    </div>
-                    <div class="pagination-dots" id="paginationDots"></div>
-                </div>
-            </div>
-            
-            <!-- Slide 2: Genetics -->
-            <div class="slide" data-index="1">
-                <div class="slide-content">
-                    <h2 class="slide-headline">The Genetic Link to Nicotine Dependence</h2>
-                    <p class="slide-description">Our dedicated researchers have identified specific variants within the CHRNB3 gene that correlate with a natural reduction in smoking behaviors.</p>
-                    <a href="science-rd.html" class="slide-cta">
-                        Read the Study
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d4f4f' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E" alt="Arrow">
-                    </a>
-                </div>
-                <div class="slide-media">
-                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=800&fit=crop" alt="DNA Research">
-                    <div class="slide-peek">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=800&fit=crop" alt="Next slide">
-                    </div>
-                </div>
-                <div class="brand-logo">
-                    <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
-                </div>
-                <div class="carousel-controls">
-                    <div class="control-buttons">
-                        <button class="control-btn" onclick="prevSlide()">❮</button>
-                        <button class="control-btn border-right" onclick="togglePlay()">▶</button>
-                        <button class="control-btn" onclick="nextSlide()">❯</button>
-                    </div>
-                    <div class="pagination-dots" id="paginationDots"></div>
-                </div>
-            </div>
-            
-            <!-- Slide 3: Leadership -->
-            <div class="slide" data-index="2">
-                <div class="slide-content">
-                    <h2 class="slide-headline">Visionary Leadership: Expert Roundtable</h2>
-                    <p class="slide-description">Join trailblazing women in the field of ophthalmology as they discuss industry breakthroughs, career milestones, and the future of eye care.</p>
-                    <a href="about.html" class="slide-cta">
-                        Watch Discussion
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d4f4f' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E" alt="Arrow">
-                    </a>
-                </div>
-                <div class="slide-media">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=800&fit=crop" alt="Leadership Discussion">
-                    <div class="slide-peek">
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=800&fit=crop" alt="Next slide">
-                    </div>
-                </div>
-                <div class="brand-logo">
-                    <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
-                </div>
-                <div class="carousel-controls">
-                    <div class="control-buttons">
-                        <button class="control-btn" onclick="prevSlide()">❮</button>
-                        <button class="control-btn border-right" onclick="togglePlay()">▶</button>
-                        <button class="control-btn" onclick="nextSlide()">❯</button>
-                    </div>
-                    <div class="pagination-dots" id="paginationDots"></div>
-                </div>
-            </div>
-            
-            <!-- Slide 4: STEM -->
-            <div class="slide" data-index="3">
-                <div class="slide-content">
-                    <h2 class="slide-headline">Empowering Tomorrow's Innovators</h2>
-                    <p class="slide-description">Celebrating a renewed, decade-long commitment to inspiring youth and fostering the next generation of scientific leaders through our national talent search.</p>
-                    <a href="careers.html" class="slide-cta">
-                        Discover STEM Programs
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d4f4f' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E" alt="Arrow">
-                    </a>
-                </div>
-                <div class="slide-media">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=800&fit=crop" alt="STEM Students">
-                    <div class="slide-peek">
-                        <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?w=1200&h=800&fit=crop" alt="Next slide">
-                    </div>
-                </div>
-                <div class="brand-logo">
-                    <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera">
-                </div>
-                <div class="carousel-controls">
-                    <div class="control-buttons">
-                        <button class="control-btn" onclick="prevSlide()">❮</button>
-                        <button class="control-btn border-right" onclick="togglePlay()">▶</button>
-                        <button class="control-btn" onclick="nextSlide()">❯</button>
-                    </div>
-                    <div class="pagination-dots" id="paginationDots"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quick Links -->
-    <div class="quick-links">
-        <a href="about.html" class="quick-link stagger-delay">📋 About Us</a>
-        <a href="medicines.html" class="quick-link stagger-delay">💊 Our Medicines</a>
-        <a href="#" class="quick-link stagger-delay">🔬 Research Pipeline</a>
-        <a href="#" class="quick-link stagger-delay">🏥 Clinical Trials</a>
-        <a href="careers.html" class="quick-link stagger-delay">💼 Careers</a>
-    </div>
-
-    <!-- Focus Areas -->
-    <section class="features" id="focus">
-        <div class="section-header fade-in">
-            <h2>Our Focus Areas</h2>
-            <p>Advancing medicine across therapeutic areas with the greatest patient needs.</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature scale-up stagger-delay">
-                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=220&fit=crop" alt="Precision Medicine" class="feature-img">
-                <div class="feature-content">
-                    <h3>Precision Medicine</h3>
-                    <p>Targeted therapies for individual patient profiles.</p>
-                </div>
-            </div>
-            <div class="feature scale-up stagger-delay">
-                <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=400&h=220&fit=crop" alt="Cardiovascular" class="feature-img">
-                <div class="feature-content">
-                    <h3>Cardiovascular</h3>
-                    <p>Innovative treatments for heart conditions.</p>
-                </div>
-            </div>
-            <div class="feature scale-up stagger-delay">
-                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=220&fit=crop" alt="Neuroscience" class="feature-img">
-                <div class="feature-content">
-                    <h3>Neuroscience</h3>
-                    <p>Brain and nervous system treatments.</p>
-                </div>
-            </div>
-            <div class="feature scale-up stagger-delay">
-                <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=400&h=220&fit=crop" alt="Infectious Disease" class="feature-img">
-                <div class="feature-content">
-                    <h3>Infectious Disease</h3>
-                    <p>Fighting resistant infections.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats -->
-    <div class="stats slide-left">
-        <div class="stats-grid">
-            <div class="stat-item scale-up stagger-delay">
-                <h3>20+</h3>
-                <p>Years of Innovation</p>
-            </div>
-            <div class="stat-item scale-up stagger-delay">
-                <h3>85+</h3>
-                <p>Approved Medicines</p>
-            </div>
-            <div class="stat-item scale-up stagger-delay">
-                <h3>100+</h3>
-                <p>Countries Served</p>
-            </div>
-            <div class="stat-item scale-up stagger-delay">
-                <h3>1B+</h3>
-                <p>Patients Helped</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Latest News -->
-    <section class="news fade-in">
-        <div class="section-header">
-            <h2>Latest News & Press</h2>
-            <p>Recent breakthroughs, FDA approvals, and clinical trial milestones.</p>
-        </div>
-        <div class="news-grid">
-            <div class="news-item scale-up stagger-delay">
-                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=250&fit=crop" alt="FDA Approval">
-                <div class="news-content">
-                    <span class="news-date">March 2026</span>
-                    <h3>FDA Grants Breakthrough Therapy Designation</h3>
-                    <p>Our oncology candidate receives accelerated pathway for rare cancer treatment.</p>
-                    <a href="#" class="news-link">Read More →</a>
-                </div>
-            </div>
-            <div class="news-item scale-up stagger-delay">
-                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=250&fit=crop" alt="Clinical Trial">
-                <div class="news-content">
-                    <span class="news-date">February 2026</span>
-                    <h3>Phase III Trial Shows Promising Results</h3>
-                    <p>Cardiovascular drug demonstrates 40% reduction in primary endpoints.</p>
-                    <a href="#" class="news-link">Read More →</a>
-                </div>
-            </div>
-            <div class="news-item scale-up stagger-delay">
-                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=250&fit=crop" alt="Partnership">
-                <div class="news-content">
-                    <span class="news-date">January 2026</span>
-                    <h3>Strategic Research Collaboration Announced</h3>
-                    <p>Partnership with leading university expands gene therapy capabilities.</p>
-                    <a href="#" class="news-link">Read More →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Patient Stories -->
-    <section class="patients fade-in">
-        <div class="section-header">
-            <h2>Patient Stories</h2>
-            <p>Real lives changed by our medicines - stories of hope and healing.</p>
-        </div>
-        <div class="patients-grid">
-            <div class="patient-card scale-up stagger-delay">
-                <div class="patient-img">
-                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=300&fit=crop" alt="Patient">
-                </div>
-                <div class="patient-content">
-                    <p class="patient-quote">"This treatment gave me hope when I had none. The care team was incredible."</p>
-                    <p class="patient-name">— Sarah M., Oncology Patient</p>
-                </div>
-            </div>
-            <div class="patient-card scale-up stagger-delay">
-                <div class="patient-img">
-                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=300&fit=crop" alt="Patient">
-                </div>
-                <div class="patient-content">
-                    <p class="patient-quote">"After years of struggle, finally a medicine that works for my condition."</p>
-                    <p class="patient-name">— James K., Cardiovascular Patient</p>
-                </div>
-            </div>
-            <div class="patient-card scale-up stagger-delay">
-                <div class="patient-img">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=300&fit=crop" alt="Patient">
-                </div>
-                <div class="patient-content">
-                    <p class="patient-quote">"The difference in my quality of life is remarkable. Thank you Cellvera."</p>
-                    <p class="patient-name">— Maria L., Rare Disease Patient</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partnerships -->
-    <section class="partners fade-in">
-        <div class="section-header">
-            <h2>Research Partnerships</h2>
-            <p>Collaborating with world-leading institutions to advance science.</p>
-        </div>
-        <div class="partners-grid">
-            <div class="partner-card scale-up stagger-delay">
-                <div class="partner-logo">🎓</div>
-                <h3>Harvard Medical</h3>
-                <p>Gene therapy research collaboration</p>
-            </div>
-            <div class="partner-card scale-up stagger-delay">
-                <div class="partner-logo">🔬</div>
-                <h3>Max Planck Institute</h3>
-                <p>Neuroscience partnership</p>
-            </div>
-            <div class="partner-card scale-up stagger-delay">
-                <div class="partner-logo">🏥</div>
-                <h3>Mayo Clinic</h3>
-                <p>Clinical trials network</p>
-            </div>
-            <div class="partner-card scale-up stagger-delay">
-                <div class="partner-logo">🧬</div>
-                <h3>Broad Institute</h3>
-                <p>Genomic medicine research</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta fade-in">
-        <h2>Join Our Mission</h2>
-        <p>Be part of a team making a real difference in global health. Explore career opportunities at CellveraPharma.</p>
-        <a href="careers.html" class="btn-primary">View Open Positions</a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">
-                    <img src="file_11---48063036-d03f-4670-a7ee-868847e356da.jpg" alt="Cellvera Logo" style="height: 40px; width: auto;">
-                    CellveraPharma
-                </a>
-                <p>The One JLT Tower, 1401, Dubai, UAE<br>mail@cellverapharma.com</p>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Leadership</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="#">Press</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Science</h4>
-                <ul>
-                    <li><a href="medicines.html">Medicines</a></li>
-                    <li><a href="#">Pipeline</a></li>
-                    <li><a href="#">Clinical Trials</a></li>
-                    <li><a href="#">Publications</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Investors</a></li>
-                    <li><a href="#">Media</a></li>
-                    <li><a href="#">Healthcare Pros</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>© 2026 CellveraPharma. All rights reserved.</span>
-            <div class="footer-bottom-links">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-                <a href="#">Cookies</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Classic Scroll Animation Observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all animated elements
-        document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-up').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Dropdown Menu Click Handler
-        document.querySelectorAll('.dropdown').forEach(dropdown => {
-            dropdown.addEventListener('click', function(e) {
-                // Close all other dropdowns
-                document.querySelectorAll('.dropdown').forEach(d => {
-                    if (d !== this) d.classList.remove('active');
-                });
-                // Toggle this dropdown
-                this.classList.toggle('active');
-            });
-        });
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.dropdown')) {
-                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
-            }
-        });
-
-        // Full Image Hero Slider
-        let currentSlide = 0;
-        const totalSlides = 4;
-        let isPlaying = true;
-        let slideInterval;
-        
-        function initSlider() {
-            const dotsContainer = document.getElementById('paginationDots');
-            dotsContainer.innerHTML = '';
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'pagination-dot' + (i === 0 ? ' active' : '');
-                dot.onclick = () => goToSlide(i);
-                dotsContainer.appendChild(dot);
-            }
-            startAutoPlay();
-        }
-        
-        function showSlide(index) {
-            document.querySelectorAll('.slide').forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) slide.classList.add('active');
-            });
-            document.querySelectorAll('.pagination-dot').forEach((dot, i) => {
-                dot.classList.remove('active');
-                if (i === index) dot.classList.add('active');
-            });
-        }
-        
-        function goToSlide(index) {
-            currentSlide = index;
-            showSlide(currentSlide);
-            if (isPlaying) {
-                clearInterval(slideInterval);
-                startAutoPlay();
-            }
-        }
-        
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
-        }
-        
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            showSlide(currentSlide);
-        }
-        
-        function startAutoPlay() {
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-        
-        function stopAutoPlay() {
-            clearInterval(slideInterval);
-        }
-        
-        function togglePlay() {
-            isPlaying = !isPlaying;
-            const btn = document.querySelector('.control-btn.border-right');
-            if (isPlaying) {
-                btn.innerHTML = '▶';
-                startAutoPlay();
-            } else {
-                btn.innerHTML = '⏸';
-                stopAutoPlay();
-            }
-        }
-        
-        // Initialize slider on load
-        initSlider();
-    </script>
-</body>
-</html>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 glass-header shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+<a class="text-2xl font-bold tracking-tighter text-slate-900 dark:text-slate-50 font-headline" href="#">CellveraPharma</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="font-manrope font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Oncology</a>
+<a class="font-manrope font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Genetics</a>
+<a class="font-manrope font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Leadership</a>
+<a class="font-manrope font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">STEM</a>
+<a class="font-manrope font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Medicines</a>
+</nav>
+<div class="flex items-center space-x-6">
+<button class="text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="bg-primary hover:bg-primary-container text-white px-6 py-2.5 rounded-full font-headline font-semibold transition-all duration-300">
+                    Contact Us
+                </button>
+</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[870px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-10" data-alt="A clean, high-tech laboratory environment with a clinical scientist working on a modern microscope, soft blue aesthetic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWhuTLP3zyUegqr_0kfPoeQrxSiV7neIfR8fvP0Xf_JCEJW48OgA90bFa0Caz-YTe2_9YMfMSWKiSqXZkrK-cXeAthPgjU5clyOjRWYeQQUuvR8UEjDK5UDyZkUkiFeQcyoPoXvjs0FX1nyUAOUL3qj9Fxqux2rlCYax4oGd7sN-RgT1Wm3ii8aKYQAIXc5Le6DOXmoAGirqOlFVBfiKsjtLJwn7b6V9Zpn4V4WG7hGL5WJpK3JS85EQC_QC5eN7mP3l8Vsr8KXLfg"/>
+<div class="absolute inset-0 hero-gradient opacity-95"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8">
+<div class="inline-flex items-center space-x-2 bg-primary-container/30 px-4 py-2 rounded-full border border-outline-variant/15">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-sm font-medium text-primary-fixed uppercase tracking-widest">Innovation Report 2024</span>
+</div>
+<h1 class="text-6xl md:text-7xl font-headline font-extrabold text-white leading-tight tracking-tighter">
+                        Pioneering Progress in <span class="text-secondary-fixed">Oncology</span> &amp; <span class="text-secondary-fixed">Genetics</span>
+</h1>
+<p class="text-xl text-on-primary-container max-w-xl leading-relaxed">
+                        At the intersection of data science and molecular biology, we are redefining the treatment paradigms for tomorrow's healthcare challenges.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-full font-headline font-bold hover:brightness-110 transition-all flex items-center group">
+                            Explore Research
+                            <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="bg-transparent border border-outline-variant/20 text-white px-8 py-4 rounded-full font-headline font-bold hover:bg-white/5 transition-all">
+                            Our Pipeline
+                        </button>
+</div>
+</div>
+<div class="hidden lg:block relative">
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+<div class="relative bg-surface-container-lowest/10 backdrop-blur-md p-2 rounded-3xl border border-white/10 soft-shadow">
+<img class="rounded-2xl w-full h-[500px] object-cover" data-alt="Close up of a DNA double helix visualization on a laboratory computer screen in high resolution blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQhVpG3l3lIUIx5x5IiFNR1RLLXDW1Xj-vV7Ay8tWSAiVNOCxm2jegwnzSp11eJsIkQdvIQAxleYkPeoVsjzpsoFxTyc_YnnSGerMhhtDdQnwBfzdQqC11Rn1Kp7sTNFxlUyWIcA2kLPPvQBU5hMuqkcg3-Y7sNcdasgNER95bCYZi_cluprHus_TFVYnr2877j7IIV6T6J0riCZMBmzsoFGTfV9mppHiU9olXVv5gFqn0NX0eQhb-uNmNYMmsf-mx4DjaJKqvAi9L"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Focus Areas: Bento Grid -->
+<section class="py-24 px-8 max-w-7xl mx-auto">
+<div class="mb-16">
+<h2 class="text-4xl font-headline font-bold text-primary mb-4">Core Therapeutic Focus</h2>
+<div class="w-24 h-1 bg-secondary rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto lg:h-[600px]">
+<!-- Oncology Card -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-3xl bg-surface-container-lowest soft-shadow border border-outline-variant/5">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Microscopic view of cancer cells being targeted by molecular therapy in a sterile medical rendering" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb4MOeAqT9VlQcqKaC_joNYQgEhSLMlwoftkriaesVkL0Kiwim3sR-uzzilaVBwsV25U7VHAgaogDYjRctbViQepk3kTqpCzoUg2T-q-SzSfQexD6vBnEd97mGzVsmrHGCtXdjaqqYTuHwh992E7RnxF00uKCOcmLAaGZXRiZYk4CubmkjKVp8RViOXy5RQNYbKQ3MD0KDUEubt_rSrmI-SwPTlWqAV6912nIu26XPWg0ZO-Fi-h2pvWql2p4RpBDw3XSmN4enfFZT"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-10 text-white">
+<h3 class="text-3xl font-headline font-bold mb-4">Oncology</h3>
+<p class="max-w-md text-on-primary-container leading-relaxed mb-6">
+                            Precision medicine targeting the genetic drivers of complex cancers. Delivering hope through personalized therapeutic interventions.
+                        </p>
+<a class="inline-flex items-center text-secondary-fixed font-bold hover:underline underline-offset-8" href="#">
+                            Clinical Trials Center
+                            <span class="material-symbols-outlined ml-2">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- STEM Card -->
+<div class="md:col-span-4 bg-surface-container-low rounded-3xl p-8 flex flex-col justify-between border border-outline-variant/5">
+<div>
+<div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 soft-shadow">
+<span class="material-symbols-outlined text-secondary text-3xl">school</span>
+</div>
+<h3 class="text-2xl font-headline font-bold text-primary mb-4">STEM Excellence</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                            Cultivating the next generation of researchers through global academic partnerships and immersive science programs.
+                        </p>
+</div>
+<div class="pt-8 space-y-4">
+<div class="flex items-center justify-between p-4 bg-white rounded-2xl">
+<span class="font-medium">Fellowships</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-white rounded-2xl">
+<span class="font-medium">University Outreach</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Genetics Card -->
+<div class="md:col-span-12 lg:col-span-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-1 bg-primary text-white rounded-3xl p-8 flex flex-col justify-center">
+<h3 class="text-2xl font-headline font-bold mb-4">Genetics</h3>
+<p class="text-on-primary-container leading-relaxed">
+                            Unlocking the human genome to discover new pathways for preventative care and rare disease treatment.
+                        </p>
+</div>
+<div class="lg:col-span-2 relative h-48 lg:h-auto rounded-3xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean pharmaceutical lab table with multiple colorful scientific test tubes in a rack with natural sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb5GJLS3ybo1JlLsoLBQXIcwBe38eqae3Zs8nKKmdkis1EtKvDU2GXcoq-l5439lYYmff-J2M1QlREJR4m1PCeSA9MVx0CLiUV8aN084B5l_coEBwocu6y6j4nRAeCEdfaHWbkDNxiY6qvobmfWXOALRZn9Dey1I0KaCyntIPR8SWcAD1WNWQ1KFNy6DLus-ZhEWwOrywABGquXeM6yvEIgKJw-fq9ixsFocsi_-In4i9MNPG_EJbit58NCK8-C_ISU46pV7_hVYjR"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="text-center">
+<div class="text-5xl font-headline font-extrabold text-primary mb-2">42+</div>
+<div class="text-sm font-label text-on-surface-variant tracking-widest uppercase">Medicines in Pipeline</div>
+</div>
+<div class="text-center">
+<div class="text-5xl font-headline font-extrabold text-primary mb-2">120</div>
+<div class="text-sm font-label text-on-surface-variant tracking-widest uppercase">Global Markets</div>
+</div>
+<div class="text-center">
+<div class="text-5xl font-headline font-extrabold text-primary mb-2">8.4k</div>
+<div class="text-sm font-label text-on-surface-variant tracking-widest uppercase">Research Scientists</div>
+</div>
+<div class="text-center">
+<div class="text-5xl font-headline font-extrabold text-primary mb-2">$3.2B</div>
+<div class="text-sm font-label text-on-surface-variant tracking-widest uppercase">Annual R&amp;D Investment</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Latest News -->
+<section class="py-24 px-8 max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-4xl font-headline font-bold text-primary mb-2">Newsroom</h2>
+<p class="text-on-surface-variant">Stay updated with our latest medical breakthroughs and corporate news.</p>
+</div>
+<button class="hidden md:block text-secondary font-bold hover:underline">View All Press Releases</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="group cursor-pointer">
+<div class="rounded-3xl overflow-hidden mb-6 aspect-video bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern pharmaceutical manufacturing facility with robotic arms and sterile equipment in a blue lit room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhGMi4gkqNgYq9FlAG36uq6k2IYA7JUKiYilg-EXd_URXfibKxhxRGTkzCzNXTdyFdQMrFKKdkvgeKZP3yCLb3wUgyq9B-taxryCVpkXM47z_EHRmk7Iw5oODCcq_-DyBp2kP4aKYVBPKJx_0S8NBsIt1Big9BQITAvFD7qk6ikV7Jq_HOlMjJKD7PZ6lUA-b6ok3vkAbibQmBvedrBHN6632Z2RKpRB4zMAFbw_isqBwwArN3gBDzBaoTS_ysU0W_i613dSw6I4m8"/>
+</div>
+<span class="bg-tertiary-container text-tertiary-fixed px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Breakthrough</span>
+<h3 class="text-xl font-headline font-bold text-primary mt-4 mb-3 group-hover:text-secondary transition-colors leading-snug">CellveraPharma Announces FDA Fast-Track for Targeted Breast Cancer Therapy</h3>
+<p class="text-on-surface-variant line-clamp-2">The new molecular pathway has shown promising results in Phase II trials, reducing resistance in advanced stages.</p>
+</div>
+<div class="group cursor-pointer">
+<div class="rounded-3xl overflow-hidden mb-6 aspect-video bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close up of a doctor in a lab coat holding a patient's hand with compassion in a brightly lit modern hospital" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArSxDTeaJ1phKcnH4Kg4oemYSUvpO8KqgHQjxDDt9khLkjtMHB2O956uF6qPlE4KUqvV9LWafRbu_1xB0fCSfMLRwkkpBTNCe25XY_QZpfEwzG0_HcMwn37GlKvnQ8Fi9KGToL3CmmTGBh13i3_e0aMF9HQp0Bbw-6iarqgTpsERPUcLFa86cvc24iMZ04ND11QflkqHhIXP4VuNm_tt6Qrbi5--mcLwIPi1_jpvT45KphP8vBeOx0-PiKJlDZQccI9pN9wGZ0P65Y"/>
+</div>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Community</span>
+<h3 class="text-xl font-headline font-bold text-primary mt-4 mb-3 group-hover:text-secondary transition-colors leading-snug">Expanding Global Access: Cellvera's 2024 Sustainability Initiative</h3>
+<p class="text-on-surface-variant line-clamp-2">New partnership models to deliver essential oncology medications to underserved regions across the global south.</p>
+</div>
+<div class="group cursor-pointer">
+<div class="rounded-3xl overflow-hidden mb-6 aspect-video bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Digital representation of complex medical data analytics and genomic sequencing on a holographic interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4h00TP-v-j9vBfpQT7WJn3-ZdSRZRMCVNkSdNtPfUoMl0V47f77BAcSVodk6I-wYxcql8oy-940saIhfZJ3rT8ypNCvdPu5tws3uZNkEqO4ZxsHXweaSN5jfa96PgH0WIcVqQVOgaCrmlAC7CCoS5Y5vUr5xDe4PlXhOqhzHAectEMM4A9vEGPMKbO3KzcO2xgcpR3LqcVtP4FECiL5euCr7jM_Js4hrDQYR0HlxcUs19Eyyd09M7O1zB__eG2x9jb_tQ_rWjqLsA"/>
+</div>
+<span class="bg-secondary-container/20 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Genetics</span>
+<h3 class="text-xl font-headline font-bold text-primary mt-4 mb-3 group-hover:text-secondary transition-colors leading-snug">Mapping the Genome of Resistance: A New Era in Diagnostics</h3>
+<p class="text-on-surface-variant line-clamp-2">Research collaboration with leading universities reveals genetic markers for early cancer detection through liquid biopsy.</p>
+</div>
+</div>
+</section>
+<!-- Patient Stories: Asymmetric Layout -->
+<section class="py-24 bg-primary overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 relative">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="relative order-2 lg:order-1">
+<div class="absolute -top-10 -left-10 w-40 h-40 border-t border-l border-white/20"></div>
+<div class="bg-white/5 backdrop-blur-xl p-3 rounded-[40px] border border-white/10">
+<img class="rounded-[32px] w-full aspect-[4/5] object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="A portrait of a resilient woman smiling peacefully in a garden at sunset, representing life after treatment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUoiQuDZL6T7qLglpJSIhffSTakzovvy9Lev6G_pNnJnXprJcZewQ4LLAS-WYwpX9FIyvfASqc41i5RQc62NT2U1sBoe_MJhaAGbaLaOWtOMTKs30gsk3_d4ogW_AQXm9dSgHH25Qrri56T_WW6tBiAbYTaozqCOSvWcIrqk-G3b1PsGFMKtpy7gfL6pvbQG5-PYMSeyRnUh1kKm3RZytA9W1Qepe0kDB-T2ngSOpwrIlXjsUJATsFodLrq0kCVBaS60wsQePeRTIk"/>
+</div>
+<div class="absolute -bottom-8 -right-8 bg-secondary-container p-8 rounded-3xl soft-shadow max-w-[280px]">
+<p class="text-on-secondary-container italic font-medium leading-relaxed">
+                                "Because of the personalized treatment I received, I'm not just a survivor—I'm thriving."
+                            </p>
+<p class="mt-4 font-bold text-primary text-sm tracking-widest uppercase">Elena S., Patient</p>
+</div>
+</div>
+<div class="order-1 lg:order-2 space-y-8">
+<h2 class="text-5xl font-headline font-bold text-white leading-tight">Beyond the Laboratory, It's About Life.</h2>
+<p class="text-on-primary-container text-lg leading-relaxed">
+                            Every breakthrough we achieve in the lab is measured by the birthdays celebrated, the milestones reached, and the lives restored. Our commitment to science is fueled by the stories of those we serve.
+                        </p>
+<div class="space-y-6 pt-4">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl">favorite</span>
+<div>
+<h4 class="text-white font-bold text-xl mb-1">Patient-First Philosophy</h4>
+<p class="text-on-primary-container">Integrating patient feedback directly into our drug development lifecycle.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl">diversity_3</span>
+<div>
+<h4 class="text-white font-bold text-xl mb-1">Inclusive Support</h4>
+<p class="text-on-primary-container">Programs designed to support caregivers and families through every stage of therapy.</p>
+</div>
+</div>
+</div>
+<button class="bg-white text-primary px-10 py-4 rounded-full font-headline font-bold hover:bg-secondary-fixed transition-all mt-8">
+                            Read More Stories
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / CTA -->
+<section class="py-24 px-8 max-w-7xl mx-auto text-center">
+<div class="bg-surface-container-low rounded-[48px] p-16 border border-outline-variant/10">
+<h2 class="text-4xl font-headline font-extrabold text-primary mb-6">Stay Informed on the Future of Medicine</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto mb-10 text-lg">
+                    Join our monthly digest for insights from our lead researchers, pipeline updates, and healthcare innovation news.
+                </p>
+<form class="flex flex-col md:flex-row gap-4 max-w-xl mx-auto">
+<input class="flex-1 bg-white border-none rounded-full px-8 py-4 focus:ring-2 focus:ring-secondary/50 placeholder:text-outline soft-shadow" placeholder="Enter your corporate email" type="email"/>
+<button class="bg-primary text-white px-10 py-4 rounded-full font-headline font-bold hover:brightness-125 transition-all">
+                        Subscribe
+                    </button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-100 dark:bg-slate-900 w-full py-12 px-8 font-inter text-sm antialiased">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+<div class="space-y-6">
+<div class="text-xl font-bold text-slate-900 dark:text-slate-50 font-headline">CellveraPharma</div>
+<p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Advancing the boundaries of medicine to deliver innovative therapies that change lives and redefine the future of global health.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:text-secondary transition-colors shadow-sm" href="#">
+<span class="material-symbols-outlined text-lg">share</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:text-secondary transition-colors shadow-sm" href="#">
+<span class="material-symbols-outlined text-lg">alternate_email</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-slate-50 font-bold mb-6">Therapeutic Areas</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all underline-offset-4 hover:underline" href="#">Oncology &amp; Immuno-oncology</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all underline-offset-4 hover:underline" href="#">Genomic Medicine</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all underline-offset-4 hover:underline" href="#">Rare Diseases</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all underline-offset-4 hover:underline" href="#">Inflammation &amp; Immunology</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-slate-50 font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all underline-offset-4 hover:underline" href="#">Newsroom</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all underline-offset-4 hover:underline" href="#">Investor Relations</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all underline-offset-4 hover:underline" href="#">Sustainability Report</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all underline-offset-4 hover:underline" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-slate-50 font-bold mb-6">Connect</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all underline-offset-4 hover:underline" href="#">Contact Us</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all underline-offset-4 hover:underline" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all underline-offset-4 hover:underline" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400 uppercase tracking-widest">
+<div>© 2024 CellveraPharma. All rights reserved. Pioneering Precision Oncology.</div>
+<div class="flex gap-6">
+<a class="hover:text-primary" href="#">LinkedIn</a>
+<a class="hover:text-primary" href="#">Twitter</a>
+<a class="hover:text-primary" href="#">YouTube</a>
+</div>
+</div>
+</footer>
+</body></html>
